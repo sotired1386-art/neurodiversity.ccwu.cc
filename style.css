@@ -1,21 +1,23 @@
 /* ==========================================
    神经多样性科普站 | 共享样式表
-   莫兰迪色系 · 学术人文风格
+   暖阳学术配色 · 防晕字优化
    ========================================== */
 
 :root {
-    --bg-color: #e5e4df;
-    --bg-card: #eeede9;
-    --text-color: #3c3c3c;
-    --text-muted: #737373;
-    --border-color: #b5b3a9;
-    --accent-color: #728077;
-    --accent-hover: #5a6b5f;
-    --note-bg: #dcdad2;
-    --cite-color: #6a7c73;
-    --nav-bg: #d9d7cf;
+    --bg-color: #faf8f3;
+    --bg-card: #ffffff;
+    --text-color: #1e1e1e;
+    --text-muted: #5c5c5c;
+    --border-color: #e0dbce;
+    --accent-color: #4a7c6b;
+    --accent-hover: #385f51;
+    --note-bg: #f3efe6;
+    --cite-color: #5b8474;
+    --nav-bg: #f5f2ea;
+    --toc-bg: #f8f6f0;
     --font-heading: "Georgia", "Times New Roman", serif;
     --font-body: -apple-system, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,7 +26,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-body);
-    line-height: 1.7;
+    line-height: 1.75;
     font-size: 15px;
 }
 
@@ -32,21 +34,13 @@ body {
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: normal;
-    color: #2c2c2c;
+    color: #141414;
     margin-bottom: 0.8rem;
 }
 
-a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: all 0.15s ease;
-}
-
-a:hover {
-    color: var(--accent-hover);
-}
-
-p { margin-bottom: 1rem; }
+a { color: var(--accent-color); text-decoration: none; transition: all 0.15s ease; }
+a:hover { color: var(--accent-hover); }
+p { margin-bottom: 0.8rem; }
 
 /* ---------- 全局导航栏 ---------- */
 .site-nav {
@@ -62,53 +56,29 @@ p { margin-bottom: 1rem; }
     top: 0;
     z-index: 100;
 }
-
 .site-nav .nav-brand {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     letter-spacing: 2px;
-    color: #2c2c2c;
+    color: #141414;
     padding: 0.8rem 0;
     white-space: nowrap;
 }
+.site-nav .nav-brand a { color: inherit; border: none; }
+.site-nav .nav-brand a:hover { background: none; color: var(--accent-color); }
 
-.site-nav .nav-brand a {
-    color: inherit;
-    border: none;
-}
-
-.site-nav .nav-brand a:hover {
-    background: none;
-    color: var(--accent-color);
-}
-
-.nav-links {
-    display: flex;
-    gap: 0.3rem;
-    flex-wrap: wrap;
-    padding: 0.5rem 0;
-}
-
+.nav-links { display: flex; gap: 0.2rem; flex-wrap: wrap; padding: 0.5rem 0; }
 .nav-links a {
     display: inline-block;
-    padding: 0.4rem 1rem;
-    border-radius: 3px;
-    font-size: 0.9rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
     color: var(--text-color);
     border-bottom: none;
     transition: background 0.15s ease, color 0.15s ease;
 }
-
-.nav-links a:hover {
-    background-color: var(--bg-card);
-    color: var(--accent-color);
-}
-
-.nav-links a.active {
-    background-color: var(--accent-color);
-    color: #fff;
-    font-weight: bold;
-}
+.nav-links a:hover { background-color: #e8e3d6; color: var(--accent-color); }
+.nav-links a.active { background-color: var(--accent-color); color: #fff; font-weight: bold; }
 
 /* ---------- 页面容器 ---------- */
 .container {
@@ -116,6 +86,29 @@ p { margin-bottom: 1rem; }
     margin: 0 auto;
     padding: 2.5rem 2rem 4rem;
 }
+
+/* ---------- 目录 (TOC) ---------- */
+.toc {
+    background-color: var(--toc-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.9rem;
+}
+.toc summary {
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.8rem;
+    color: var(--accent-color);
+    list-style: none;
+}
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::before { content: "📑 "; }
+.toc ol { margin-left: 1.5rem; margin-top: 0.3rem; }
+.toc li { margin-bottom: 0.35rem; }
+.toc a { border-bottom: 1px dotted var(--border-color); }
 
 /* ---------- 碎碎念区块 ---------- */
 .author-note {
@@ -126,51 +119,39 @@ p { margin-bottom: 1rem; }
     font-style: italic;
     color: #4a4a4a;
     line-height: 1.8;
+    border-radius: 0 4px 4px 0;
 }
-
 .author-note p { margin-bottom: 0.6rem; }
 .author-note p:last-child { margin-bottom: 0; }
 
 /* ---------- 首页卡片网格 ---------- */
 .hub-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
 }
-
 .hub-card {
     display: block;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 2.2rem 1.8rem;
+    padding: 2rem 1.5rem;
     text-align: center;
     transition: all 0.25s ease;
     color: var(--text-color);
     text-decoration: none;
-    border-bottom: 1px solid var(--border-color); /* override global a */
+    border-radius: 6px;
+    box-shadow: var(--shadow);
 }
-
 .hub-card:hover {
     border-color: var(--accent-color);
     background-color: var(--accent-color);
     color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
-
-.hub-card h3 {
-    margin-bottom: 0.6rem;
-    transition: color 0.25s ease;
-    font-size: 1.2rem;
-}
-
+.hub-card h3 { margin-bottom: 0.5rem; transition: color 0.25s ease; font-size: 1.1rem; }
 .hub-card:hover h3 { color: #fff; }
-
-.hub-card p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 0;
-}
+.hub-card p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 0; }
 
 /* ---------- 子页面标题 ---------- */
 .page-title {
@@ -178,60 +159,131 @@ p { margin-bottom: 1rem; }
     color: var(--accent-color);
     border-bottom: 1px dashed var(--border-color);
     padding-bottom: 0.6rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
 }
-
 .page-subtitle {
     font-size: 0.95rem;
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 /* ---------- 分类子标题 ---------- */
 .sub-category-title {
     font-size: 1.15rem;
     font-weight: bold;
-    color: #444;
+    color: #2c2c2c;
     margin: 2.5rem 0 1rem 0;
-    padding-left: 12px;
-    border-left: 4px solid var(--accent-color);
+    padding-left: 14px;
+    border-left: 5px solid var(--accent-color);
 }
 
 /* ---------- 内容块 ---------- */
 .content-block {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 1.8rem;
-    margin-bottom: 1.8rem;
+    padding: 1.6rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
 }
-
 .content-block h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
+.content-block ul, .content-block ol { margin-top: 0.5rem; padding-left: 1.5rem; }
+.content-block li { margin-bottom: 0.4rem; }
+.content-block ul { list-style-type: square; }
 
-.content-block ul {
-    margin-top: 0.8rem;
-    padding-left: 1.5rem;
-    list-style-type: square;
+/* ---------- 迷思卡片 (myths.html 专用) ---------- */
+.myth-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: var(--shadow);
 }
+.myth-card .myth-label {
+    display: inline-block;
+    background-color: #f2dede;
+    color: #a94442;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+.myth-card .fact-label {
+    display: inline-block;
+    background-color: #dff0d8;
+    color: #3c763d;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+.myth-card h4 { margin-top: 0.5rem; font-size: 1rem; }
+.myth-card .myth-text { color: #a94442; font-style: italic; margin-bottom: 0.5rem; }
+.myth-card .fact-text { color: #2c2c2c; }
 
-.content-block li {
-    margin-bottom: 0.5rem;
+/* ---------- 策略卡片 (strategies.html 专用) ---------- */
+.strategy-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--accent-color);
+    border-radius: 0 6px 6px 0;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: var(--shadow);
 }
+.strategy-card h4 { margin-bottom: 0.5rem; font-size: 1rem; }
 
 /* ---------- 学术引用样式 ---------- */
 .citation {
     font-size: 0.85rem;
     color: var(--cite-color);
-    background-color: #e2e1dc;
+    background-color: #edf3f0;
     padding: 0.15rem 0.4rem;
     border-radius: 3px;
     font-family: var(--font-heading);
     white-space: nowrap;
 }
+
+/* ---------- 高亮小标签 ---------- */
+.tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    background-color: #e8f0ec;
+    color: var(--accent-color);
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+/* ---------- 提示框 ---------- */
+.callout {
+    background-color: #f6f3eb;
+    border-left: 4px solid #c9a96e;
+    padding: 1rem 1.5rem;
+    margin: 1.2rem 0;
+    font-size: 0.9rem;
+    border-radius: 0 4px 4px 0;
+}
+.callout strong { color: #8b6914; }
+
+/* ---------- 返回目录链接 ---------- */
+.back-toc {
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+}
+.back-toc:hover { color: var(--accent-color); }
 
 /* ---------- 参考文献列表 ---------- */
 .ref-list {
@@ -241,16 +293,8 @@ p { margin-bottom: 1rem; }
     padding-top: 1.5rem;
     margin-top: 3rem;
 }
-
-.ref-list ol {
-    margin-left: 1.5rem;
-    margin-top: 0.5rem;
-    list-style-type: decimal;
-}
-
-.ref-list li {
-    margin-bottom: 0.4rem;
-}
+.ref-list ol { margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: decimal; }
+.ref-list li { margin-bottom: 0.4rem; }
 
 /* ---------- 页脚 ---------- */
 .site-footer {
@@ -259,34 +303,16 @@ p { margin-bottom: 1rem; }
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-muted);
-    background-color: var(--bg-card);
+    background-color: var(--nav-bg);
 }
-
 .site-footer p { margin-bottom: 0.3rem; }
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 640px) {
-    .site-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.8rem 1.2rem;
-    }
-    
-    .nav-links {
-        gap: 0.2rem;
-        padding: 0.3rem 0;
-    }
-    
-    .nav-links a {
-        padding: 0.3rem 0.7rem;
-        font-size: 0.8rem;
-    }
-    
-    .container {
-        padding: 1.5rem 1rem 3rem;
-    }
-    
-    .hub-grid {
-        grid-template-columns: 1fr;
-    }
+    .site-nav { flex-direction: column; align-items: flex-start; padding: 0.8rem 1.2rem; }
+    .nav-links { gap: 0.15rem; padding: 0.3rem 0; }
+    .nav-links a { padding: 0.3rem 0.6rem; font-size: 0.78rem; }
+    .container { padding: 1.5rem 1rem 3rem; }
+    .hub-grid { grid-template-columns: 1fr; }
+    .toc { padding: 1rem 1.2rem; }
 }
