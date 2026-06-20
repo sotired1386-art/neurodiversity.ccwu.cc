@@ -1,6 +1,5 @@
 /* ==========================================
-   神经多样性科普站 | 共享样式表
-   暖阳学术配色 · 防晕字优化
+   神经多样性科普站
    ========================================== */
 
 :root {
@@ -27,7 +26,7 @@ body {
     color: var(--text-color);
     font-family: var(--font-body);
     line-height: 1.75;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 h1, h2, h3, h4 {
@@ -66,24 +65,19 @@ p { margin-bottom: 0.8rem; }
 .site-nav .nav-brand a { color: inherit; border: none; }
 .site-nav .nav-brand a:hover { background: none; color: var(--accent-color); }
 
-.nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; padding: 0.5rem 0; }
+.nav-links { display: flex; gap: 0.15rem; flex-wrap: wrap; padding: 0.5rem 0; }
 .nav-links a {
     display: inline-block;
-    padding: 0.45rem 1.2rem;
-    border-radius: 999px;
-    font-size: 0.9rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
     color: var(--text-color);
     border-bottom: none;
     transition: background 0.15s ease, color 0.15s ease;
     white-space: nowrap;
-    background-color: transparent;
 }
 .nav-links a:hover { background-color: #e8e3d6; color: var(--accent-color); }
-.nav-links a.active {
-    background-color: var(--accent-color);
-    color: #fff;
-    font-weight: bold;
-}
+.nav-links a.active { background-color: var(--accent-color); color: #fff; font-weight: bold; }
 
 /* ---------- 页面容器 ---------- */
 .container {
@@ -96,26 +90,24 @@ p { margin-bottom: 0.8rem; }
 .toc {
     background-color: var(--toc-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
+    border-radius: 6px;
+    padding: 1.2rem 1.6rem;
     margin-bottom: 2rem;
-    font-size: 0.95rem;
-    box-shadow: var(--shadow);
+    font-size: 0.88rem;
 }
 .toc summary {
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     cursor: pointer;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     color: var(--accent-color);
     list-style: none;
 }
 .toc summary::-webkit-details-marker { display: none; }
 .toc summary::before { content: "📑 "; }
-.toc ol { margin-left: 1.5rem; margin-top: 0.3rem; }
-.toc li { margin-bottom: 0.4rem; }
-.toc a { border-bottom: 1px dotted var(--border-color); font-size: 0.95rem; }
-.toc ol ol { margin-top: 0.2rem; }
+.toc ol { margin-left: 1.3rem; margin-top: 0.2rem; }
+.toc li { margin-bottom: 0.3rem; }
+.toc a { border-bottom: 1px dotted var(--border-color); }
 
 /* ---------- 碎碎念区块 ---------- */
 .author-note {
@@ -162,22 +154,21 @@ p { margin-bottom: 0.8rem; }
 
 /* ---------- 子页面标题 ---------- */
 .page-title {
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: var(--accent-color);
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-family: var(--font-heading);
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
 }
 .page-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    line-height: 1.8;
 }
 
 /* ---------- 分类子标题 ---------- */
 .sub-category-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: bold;
     color: #2c2c2c;
     margin: 2.5rem 0 1rem 0;
@@ -189,26 +180,26 @@ p { margin-bottom: 0.8rem; }
 .content-block {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 1.8rem;
+    padding: 1.6rem;
     margin-bottom: 1.5rem;
-    border-radius: 12px;
+    border-radius: 6px;
     box-shadow: var(--shadow);
 }
 .content-block h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 0.8rem;
 }
 .content-block ul, .content-block ol { margin-top: 0.5rem; padding-left: 1.5rem; }
-.content-block li { margin-bottom: 0.5rem; }
+.content-block li { margin-bottom: 0.4rem; }
 .content-block ul { list-style-type: square; }
 
 /* ---------- 迷思卡片 ---------- */
 .myth-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 1.5rem;
     margin-bottom: 1.2rem;
     box-shadow: var(--shadow);
@@ -242,7 +233,7 @@ p { margin-bottom: 0.8rem; }
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-left: 5px solid var(--accent-color);
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 6px 6px 0;
     padding: 1.5rem;
     margin-bottom: 1.2rem;
     box-shadow: var(--shadow);
@@ -264,8 +255,8 @@ p { margin-bottom: 0.8rem; }
 .tag {
     display: inline-block;
     font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
     background-color: #e8f0ec;
     color: var(--accent-color);
     margin-right: 0.3rem;
@@ -279,7 +270,7 @@ p { margin-bottom: 0.8rem; }
     border-left: 4px solid #c9a96e;
     padding: 1rem 1.5rem;
     margin: 1.2rem 0;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     border-radius: 0 4px 4px 0;
 }
 .callout strong { color: #8b6914; }
@@ -287,8 +278,8 @@ p { margin-bottom: 0.8rem; }
 /* ---------- 返回目录链接 ---------- */
 .back-toc {
     display: inline-block;
-    font-size: 0.85rem;
-    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
     color: var(--text-muted);
 }
 .back-toc:hover { color: var(--accent-color); }
@@ -297,24 +288,24 @@ p { margin-bottom: 0.8rem; }
 .term-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     margin-bottom: 1.5rem;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 6px;
     overflow: hidden;
     box-shadow: var(--shadow);
 }
 .term-table thead th {
     background-color: var(--note-bg);
-    padding: 0.7rem 1rem;
+    padding: 0.6rem 0.8rem;
     text-align: left;
     border-bottom: 2px solid var(--border-color);
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 .term-table tbody td {
-    padding: 0.6rem 1rem;
+    padding: 0.55rem 0.8rem;
     border-bottom: 1px solid var(--border-color);
     vertical-align: top;
 }
@@ -326,7 +317,7 @@ p { margin-bottom: 0.8rem; }
 
 /* ---------- 参考文献列表 ---------- */
 .ref-list {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     border-top: 1px solid var(--border-color);
     padding-top: 1.5rem;
@@ -340,7 +331,7 @@ p { margin-bottom: 0.8rem; }
     border-top: 1px solid var(--border-color);
     padding: 1.5rem 2rem;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     background-color: var(--nav-bg);
 }
@@ -349,12 +340,11 @@ p { margin-bottom: 0.8rem; }
 /* ---------- 响应式 ---------- */
 @media (max-width: 640px) {
     .site-nav { flex-direction: column; align-items: flex-start; padding: 0.8rem 1.2rem; }
-    .nav-links { gap: 0.4rem; padding: 0.3rem 0; }
-    .nav-links a { padding: 0.35rem 0.9rem; font-size: 0.82rem; }
+    .nav-links { gap: 0.12rem; padding: 0.3rem 0; }
+    .nav-links a { padding: 0.3rem 0.55rem; font-size: 0.76rem; }
     .container { padding: 1.5rem 1rem 3rem; }
     .hub-grid { grid-template-columns: 1fr; }
     .toc { padding: 1rem 1.2rem; }
-    .term-table { font-size: 0.82rem; }
-    .term-table thead th, .term-table tbody td { padding: 0.4rem 0.6rem; }
-    .page-title { font-size: 1.5rem; }
+    .term-table { font-size: 0.78rem; }
+    .term-table thead th, .term-table tbody td { padding: 0.4rem 0.5rem; }
 }
