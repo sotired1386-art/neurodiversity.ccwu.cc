@@ -1,6 +1,6 @@
 /* ==========================================
    神经多样性科普站 | 共享样式表
-   手机友好 · 完整修复
+   完整修复版 · 手机友好
    ========================================== */
 
 :root {
@@ -31,7 +31,6 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-/* ---------- 排版 ---------- */
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: normal;
@@ -48,7 +47,7 @@ a { color: var(--accent-color); text-decoration: none; transition: all 0.15s eas
 a:hover { color: var(--accent-hover); }
 p { margin-bottom: 0.65rem; }
 
-/* ---------- 全局导航栏 ---------- */
+/* ---------- 导航栏（修复版） ---------- */
 .site-nav {
     background-color: var(--nav-bg);
     border-bottom: 1px solid var(--border-color);
@@ -84,36 +83,23 @@ p { margin-bottom: 0.65rem; }
     display: inline-block;
     padding: 0.25rem 0.5rem;
     border-radius: 3px;
-    font-size: 0.78-bottom: none;
-: background 0.s ease, color 0.15s ease;
+    font-size: 0.78rem;
+    color: var(--text-color);
+    border-bottom: none;
+    transition: background 0.15s ease, color 0.15s ease;
     white-space: nowrap;
 }
 .nav-links a:hover { background-color: #e8e3d6; color: var(--accent-color); }
 .nav-links a.active { background-color: var(--accent-color); color: #fff; font-weight: bold; }
 
-/* ---------- 页面容器 ---------- */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem 2.5rem;
-}
-
-/* ---------- 目录 (TOC) ---------- */
-.toc {
-    background-color: var(--toc-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    padding: 0.8rem 1rem;
-    margin-bottom: 1.5rem;
-    font-size: 0.88rem;
+/* ---------- 页面容器 ---------rem5: 0.88rem;
 }
 .toc summary {
     font-weight: bold;
     font-size: 0.92rem;
     cursor: pointer;
-    margin-bottom: 0.4rem;
-    color: var(--accent-color);
-    list-style: none;
+   accent-color);
+   -style: none;
 }
 .toc summary::-webkit-details-marker { display: none; }
 .toc summary::before { content: "📑 "; }
@@ -121,7 +107,7 @@ p { margin-bottom: 0.65rem; }
 .toc li { margin-bottom: 0.25rem; }
 .toc a { border-bottom: 1px dotted var(--border-color); }
 
-/* ---------- 碎碎念区块 ---------- */
+/* ---------- 碎碎念 ---------- */
 .author-note {
     background-color: var(--note-bg);
     border-left: 3px solid var(--accent-color);
@@ -136,7 +122,7 @@ p { margin-bottom: 0.65rem; }
 .author-note p { margin-bottom: 0.4rem; }
 .author-note p:last-child { margin-bottom: 0; }
 
-/* ---------- 首页卡片网格 ---------- */
+/* ---------- 首页卡片 ---------- */
 .hub-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -165,7 +151,7 @@ p { margin-bottom: 0.65rem; }
 .hub-card:hover h3 { color: #fff; }
 .hub-card p { font-size: 0.78rem; opacity: 0.8; margin-bottom: 0; }
 
-/* ---------- 子页面标题 ---------- */
+/* ---------- 页面标题 ---------- */
 .page-title {
     font-size: 1.4rem;
     color: var(--accent-color);
@@ -174,12 +160,10 @@ p { margin-bottom: 0.65rem; }
     margin-bottom: 0.5rem;
 }
 .page-subtitle {
-    font-size: 0.9rem;
-    color: var(--text-muted);
     margin-bottom: 1.3rem;
 }
 
-/* ---------- 分类子标题 ---------- */
+/* ---------- 子标题 ---------- */
 .sub-category-title {
     font-size: 1.05rem;
     font-weight: bold;
@@ -253,7 +237,7 @@ p { margin-bottom: 0.65rem; }
 }
 .strategy-card h4 { margin-bottom: 0.4rem; font-size: 0.95rem; }
 
-/* ---------- 学术引用样式 ---------- */
+/* ---------- 引用样式 ---------- */
 .citation {
     font-size: 0.82rem;
     color: var(--cite-color);
@@ -264,7 +248,7 @@ p { margin-bottom: 0.65rem; }
     white-space: nowrap;
 }
 
-/* ---------- 高亮小标签 ---------- */
+/* ---------- 标签 ---------- */
 .tag {
     display: inline-block;
     font-size: 0.72rem;
@@ -288,7 +272,7 @@ p { margin-bottom: 0.65rem; }
 }
 .callout strong { color: #8b6914; }
 
-/* ---------- 返回目录链接 ---------- */
+/* ---------- 返回目录 ---------- */
 .back-toc {
     display: inline-block;
     font-size: 0.77rem;
@@ -297,7 +281,7 @@ p { margin-bottom: 0.65rem; }
 }
 .back-toc:hover { color: var(--accent-color); }
 
-/* ---------- 术语对照表 ---------- */
+/* ---------- 术语表格 ---------- */
 .term-table {
     width: 100%;
     border-collapse: collapse;
@@ -328,7 +312,7 @@ p { margin-bottom: 0.65rem; }
 .term-table .term-status-red    { color: #a94442; font-weight: bold; }
 .term-table .term-status-neutral { color: var(--text-muted); }
 
-/* ---------- 参考文献列表 ---------- */
+/* ---------- 参考文献 ---------- */
 .ref-list {
     font-size: 0.84rem;
     color: var(--text-muted);
@@ -350,33 +334,26 @@ p { margin-bottom: 0.65rem; }
 }
 .site-footer p { margin-bottom: 0.15rem; }
 
-/* ==========================================
-   手机端专门优化
-   ========================================== */
+/* ---------- 手机响应 ---------- */
 @media (max-width: 768px) {
     body { font-size: 14px; }
     .container { padding: 1.2rem 0.8rem 2rem; }
-
     .site-nav { padding: 0.3rem 0.8rem; flex-direction: column; align-items: stretch; }
     .site-nav .nav-brand { text-align: center; padding: 0.2rem 0; }
     .nav-links { justify-content: center; gap: 0.1rem; }
     .nav-links a { font-size: 0.74rem; padding: 0.2rem 0.4rem; }
-
     .hub-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
     .hub-card { padding: 1rem 0.6rem; }
     .hub-card h3 { font-size: 0.88rem; }
     .hub-card p { font-size: 0.74rem; }
-
     .page-title { font-size: 1.25rem; }
     .sub-category-title { font-size: 1rem; }
     .content-block { padding: 0.9rem 1rem; }
     .myth-card { padding: 0.9rem 1rem; }
     .strategy-card { padding: 0.9rem 1rem; }
     .author-note { padding: 1rem 1.1rem; font-size: 0.88rem; }
-
     .toc { padding: 0.6rem 0.8rem; font-size: 0.84rem; }
     .toc summary { font-size: 0.88rem; }
-
     .term-table { font-size: 0.74rem; }
     .term-table thead th, .term-table tbody td { padding: 0.3rem 0.4rem; }
 }
