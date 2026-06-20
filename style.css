@@ -1,6 +1,6 @@
 /* ==========================================
    神经多样性科普站 | 共享样式表
-   配色 · 防晕字优化
+   暖阳学术配色 · 防晕字优化
    ========================================== */
 
 :root {
@@ -69,34 +69,43 @@ p { margin-bottom: 0.8rem; }
 .nav-links { display: flex; gap: 0.15rem; flex-wrap: wrap; padding: 0.5rem 0; }
 .nav-links a {
     display: inline-block;
-    padding: 0.25rem 0.55rem;
+    padding: 0.3rem 0.65rem;
     border-radius: 4px;
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     color: var(--text-color);
     border-bottom: none;
     transition: background 0.15s ease, color 0.15s ease;
-    white-space: nowrap:hoverd6; color(--accent-color); }
-.nav-links a.active { background-color: var(--accent #fff; bold; }
+    white-space: nowrap;
+}
+.nav-links a:hover { background-color: #e8e3d6; color: var(--accent-color); }
+.nav-links a.active { background-color: var(--accent-color); color: #fff; font-weight: bold; }
 
-/* */
+/* ---------- 页面容器 ---------- */
 .container {
     max-width: 860px;
     margin: 0 auto;
-2  ---------- */
-.t {
-   toc-bg border: 1 var(--border-color);
- border-radius;
-    .26rem: 2 font-size88rem;
- summary {
+    padding: 2.5rem 2rem 4rem;
+}
+
+/* ---------- 目录 (TOC) ---------- */
+.toc {
+    background-color: var(--toc-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.2rem 1.6rem;
+    margin-bottom: 2rem;
+    font-size: 0.88rem;
+}
+.toc summary {
     font-weight: bold;
     font-size: 0.95rem;
     cursor: pointer;
-    margin-bottom: 6rem;
+    margin-bottom: 0.6rem;
     color: var(--accent-color);
     list-style: none;
 }
-.t-details-marker: none; }
-.toc summary::before { "📑 "; }
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::before { content: "📑 "; }
 .toc ol { margin-left: 1.3rem; margin-top: 0.2rem; }
 .toc li { margin-bottom: 0.3rem; }
 .toc a { border-bottom: 1px dotted var(--border-color); }
@@ -113,11 +122,11 @@ p { margin-bottom: 0.8rem; }
     border-radius: 0 4px 4px 0;
 }
 .author-note p { margin-bottom: 0.6rem; }
-.author-note p:last-child { margin-bottom; }
+.author-note p:last-child { margin-bottom: 0; }
 
 /* ---------- 首页卡片网格 ---------- */
 .hub-grid {
-: grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
 }
@@ -267,7 +276,7 @@ p { margin-bottom: 0.8rem; }
 }
 .callout strong { color: #8b6914; }
 
-/* ---------- 返回目录 ---------- */
+/* ---------- 返回目录链接 ---------- */
 .back-toc {
     display: inline-block;
     font-size: 0.8rem;
