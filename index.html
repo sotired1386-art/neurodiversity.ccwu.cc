@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>神经多样性科普站 | Neurodiversity Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
+    <!-- ===== 导航栏 ===== -->
     <nav class="site-nav">
         <div class="nav-brand"><a href="index.html">神经多样性科普站</a></div>
         <div class="nav-links">
@@ -19,49 +19,110 @@
             <a href="myths.html">迷思澄清</a>
             <a href="strategies.html">应对策略</a>
         </div>
+        <button class="dark-toggle" id="darkToggle" aria-label="切换暗色模式">🌙</button>
     </nav>
 
     <div class="container">
+        <!-- ===== 首页原有内容 ===== -->
+        <p style="font-size:1.05rem; margin-top:0.5rem;">
+            建这个网站是因为看了太多关于神经多样性的刻板印象。这里的科普尽量严谨，每一条重要结论都会标注参考文献，但我也是在不断学习中。如果有写得不对的地方，欢迎大家探讨指正。
+        </p>
+        <p>欢迎扩列qq：3906355369</p>
+        <p style="font-size:0.88rem; color:var(--text-muted); border-top:1px solid var(--border-color); padding-top:1rem;">
+            * 声明：本站提供基于 DSM-5-TR / ICD-11 及同行评审论文的信息整理，但不能替代专业的精神科医学诊断。
+        </p>
 
-        <div class="author-note">
-            <p>建这个网站是因为看了太多关于神经多样性的刻板印象。这里的科普尽量严谨，每一条重要结论都会标注参考文献，但我也是在不断学习中。如果有写得不对的地方，欢迎大家探讨指正。</p>
-            <p>欢迎扩列qq：3906355369</p>
-            <p><em>* 声明：本站提供基于 DSM-5-TR / ICD-11 及同行评审论文的信息整理，但不能替代专业的精神科医学诊断。</em></p>
+        <!-- ===== 首页卡片导航 ===== -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:2rem;">
+            <div class="card"><a href="terminology.html"><strong>📖 术语说明</strong><br />自闭症还是孤独症？阿斯伯格能用吗？术语偏好速查</a></div>
+            <div class="card"><a href="categories.html"><strong>🧩 殊异与共病分类</strong><br />先天神经发展差异 vs 后天精神疾患的区分逻辑</a></div>
+            <div class="card"><a href="traits.html"><strong>⚡ 症状与特质解析</strong><br />掩饰、倦怠、执行功能、RSD、Stimming 等现象深度解读</a></div>
+            <div class="card"><a href="resources.html"><strong>📚 学术资源与指南</strong><br />中国诊断现状、就诊准备、筛查工具与参考文献</a></div>
+            <div class="card"><a href="myths.html"><strong>💡 常见迷思澄清</strong><br />"自闭症是妈妈害的？""诊断会留档？"——中国语境下的真相</a></div>
+            <div class="card"><a href="strategies.html"><strong>🛠️ 面对方法与策略</strong><br />学生/工作党/青少年/日常生活的实用应对工具箱</a></div>
         </div>
 
-        <div class="hub-grid">
-            <a href="terminology.html" class="hub-card">
-                <h3>📖 术语说明</h3>
-                <p>自闭症还是孤独症？阿斯伯格能用吗？术语偏好速查</p>
-            </a>
-            <a href="categories.html" class="hub-card">
-                <h3>🏷️ 殊异与共病分类</h3>
-                <p>先天神经发展差异 vs 后天精神疾患的区分逻辑</p>
-            </a>
-            <a href="traits.html" class="hub-card">
-                <h3>🧩 症状与特质解析</h3>
-                <p>掩饰、倦怠、执行功能、RSD、Stimming 等现象深度解读</p>
-            </a>
-            <a href="resources.html" class="hub-card">
-                <h3>📚 学术资源与指南</h3>
-                <p>中国诊断现状、就诊准备、筛查工具与参考文献</p>
-            </a>
-            <a href="myths.html" class="hub-card">
-                <h3>💬 常见迷思澄清</h3>
-                <p>"自闭症是妈妈害的？""诊断会留档？"——中国语境下的真相</p>
-            </a>
-            <a href="strategies.html" class="hub-card">
-                <h3>🛠️ 面对方法与策略</h3>
-                <p>学生/工作党/青少年/日常生活的实用应对工具箱</p>
-            </a>
-        </div>
-
+        <footer style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border-color); font-size:0.82rem; color:var(--text-muted); text-align:center;">
+            神经多样性科普站 · 以科学为灯，以共情为路
+        </footer>
     </div>
 
-    <footer class="site-footer">
-        <p>神经多样性科普站</p>
-        <p>以科学为灯，以共情为路</p>
-    </footer>
+    <!-- ===== 更新公告弹窗 ===== -->
+    <div class="modal-overlay" id="updateModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose" aria-label="关闭公告">✕</button>
+            <div class="modal-header">
+                <span class="modal-icon">📢</span>
+                <h2>更新公告</h2>
+                <span class="modal-date">2026-07-02</span>
+            </div>
+            <ul class="modal-list">
+                <li><span class="update-tag">新增</span> 双向共情问题、单通道认知理论、述情障碍 — 术语说明页</li>
+                <li><span class="update-tag">新增</span> PDA（病理性需求回避）— 殊异分类页</li>
+                <li><span class="update-tag">新增</span> 面对社交的策略 — 应对策略页</li>
+                <li><span class="update-tag">功能</span> 暗色模式已上线，点击右上角 🌙/☀️ 切换</li>
+            </ul>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.8rem;">
+                <label style="cursor:pointer;">
+                    <input type="checkbox" id="dontShowAgain" /> 不再显示（下次有新公告会重新弹出）
+                </label>
+            </p>
+            <button class="modal-confirm" id="modalConfirm">我知道了</button>
+        </div>
+    </div>
 
+    <script>
+        // ===== 暗色模式切换 =====
+        (function() {
+            const toggle = document.getElementById('darkToggle');
+            const stored = localStorage.getItem('neurodiversity-dark');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (stored === 'true' || (stored === null && prefersDark)) {
+                document.body.classList.add('dark-mode');
+                toggle.textContent = '☀️';
+            }
+            toggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                toggle.textContent = isDark ? '☀️' : '🌙';
+                localStorage.setItem('neurodiversity-dark', isDark);
+            });
+        })();
+
+        // ===== 更新公告弹窗逻辑 =====
+        (function() {
+            const modal = document.getElementById('updateModal');
+            const closeBtn = document.getElementById('modalClose');
+            const confirmBtn = document.getElementById('modalConfirm');
+            const dontShow = document.getElementById('dontShowAgain');
+            const VERSION = '20260702v1';
+
+            const readVersion = localStorage.getItem('neurodiversity-update-version');
+            const dontShowAgain = localStorage.getItem('neurodiversity-dont-show') === 'true';
+
+            if (readVersion === VERSION && dontShowAgain) {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'flex';
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+                if (dontShow.checked) {
+                    localStorage.setItem('neurodiversity-update-version', VERSION);
+                    localStorage.setItem('neurodiversity-dont-show', 'true');
+                }
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            confirmBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+            });
+        })();
+    </script>
 </body>
 </html>
