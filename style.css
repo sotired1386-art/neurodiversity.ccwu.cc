@@ -1,41 +1,40 @@
 /* ==========================================
- 神经多样性科普站 | 共享样式表
- 暖阳学术配色 · 防晕字优化
- ========================================== */
+   神经多样性科普站 | 共享样式表
+   暖阳学术配色 · 防晕字优化
+   ========================================== */
 
 :root {
-  --bg-color: #faf8f3;
-  --bg-card: #ffffff;
-  --text-color: #1e1e1e;
-  --text-muted: #5c5c5c;
-  --border-color: #e0dbce;
-  --accent-color: #4a7c6b;
-  --accent-hover: #385f51;
-  --note-bg: #f3efe6;
-  --cite-color: #5b8474;
-  --nav-bg: #f5f2ea;
-  --toc-bg: #f8f6f0;
-  --font-heading: "Georgia", "Times New Roman", serif;
-  --font-body: -apple-system, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --shadow: 0 1px 4px rgba(0,0,0,0.05);
-  --shadow-hover: 0 4px 16px rgba(0,0,0,0.08);
+    --bg-color: #faf8f3;
+    --bg-card: #ffffff;
+    --text-color: #1e1e1e;
+    --text-muted: #5c5c5c;
+    --border-color: #e0dbce;
+    --accent-color: #4a7c6b;
+    --accent-hover: #385f51;
+    --note-bg: #f3efe6;
+    --cite-color: #5b8474;
+    --nav-bg: #f5f2ea;
+    --toc-bg: #f8f6f0;
+    --font-heading: "Georgia", "Times New Roman", serif;
+    --font-body: -apple-system, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-body);
-  line-height: 1.8;
-  font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.75;
+    font-size: 15px;
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  font-weight: normal;
-  color: #141414;
-  margin-bottom: 0.8rem;
+    font-family: var(--font-heading);
+    font-weight: normal;
+    color: #141414;
+    margin-bottom: 0.8rem;
 }
 
 a { color: var(--accent-color); text-decoration: none; transition: all 0.15s ease; }
@@ -44,98 +43,66 @@ p { margin-bottom: 0.8rem; }
 
 /* ---------- 全局导航栏 ---------- */
 .site-nav {
-  background-color: var(--nav-bg);
-  border-bottom: 1px solid var(--border-color);
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 .site-nav .nav-brand {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  letter-spacing: 2px;
-  color: #141414;
-  padding: 0.8rem 0;
-  white-space: nowrap;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+    color: #141414;
+    padding: 0.8rem 0;
+    white-space: nowrap;
 }
 .site-nav .nav-brand a { color: inherit; border: none; }
 .site-nav .nav-brand a:hover { background: none; color: var(--accent-color); }
 
-/* 恢复旧版：当前页深绿 Pill，其他页纯文字 */
-.nav-links {
-  display: flex;
-  gap: 0.3rem;
-  flex-wrap: wrap;
-  padding: 0.5rem 0;
-  align-items: center;
-}
+.nav-links { display: flex; gap: 0.15rem; flex-wrap: wrap; padding: 0.5rem 0; }
 .nav-links a {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  color: var(--text-color);
-  background-color: transparent;
-  border: none;
-  transition: color 0.15s ease;
-  white-space: nowrap;
-  font-weight: 500;
+    display: inline-block;
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: var(--text-color);
+    border-bottom: none;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
 }
-.nav-links a:hover {
-  background-color: transparent;
-  color: var(--accent-color);
-  transform: none;
-}
-.nav-links a.active {
-  background-color: var(--accent-color);
-  color: #fff;
-  font-weight: 600;
-  box-shadow: none;
-}
-.nav-links a.active:hover {
-  background-color: var(--accent-hover);
-  color: #fff;
-}
-
-/* 旧版无暗色切换按钮，直接隐藏 */
-.dark-toggle {
-  display: none;
-}
+.nav-links a:hover { background-color: #e8e3d6; color: var(--accent-color); }
+.nav-links a.active { background-color: var(--accent-color); color: #fff; font-weight: bold; }
 
 /* ---------- 页面容器 ---------- */
 .container {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem 4rem;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
 }
 
 /* ---------- 目录 (TOC) ---------- */
 .toc {
-  background-color: var(--toc-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1.2rem 1.8rem;
-  margin-bottom: 2rem;
-  font-size: 0.92rem;
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.2s ease;
-}
-.toc:hover {
-  box-shadow: var(--shadow-hover);
+    background-color: var(--toc-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.2rem 1.6rem;
+    margin-bottom: 2rem;
+    font-size: 0.88rem;
 }
 .toc summary {
-  font-weight: bold;
-  font-size: 0.95rem;
-  cursor: pointer;
-  margin-bottom: 0.6rem;
-  color: var(--accent-color);
-  list-style: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-bottom: 0.6rem;
+    color: var(--accent-color);
+    list-style: none;
 }
 .toc summary::-webkit-details-marker { display: none; }
 .toc summary::before { content: "📑 "; }
@@ -145,89 +112,85 @@ p { margin-bottom: 0.8rem; }
 
 /* ---------- 碎碎念区块 ---------- */
 .author-note {
-  background-color: var(--note-bg);
-  border-left: 4px solid var(--accent-color);
-  padding: 1.8rem;
-  margin-bottom: 3rem;
-  font-style: italic;
-  color: #4a4a4a;
-  line-height: 1.8;
-  border-radius: 0 4px 4px 0;
+    background-color: var(--note-bg);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.8rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+    color: #4a4a4a;
+    line-height: 1.8;
+    border-radius: 0 4px 4px 0;
 }
 .author-note p { margin-bottom: 0.6rem; }
 .author-note p:last-child { margin-bottom: 0; }
 
 /* ---------- 首页卡片网格 ---------- */
 .hub-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
 }
 .hub-card {
-  display: block;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: all 0.25s ease;
-  color: var(--text-color);
-  text-decoration: none;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+    display: block;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.25s ease;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
 }
 .hub-card:hover {
-  border-color: var(--accent-color);
-  box-shadow: var(--shadow-hover);
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 .hub-card h3 { margin-bottom: 0.5rem; transition: color 0.25s ease; font-size: 1.1rem; }
-.hub-card:hover h3 { color: var(--accent-color); }
+.hub-card:hover h3 { color: #fff; }
 .hub-card p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 0; }
 
-/* 恢复旧版：子页面标题左对齐 */
+/* ---------- 子页面标题 ---------- */
 .page-title {
-  font-size: 1.9rem;
-  color: var(--accent-color);
-  border-bottom: 1px dashed var(--border-color);
-  padding-bottom: 0.6rem;
-  margin-bottom: 0.6rem;
-  text-align: left;
-  letter-spacing: 0.02em;
+    font-size: 1.7rem;
+    color: var(--accent-color);
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
 }
 .page-subtitle {
-  font-size: 0.98rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  text-align: left;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
 }
 
 /* ---------- 分类子标题 ---------- */
 .sub-category-title {
-  font-size: 1.15rem;
-  font-weight: bold;
-  color: #2c2c2c;
-  margin: 2.5rem 0 1rem 0;
-  padding-left: 14px;
-  border-left: 5px solid var(--accent-color);
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin: 2.5rem 0 1rem 0;
+    padding-left: 14px;
+    border-left: 5px solid var(--accent-color);
 }
 
 /* ---------- 内容块 ---------- */
 .content-block {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 1.8rem;
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.2s ease;
-}
-.content-block:hover {
-  box-shadow: var(--shadow-hover);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1.6rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
 }
 .content-block h3 {
-  font-size: 1.1rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
 }
 .content-block ul, .content-block ol { margin-top: 0.5rem; padding-left: 1.5rem; }
 .content-block li { margin-bottom: 0.4rem; }
@@ -235,32 +198,32 @@ p { margin-bottom: 0.8rem; }
 
 /* ---------- 迷思卡片 ---------- */
 .myth-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.2rem;
-  box-shadow: var(--shadow);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: var(--shadow);
 }
 .myth-card .myth-label {
-  display: inline-block;
-  background-color: #f2dede;
-  color: #a94442;
-  font-size: 0.75rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 50px;
-  font-weight: bold;
-  margin-right: 0.5rem;
+    display: inline-block;
+    background-color: #f2dede;
+    color: #a94442;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-right: 0.5rem;
 }
 .myth-card .fact-label {
-  display: inline-block;
-  background-color: #dff0d8;
-  color: #3c763d;
-  font-size: 0.75rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 50px;
-  font-weight: bold;
-  margin-right: 0.5rem;
+    display: inline-block;
+    background-color: #dff0d8;
+    color: #3c763d;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-right: 0.5rem;
 }
 .myth-card h4 { margin-top: 0.5rem; font-size: 1rem; }
 .myth-card .myth-text { color: #a94442; font-style: italic; margin-bottom: 0.5rem; }
@@ -268,401 +231,121 @@ p { margin-bottom: 0.8rem; }
 
 /* ---------- 策略卡片 ---------- */
 .strategy-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-left: 5px solid var(--accent-color);
-  border-radius: 0 8px 8px 0;
-  padding: 1.5rem;
-  margin-bottom: 1.2rem;
-  box-shadow: var(--shadow);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--accent-color);
+    border-radius: 0 6px 6px 0;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: var(--shadow);
 }
 .strategy-card h4 { margin-bottom: 0.5rem; font-size: 1rem; }
 
 /* ---------- 学术引用样式 ---------- */
 .citation {
-  font-size: 0.85rem;
-  color: var(--cite-color);
-  background-color: #edf3f0;
-  padding: 0.15rem 0.4rem;
-  border-radius: 3px;
-  font-family: var(--font-heading);
-  white-space: nowrap;
+    font-size: 0.85rem;
+    color: var(--cite-color);
+    background-color: #edf3f0;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-family: var(--font-heading);
+    white-space: nowrap;
 }
 
 /* ---------- 高亮小标签 ---------- */
 .tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 50px;
-  background-color: #e8f0ec;
-  color: var(--accent-color);
-  margin-right: 0.3rem;
-  margin-bottom: 0.3rem;
-  font-weight: bold;
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    background-color: #e8f0ec;
+    color: var(--accent-color);
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
 }
 
 /* ---------- 提示框 ---------- */
 .callout {
-  background-color: #f6f3eb;
-  border-left: 4px solid #c9a96e;
-  padding: 1rem 1.5rem;
-  margin: 1.2rem 0;
-  font-size: 0.9rem;
-  border-radius: 0 8px 8px 0;
+    background-color: #f6f3eb;
+    border-left: 4px solid #c9a96e;
+    padding: 1rem 1.5rem;
+    margin: 1.2rem 0;
+    font-size: 0.9rem;
+    border-radius: 0 4px 4px 0;
 }
 .callout strong { color: #8b6914; }
 
 /* ---------- 返回目录链接 ---------- */
 .back-toc {
-  display: inline-block;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  color: var(--text-muted);
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
 }
 .back-toc:hover { color: var(--accent-color); }
 
 /* ---------- 术语对照表 ---------- */
 .term-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.86rem;
-  margin-bottom: 1.5rem;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 .term-table thead th {
-  background-color: var(--note-bg);
-  padding: 0.6rem 0.8rem;
-  text-align: left;
-  border-bottom: 2px solid var(--border-color);
-  font-weight: bold;
-  font-size: 0.85rem;
+    background-color: var(--note-bg);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    font-weight: bold;
+    font-size: 0.85rem;
 }
 .term-table tbody td {
-  padding: 0.55rem 0.8rem;
-  border-bottom: 1px solid var(--border-color);
-  vertical-align: top;
+    padding: 0.55rem 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
 }
 .term-table tbody tr:hover { background-color: #fafaf7; }
-.term-table .term-status-green { color: #3c763d; font-weight: bold; }
+.term-table .term-status-green  { color: #3c763d; font-weight: bold; }
 .term-table .term-status-yellow { color: #c9a100; font-weight: bold; }
-.term-table .term-status-red { color: #a94442; font-weight: bold; }
+.term-table .term-status-red    { color: #a94442; font-weight: bold; }
 .term-table .term-status-neutral { color: var(--text-muted); }
 
 /* ---------- 参考文献列表 ---------- */
 .ref-list {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  border-top: 1px solid var(--border-color);
-  padding-top: 1.5rem;
-  margin-top: 3rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    margin-top: 3rem;
 }
 .ref-list ol { margin-left: 1.5rem; margin-top: 0.5rem; list-style-type: decimal; }
 .ref-list li { margin-bottom: 0.4rem; }
 
 /* ---------- 页脚 ---------- */
 .site-footer {
-  border-top: 1px solid var(--border-color);
-  padding: 1.5rem 2rem;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  background-color: var(--nav-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background-color: var(--nav-bg);
 }
 .site-footer p { margin-bottom: 0.3rem; }
 
-/* ==========================================
- 更新公告弹窗
- ========================================== */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(3px);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  animation: modalFadeIn 0.3s ease;
-}
-
-.modal-box {
-  background: var(--bg-card);
-  color: var(--text-color);
-  max-width: 540px;
-  width: 92%;
-  padding: 2rem 2rem 1.8rem;
-  border-radius: 16px;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
-  border: 1px solid var(--border-color);
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: 0.2s;
-  line-height: 1;
-}
-.modal-close:hover {
-  color: var(--text-color);
-  transform: rotate(90deg);
-}
-
-.modal-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-.modal-icon {
-  font-size: 2rem;
-}
-.modal-header h2 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  margin: 0;
-  color: var(--text-color);
-}
-.modal-date {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  background: var(--note-bg);
-  padding: 0.15rem 0.8rem;
-  border-radius: 50px;
-  margin-left: auto;
-}
-
-.modal-list {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 1rem;
-}
-.modal-list li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border-color);
-  font-size: 0.95rem;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-.modal-list li:last-child {
-  border-bottom: none;
-}
-
-.update-tag {
-  display: inline-block;
-  background: var(--accent-color);
-  color: #fff;
-  font-size: 0.7rem;
-  padding: 0.1rem 0.7rem;
-  border-radius: 50px;
-  font-weight: bold;
-  flex-shrink: 0;
-}
-
-.modal-confirm {
-  background: var(--accent-color);
-  color: #fff;
-  border: none;
-  padding: 0.6rem 2rem;
-  border-radius: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.2s;
-  margin-top: 0.6rem;
-  width: 100%;
-  font-weight: 500;
-}
-.modal-confirm:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(74, 124, 107, 0.3);
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: scale(0.96) translateY(-10px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* ==========================================
- 暗色模式
- ========================================== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #1a1a1a;
-    --bg-card: #262626;
-    --text-color: #d4d4d4;
-    --text-muted: #a0a0a0;
-    --border-color: #3a3a3a;
-    --nav-bg: #222222;
-    --note-bg: #2e2e2e;
-    --toc-bg: #2a2a2a;
-    --shadow: 0 1px 4px rgba(0,0,0,0.4);
-    --shadow-hover: 0 4px 20px rgba(0,0,0,0.5);
-    --accent-color: #5d9a85;
-    --accent-hover: #4a7c6b;
-    --cite-color: #7aa692;
-  }
-
-  body { background-color: var(--bg-color); color: var(--text-color); }
-  h1, h2, h3, h4 { color: #e8e8e8; }
-
-  .site-nav { background-color: var(--nav-bg); border-bottom-color: var(--border-color); }
-  .site-nav .nav-brand { color: #e8e8e8; }
-
-  .nav-links a {
-    background-color: transparent;
-    color: #d4d4d4;
-  }
-  .nav-links a:hover {
-    background-color: transparent;
-    color: var(--accent-color);
-  }
-  .nav-links a.active {
-    background-color: var(--accent-color);
-    color: #fff;
-  }
-  .nav-links a.active:hover {
-    background-color: var(--accent-hover);
-    color: #fff;
-  }
-
-  .toc { background-color: var(--toc-bg); border-color: var(--border-color); }
-  .content-block { background-color: var(--bg-card); border-color: var(--border-color); }
-  .content-block:hover { box-shadow: var(--shadow-hover); }
-  .myth-card { background-color: var(--bg-card); border-color: var(--border-color); }
-  .strategy-card { background-color: var(--bg-card); border-color: var(--border-color); }
-  .hub-card { background-color: var(--bg-card); border-color: var(--border-color); }
-  .hub-card:hover { border-color: var(--accent-color); }
-
-  .term-table { background-color: var(--bg-card); border-color: var(--border-color); }
-  .term-table thead th { background-color: var(--note-bg); }
-  .term-table tbody tr:hover { background-color: #2a2a2a; }
-
-  .callout { background-color: #2a2a2a; border-left-color: #8b7a4a; }
-
-  .modal-box {
-    background: var(--bg-card);
-    border-color: var(--border-color);
-  }
-  .modal-date { background: var(--note-bg); }
-  .modal-list li { border-bottom-color: var(--border-color); }
-
-  .site-footer {
-    background-color: var(--nav-bg);
-    border-top-color: var(--border-color);
-  }
-
-  .author-note {
-    background-color: var(--note-bg);
-    color: #b0b0b0;
-  }
-  .page-title { color: var(--accent-color); border-bottom-color: var(--border-color); }
-  .sub-category-title { color: #d4d4d4; }
-}
-
-/* ==========================================
- 用户手动切换暗色模式（通过 JS 添加 .dark-mode）
- ========================================== */
-body.dark-mode {
-  --bg-color: #1a1a1a;
-  --bg-card: #262626;
-  --text-color: #d4d4d4;
-  --text-muted: #a0a0a0;
-  --border-color: #3a3a3a;
-  --nav-bg: #222222;
-  --note-bg: #2e2e2e;
-  --toc-bg: #2a2a2a;
-  --shadow: 0 1px 4px rgba(0,0,0,0.4);
-  --shadow-hover: 0 4px 20px rgba(0,0,0,0.5);
-  --accent-color: #5d9a85;
-  --accent-hover: #4a7c6b;
-  --cite-color: #7aa692;
-}
-
-body.dark-mode {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 {
-  color: #e8e8e8;
-}
-body.dark-mode .site-nav {
-  background-color: var(--nav-bg);
-  border-bottom-color: var(--border-color);
-}
-body.dark-mode .site-nav .nav-brand { color: #e8e8e8; }
-body.dark-mode .nav-links a {
-  background-color: transparent;
-  color: #d4d4d4;
-}
-body.dark-mode .nav-links a:hover {
-  background-color: transparent;
-  color: var(--accent-color);
-}
-body.dark-mode .nav-links a.active {
-  background-color: var(--accent-color);
-  color: #fff;
-}
-body.dark-mode .nav-links a.active:hover {
-  background-color: var(--accent-hover);
-  color: #fff;
-}
-body.dark-mode .toc { background-color: var(--toc-bg); border-color: var(--border-color); }
-body.dark-mode .content-block { background-color: var(--bg-card); border-color: var(--border-color); }
-body.dark-mode .content-block:hover { box-shadow: var(--shadow-hover); }
-body.dark-mode .myth-card { background-color: var(--bg-card); border-color: var(--border-color); }
-body.dark-mode .strategy-card { background-color: var(--bg-card); border-color: var(--border-color); }
-body.dark-mode .hub-card { background-color: var(--bg-card); border-color: var(--border-color); }
-body.dark-mode .hub-card:hover { border-color: var(--accent-color); }
-body.dark-mode .term-table { background-color: var(--bg-card); border-color: var(--border-color); }
-body.dark-mode .term-table thead th { background-color: var(--note-bg); }
-body.dark-mode .term-table tbody tr:hover { background-color: #2a2a2a; }
-body.dark-mode .callout { background-color: #2a2a2a; border-left-color: #8b7a4a; }
-body.dark-mode .modal-box {
-  background: var(--bg-card);
-  border-color: var(--border-color);
-}
-body.dark-mode .modal-date { background: var(--note-bg); }
-body.dark-mode .modal-list li { border-bottom-color: var(--border-color); }
-body.dark-mode .site-footer {
-  background-color: var(--nav-bg);
-  border-top-color: var(--border-color);
-}
-body.dark-mode .author-note {
-  background-color: var(--note-bg);
-  color: #b0b0b0;
-}
-body.dark-mode .page-title { color: var(--accent-color); border-bottom-color: var(--border-color); }
-body.dark-mode .sub-category-title { color: #d4d4d4; }
-
 /* ---------- 响应式 ---------- */
 @media (max-width: 640px) {
-  .site-nav { flex-direction: column; align-items: stretch; padding: 0.6rem 1rem; }
-  .nav-links { gap: 0.2rem; justify-content: center; }
-  .nav-links a { padding: 0.3rem 0.7rem; font-size: 0.78rem; }
-  .container { padding: 1.5rem 1rem 3rem; }
-  .hub-grid { grid-template-columns: 1fr; }
-  .toc { padding: 1rem 1.2rem; }
-  .term-table { font-size: 0.78rem; }
-  .term-table thead th, .term-table tbody td { padding: 0.4rem 0.5rem; }
-  .page-title { font-size: 1.5rem; }
-  .modal-box { padding: 1.5rem; }
+    .site-nav { flex-direction: column; align-items: flex-start; padding: 0.8rem 1.2rem; }
+    .nav-links { gap: 0.12rem; padding: 0.3rem 0; }
+    .nav-links a { padding: 0.3rem 0.55rem; font-size: 0.76rem; }
+    .container { padding: 1.5rem 1rem 3rem; }
+    .hub-grid { grid-template-columns: 1fr; }
+    .toc { padding: 1rem 1.2rem; }
+    .term-table { font-size: 0.78rem; }
+    .term-table thead th, .term-table tbody td { padding: 0.4rem 0.5rem; }
 }
