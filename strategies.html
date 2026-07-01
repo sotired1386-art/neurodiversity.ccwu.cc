@@ -3,28 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>面对方法与策略 | 神经多样性科普站</title>
+    <title>应对策略 · 神经多样性科普站</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* 模仿已改页面的子标题样式——更小更细 */
-        .sub-head {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin: 1.2rem 0 0.5rem;
-            color: var(--accent-color, #2c3e50);
-        }
-        .emph {
-            font-weight: 600;
-        }
-        /* 覆盖可能来自全局 h3/h4 的粗大样式 */
-        .content-block h3, .content-block h4 {
-            all: unset; /* 清除默认样式 */
-            display: block;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin: 1.2rem 0 0.5rem;
-        }
-    </style>
 </head>
 <body>
 
@@ -39,107 +19,108 @@
             <a href="myths.html">迷思澄清</a>
             <a href="strategies.html" class="active">应对策略</a>
         </div>
+        <button class="dark-toggle" id="darkToggle" aria-label="切换暗色模式">🌙</button>
     </nav>
 
     <div class="container">
-        <h1 class="page-title">面对方法与策略</h1>
-        <p class="page-subtitle">以下内容来自研究文献、职业治疗师建议和神经少数社群经验总结。每个人的大脑不同，请像逛自助餐一样挑选对你有用的部分——没有一条策略适用于所有人。</p>
+        <h1>面对方法与策略</h1>
+        <p>以下策略基于神经多样性肯定框架（Neuro-affirmative），旨在减少损耗而非「矫正」特质。</p>
 
-        <details class="toc">
-            <summary>目录（点击收起）</summary>
-            <ol>
-                <li><a href="#sec-student">学生篇</a></li>
-                <li><a href="#sec-teen">青少年篇——中学与青春期的特殊挑战</a></li>
-                <li><a href="#sec-work">工作党篇</a></li>
-                <li><a href="#sec-daily">日常生活篇</a></li>
-            </ol>
-        </details>
+        <!-- ===== 原有内容：学习篇 ===== -->
+        <h2>学习篇</h2>
+        <ul>
+            <li><strong>分段计时：</strong>使用番茄钟（25+5），但根据注意力周期灵活调整。</li>
+            <li><strong>环境降噪：</strong>降噪耳机、白噪音、低色温灯光。</li>
+            <li><strong>视觉化安排：</strong>用 Notion / 白板列出任务，减少工作记忆负担。</li>
+        </ul>
 
-        <!-- 学生篇 -->
-        <div class="content-block" id="sec-student">
-            <div class="sub-head">学生篇</div>
-            <ul>
-                <li><span class="emph">任务拆解：</span>把大作业拆成"打开电脑→写标题→写第一段"这样的微步骤，每完成一步打勾，减少启动焦虑。
-如果还是一个中学生，可以以此类推。打开书本→写5分钟→开始做简单的题目。</li>
-                <li><span class="emph">时间可视化：</span>使用计时器（如 Pomodoro 25/5 原则）让时间变得可感知，对抗"时间盲" (Time Blindness)。</li>
-                <li><span class="emph">身体双倍法 (Body Doubling)：</span>在有人安静陪伴的情况下工作效率会显著提升。可以去图书馆、自习室，或和朋友连麦学习。。
-但qq群很多群友会觉得，图书馆、自习室这种一声不吭的地方太过压抑。如果你对声音接受度高，或者有很好用的降噪耳机，可以去咖啡厅、麦当劳等店铺？如果你家有让你安心学习/工作的地方，选择家里也不错。</li>
-                <li><span class="emph">与老师沟通：</span>如果你有正式诊断，可以申请合理便利（如延长考试时间、独立考场）。即使没有诊断，也可以尝试向信任的老师说明你的学习方式差异。</li>
-            </ul>
-        </div>
+        <!-- ===== 原有内容：工作篇 ===== -->
+        <h2>工作篇</h2>
+        <ul>
+            <li><strong>合理调节：</strong>与上级沟通灵活工时或远程办公。</li>
+            <li><strong>任务拆解：</strong>将大任务分解为可执行的小步骤，每完成一项打钩。</li>
+            <li><strong>感官休息：</strong>每 90 分钟离开工位 5-10 分钟，做 stimming 或深呼吸。</li>
+        </ul>
 
-        <!-- 青少年篇 -->
-        <div class="content-block" id="sec-teen">
-            <div class="sub-head">青少年篇——中学与青春期的特殊挑战</div>
-            <p>以下内容参考了中文社群中神经多样性青少年及其家庭的真实经历。中国的中学环境（高压、刷题、集体化、监控式管理）对神经少数者尤其不友好，但这不意味着孩子"有问题"——是环境和孩子的大脑不匹配。</p>
+        <!-- ===== ★ 新增：社交篇 ===== -->
+        <h2>社交篇：面对社交的策略</h2>
 
-            <div class="sub-head" style="font-size:1rem; margin-top:1rem;">为什么"小学没事，中学突然不行了"</div>
-            <ul>
-                <li>小学阶段的社交规则相对简单，课业要求低，很多神经多样性孩子依靠高智商和记忆力可以"撑过去"。</li>
-                <li>进入中学后，社交场景复杂化（多群体、潜规则、网络社交），学业数量增加，执行功能的需求急剧上升。</li>
-                <li>那些一直靠掩饰和模仿撑着的孩子，在升初中/高中的过渡期最容易崩塌。请不要认为是突然病了，那其实是环境需求超过了适应能力。</li>
-                <li><span class="emph">关键信号：</span>孩子开始拒绝上学、作业拖延严重（也有可能直接罢学了）、情绪爆发频率升高、说"太累了"。</li>
-            </ul>
+        <h3>1. 核心理念：不是消除社交，是管理消耗</h3>
+        <p>长期掩饰（Masking）与焦虑、抑郁、倦怠高度相关。有策略地应对社交不等于无止境地压抑自己。</p>
 
-            <div class="sub-head" style="font-size:1rem; margin-top:1rem;">掩饰的代价——青春期是 Masking 最严重的时期</div>
-            <ul>
-                <li>青春期自我意识觉醒，孩子比任何时期都更努力地"装正常"——模仿同龄人、背诵社交脚本、压抑冲动。</li>
-                <li>但这种伪装极度耗能，经不起挫折冲击。一旦在某次考试失败、被当众批评或社交冲突中"破功"，可能引发连锁性心理崩溃。</li>
-                <li>孩子说"我在演一个人"或"你们喜欢的根本不是真实的我"——这是掩耗的危险信号。</li>
-                <li><span class="emph">给家长：</span>不要鼓励孩子继续伪装。提供一个在家可以完全卸下面具的安全空间，比任何社交训练都重要。</li>
-            </ul>
+        <p><strong>关键区分：</strong></p>
+        <ul>
+            <li><strong>Masking（掩饰）：</strong>无差别地压抑所有自然特质，长期持续，消耗极大，损害心理健康。</li>
+            <li><strong>策略性应对：</strong>有意识地选择在特定场合使用某些工具（脚本、提前规划、感官管理），完成后有恢复时间。</li>
+        </ul>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Hull et al., 2021, Molecular Autism · Evans et al., 2024, Autism in Adulthood</p>
 
-            <!-- 其他小节同理，用 .sub-head 代替 h4 -->
-            <div class="sub-head" style="font-size:1rem; margin-top:1rem;">校园中的感官与环境调整</div>
-            <ul>
-                <li><span class="emph">听觉过敏：</span>课间喧哗、食堂打饭的声音可能让孩子极度烦躁。允许使用降噪耳塞/耳机。</li>
-                <li><span class="emph">安全空间：</span>和老师协商一个安全的地方（教室角落、辅导室、医务室），在孩子感到过载时可以去待一会儿。</li>
-                <li>部分学校的"问题行为"（突然爆发、推打、拒绝配合）往往是感官超载后的应激反应，需要的是降低刺激而非惩罚。</li>
-            </ul>
+        <h3>2. 社交前：规划与准备</h3>
+        <ul>
+            <li><strong>能量预算（Spoon Theory）：</strong>提前问自己：我今天已经消耗了多少？这场社交值不值得用掉这部分能量？之后我有没有安排足够的恢复时间？</li>
+            <li><strong>提前设定退出方案：</strong>在去之前就想好："如果我感到 overload，我可以怎么做""我需要在什么时间点离开"。准备一句简单的离场话——"我需要先走了"已经足够，不需要编理由。</li>
+            <li><strong>脚本准备：</strong>为常见场景准备简短模板（自我介绍、回应评价、拒绝邀请）。不用每次重新想词，直接调用就行。</li>
+            <li><strong>感官预处理：</strong>如果场地可能过载：戴上降噪耳机、准备 stim toy、提前查看场地环境。这些不是你"太敏感"——是你知道自己的神经系统需要什么。</li>
+        </ul>
 
-            <div class="sub-head" style="font-size:1rem; margin-top:1rem;">校园霸凌的识别与应对</div>
-            <ul>
-                <li>神经少数者是霸凌的高发人群。非因为软弱，只是因为"看不懂眼色、不会抱团、反应不同"。</li>
-                <li>网络霸凌尤其隐蔽：在群组中被公审、被排挤出群聊、对话截图被传播。孩子可能不愿告诉家长。</li>
-                <li><span class="emph">警惕信号：</span>突然不愿上学、手机使用行为剧烈变化、进食/睡眠异常、情绪波动。</li>
-                <li>如果孩子告诉你被霸凌了，第一反应不是"为什么不告诉老师"或"你要学会应对"。先相信他的讲述，肯定他的勇气，再一起想办法。</li>
-            </ul>
+        <h3>3. 社交中：现场工具</h3>
+        <ul>
+            <li><strong>眼神接触是可选项目：</strong>你不需要一直看着对方的眼睛。看额头、鼻梁、耳朵，或者看向旁边——大部分人都不会注意到。真正重要的是你在听，而不是你"看起来在听"。</li>
+            <li><strong>手里拿点东西：</strong>一个钥匙扣、一块橡皮泥、一支笔——手里有东西可以摸、转、捏，能提供持续的感官输入，帮助维持专注和平静。这不是小动作，是自我调节。</li>
+            <li><strong>使用脚本化语言：</strong>对反复出现的社交场景（打招呼、被问近况、告别）用固定的回应方式。省下来的认知资源可以留给更需要处理的部分。</li>
+            <li><strong>控制你能控制的环境变量：</strong>坐靠门的位置（方便离开）、调暗灯光（如果可能）、要求降低背景噪音、用文字代替口头交流（短信、即时消息），如果当时允许。</li>
+            <li><strong>安静不是错：</strong>你不必每时每刻都在说话。不说话的时候不等于"社交失败"。听别人说也是一种参与方式。</li>
+        </ul>
 
-            <div class="sub-head" style="font-size:1rem; margin-top:1rem;">刷题+高压模式下的生存策略</div>
-            <ul>
-                <li>刷题和高压复习对执行功能较弱的神经多样性学生尤其困难——不是不努力，而是这种教学方式不适合他们的信息处理方式。</li>
-                <li>高考合理便利有法律依据但流程复杂，各地执行不均。家长需要了解当地政策并提前准备相关材料。</li>
-                <li>有些孩子需要更长的考试时间、独立考场。这些是法律赋予的权利，但需要主动去申请和争取。
-当然，很有难度（小声）</li>
-                <li>如果高考压力已经引发严重心理健康问题，<span class="emph">休学是一个选项</span>。给孩子一年时间调整，比硬撑着读完更重要。</li>
-                <li>学校和老师那里的压力，不要原封不动转交给孩子。家长要做的是缓冲和翻译，而不是加压。</li>
-            </ul>
-        </div>
+        <h3>4. 社交后：恢复与保护</h3>
+        <ul>
+            <li><strong>恢复时间不可省略：</strong>社交后的独处时间不是"如果有空再做"，而是必要步骤。神经系统需要时间从社交模式切换回安静状态。</li>
+            <li><strong>追踪你的消耗模式：</strong>记录一下：哪种社交场合消耗最大？哪种反而还行？什么时候感觉恢复够了？这些信息能帮你以后做更精准的判断。</li>
+            <li><strong>留意 burnout 信号：</strong>如果社交后出现以下情况，说明消耗已经超出可承受范围：持续的极端疲惫（睡眠无法恢复）、技能暂时"丢失"（说不出话、做不了平时能做的事）、感觉敏感度大幅上升。这时候需要的不是"更努力"，而是减少社交总量和增加恢复时间。</li>
+        </ul>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Raymaker et al., 2020, Autism in Adulthood</p>
 
-        <!-- 工作党篇 -->
-        <div class="content-block" id="sec-work">
-            <div class="sub-head">工作党篇</div>
-            <ul>
-                <li><span class="emph">选择适合的工作环境：</span>如果可能，优先考虑远程/混合办公、弹性工时、独立工作空间——这些对感官处理和执行功能更友好。</li>
-                <li><span class="emph">沟通你的需求：</span>在信任且安全的前提下，向直属上级或 HR 说明你需要的工作调整（如书面指令代替口头、减少突发会议、允许佩戴耳机）。不一定需要披露诊断，可以说"我的工作效率在 X 条件下更高"。</li>
-                <li><span class="emph">防止倦怠 (Burnout)：</span>设置"不可触碰"的休息时间、学会拒绝额外任务、定期评估自己的耗能水平。倦怠并非"不够坚强"，式属于长期超出适应能力的必然结果。</li>
-                <li><span class="emph">职场社交：</span>不需要强迫自己参加所有团建。选择性参与，提前准备离开策略（如"我待会儿还有事"）。</li>
-            </ul>
-        </div>
+        <h3>5. 环境调整（给身边的人）</h3>
+        <p>以下调整不需要成本，但对 ASD 人士的社交能耗影响很大：</p>
+        <ul>
+            <li>眼神接触可选</li>
+            <li>允许 stimming 不被纠正</li>
+            <li>接受直接沟通——不需要绕弯子</li>
+            <li>允许提前离开、允许中途退到安静空间</li>
+            <li>用书面指令代替口头指令（如果可以）</li>
+        </ul>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Crompton et al., 2020, Autism</p>
 
-        <!-- 日常生活篇 -->
-        <div class="content-block" id="sec-daily">
-            <div class="sub-head">日常生活篇</div>
-            <ul>
-                <li><span class="emph">感官管理：</span>降噪耳机、遮光窗帘、柔和灯光、无标签衣物——减少日常感官负荷是预防倦怠的基础。</li>
-                <li><span class="emph">执行功能外化：</span>把所有需要记住的事情"搬出大脑"：清单、便签、手机提醒、白板。大脑是用来思考的，不是用来记事的。</li>
-                <li><span class="emph">Stimming 是正当的：</span>摇晃、转圈、搓手、听同一首歌。这些自我刺激行为是神经系统自我调节的方式，但容易被误认"坏习惯"。允许自己 stim，尤其是在压力大的时候。</li>
-                <li><span class="emph">建立"恢复区"：</span>在家里设置一个低刺激的角落。一般是，昏暗、安静、没有任务，用于感官超载后的恢复。</li>
-                <li><span class="emph">社交电量管理：</span>把社交当作"有限资源"来规划。见人之前和之后都留出独处恢复时间，不要连续安排多个社交活动。</li>
-            </ul>
-        </div>
+        <p><strong>社交策略参考文献</strong></p>
+        <ul class="ref-list">
+            <li>Hull, L., et al. (2021). Is social camouflaging associated with anxiety and depression in autistic adults? <em>Molecular Autism</em>, 12, 13. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7931515/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC7931515/</a></li>
+            <li>Evans, J. A., et al. (2024). What you are hiding could be hurting you: autistic masking in relation to mental health. <em>Autism in Adulthood</em>, 6(2), 229–240. <a href="https://www.liebertpub.com/doi/10.1089/aut.2022.0115" target="_blank">https://www.liebertpub.com/doi/10.1089/aut.2022.0115</a></li>
+            <li>Raymaker, D. M., et al. (2020). Defining Autistic Burnout. <em>Autism in Adulthood</em>, 2(2), 132–143. <a href="https://www.liebertpub.com/doi/10.1089/aut.2019.0079" target="_blank">https://www.liebertpub.com/doi/10.1089/aut.2019.0079</a></li>
+            <li>Crompton, C. J., et al. (2020). Autistic peer-to-peer information transfer is highly effective. <em>Autism</em>, 24(7), 1704–1712. <a href="https://journals.sagepub.com/doi/10.1177/1362361320919286" target="_blank">https://journals.sagepub.com/doi/10.1177/1362361320919286</a></li>
+        </ul>
 
-        <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted);">* 本站信息基于 DSM-5-TR / ICD-11 及同行评审论文整理，不能替代专业诊断。</p>
+        <hr />
+        <p style="color:var(--text-muted); font-size:0.9rem;">策略因人而异，请根据自身能量和感官阈值调整。</p>
     </div>
+
+    <script>
+        // ===== 暗色模式切换 =====
+        (function() {
+            const toggle = document.getElementById('darkToggle');
+            const stored = localStorage.getItem('neurodiversity-dark');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (stored === 'true' || (stored === null && prefersDark)) {
+                document.body.classList.add('dark-mode');
+                toggle.textContent = '☀️';
+            }
+            toggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                toggle.textContent = isDark ? '☀️' : '🌙';
+                localStorage.setItem('neurodiversity-dark', isDark);
+            });
+        })();
+    </script>
+
 </body>
 </html>
