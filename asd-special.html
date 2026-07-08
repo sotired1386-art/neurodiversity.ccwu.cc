@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASD专题 · 神经多样性科普站</title>
+    <style>
+        :root {
+            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
+            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
+            --accent: #C0392B; --accent-light: #FDF0ED;
+            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
+            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
+            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
+            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
+            --max-width: 1000px;
+            --font-serif: 'Noto Serif SC', 'STSong', serif;
+            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.7; display:flex; flex-direction:column; min-height:100vh; }
+        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
+        .header-inner { max-width:var(--max-width); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .site-title { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
+        .site-title span { color:var(--accent); }
+        .main-nav { display:flex; gap:4px; flex-wrap:wrap; }
+        .nav-link { padding:6px 12px; border-radius:20px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; transition:0.2s; border:1.5px solid transparent; }
+        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); }
+        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
+        .nav-link.accent { color:var(--accent); font-weight:600; }
+        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:6px 12px; cursor:pointer; }
+        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;} }
+        .page-content { max-width:var(--max-width); margin:0 auto; padding:24px 24px 48px; width:100%; }
+        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:6px; border-left:6px solid var(--accent); padding-left:16px; }
+        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:18px 22px; margin:20px 0 28px; }
+        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
+        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
+        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; border-bottom:1.5px dashed transparent; }
+        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
+        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 22px; margin-bottom:24px; }
+        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:10px; }
+        .placeholder { color:var(--text-light); font-style:italic; margin:8px 0; }
+        .ref { font-size:0.8rem; color:var(--text-lighter); margin-top:12px; border-top:1px dashed var(--card-border); padding-top:8px; }
+        .back-to-toc { display:inline-block; margin-top:10px; font-size:0.85rem; color:var(--accent); text-decoration:none; font-weight:500; }
+        .back-to-toc:hover { text-decoration:underline; }
+        .site-footer { text-align:center; padding:12px 24px 28px; font-size:0.85rem; color:var(--text-lighter); margin-top:auto; }
+        .site-footer em { color:var(--accent); font-style:normal; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
+        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+        <nav class="main-nav">
+            <a href="basic-concepts.html" class="nav-link">基础概念</a>
+            <a href="phenomena-mechanisms.html" class="nav-link">现象与机制</a>
+            <a href="asd-special.html" class="nav-link active">ASD专题</a>
+            <a href="comorbidity-health.html" class="nav-link">共病与健康</a>
+            <a href="coping-resources.html" class="nav-link">应对与资源</a>
+            <a href="myths-clarification.html" class="nav-link accent">迷思澄清</a>
+        </nav>
+    </div>
+</header>
+<main class="page-content">
+    <h1 class="module-title">ASD专题</h1>
+    <div class="toc-box" id="toc">
+        <h2>📑 目录</h2>
+        <ul class="toc-list">
+            <li><a href="#empathy">双向共情问题</a></li>
+            <li><a href="#monotropism">单一聚焦理论 (Monotropism)</a></li>
+            <li><a href="#alexithymia">述情障碍</a></li>
+            <li><a href="#female-asd">女性自闭症</a></li>
+            <li><a href="#pda">病理性需求回避 (PDA)</a></li>
+        </ul>
+    </div>
+    <div class="section-block" id="empathy"><h3>双向共情问题（Double Empathy Problem）</h3><p class="placeholder">理论提出与核心主张
+双向共情问题（Double Empathy Problem）由自闭症研究者Damian Milton于2012年在《Disability & Society》上发表的论文《On the ontological status of autism: The "double empathy problem"》中首次提出。
+
+该理论的核心主张是：自闭症个体与非自闭症（神经典型）个体之间的社交困难并非自闭症患者单方面的"共情缺陷"或"心智理论缺失"，而是源于双方神经类型（neurotype）不匹配所导致的双向理解障碍。Milton将其描述为"两种不同倾向的社会行动者之间的互惠性断裂"——自闭症个体难以理解非自闭症个体的社交规范和沟通方式，非自闭症个体同样难以理解自闭症个体的表达方式和内在体验。这是一个双向问题（"double" problem），而非单一方向的问题。
+Milton同时指出，这种断裂对非自闭症一方来说可能更为严重，因为自闭症行为被体验为"异常"，而对于自闭症个体来说，这种误解是一种日常的、惯常的经历。
+
+对传统理论的挑战
+双向共情理论直接挑战了自闭症研究中长期占主导地位的"心智理论缺陷假说"（Theory of Mind deficit hypothesis），即认为自闭症患者缺乏理解他人心理状态的能力。Milton的框架将问题从个体缺陷重新定义为关系性不匹配——社交互动是双向的（"two-way street"），沟通的困难由双方共同承担。
+
+实证研究证据
+2020年代以来，多项实证研究为双向共情理论提供了支持：
+Crompton等人（2020）的研究发现，自闭症个体之间传递信息的效率与神经典型个体之间同样高，表明自闭症个体的沟通能力本身并无缺陷，而是特定于跨神经类型的互动情境中才出现问题。
+Jones等人（2024）发表于《Autism》期刊的研究发现，非自闭症观察者在评估混合神经类型对话（自闭症-神经典型配对）时，一致将其评为比同神经类型配对更不顺畅、更尴尬，表明非自闭症观察者也参与并体现了双向共情问题。
+Oates等人（2024）的研究发现，当参与者与同神经类型的搭档配对时，其传递和理解信息的能力显著提高，而混合神经类型配对的沟通成功率降低，进一步支持神经类型不匹配而非个体缺陷驱动了社交困难。
+北京大学易莉课题组的研究发现，自闭症特质群体（非临床诊断的高自闭特质个体）之间的沟通过程比自闭症特质个体与低自闭特质个体之间的沟通更顺畅，为双向共情理论提供了来自中文语境的证据。
+</p><div class="ref">参考文献：请输入参考文献名称</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+    <div class="section-block" id="monotropism"><h3>单一聚焦理论 (Monotropism)</h3><p class="placeholder">请输入文本</p><div class="ref">参考文献：• Milton, D. (2012). On the ontological status of autism: The "double empathy problem". Disability & Society, 27(6), 883–887.
+• Wikipedia - Double empathy problem. 
+• PMC (2024). Non-autistic observers both detect and demonstrate the double empathy problem. 
+• 北京大学心理与认知科学学院. 孤独症之间的沟通更顺畅？易莉课题组最新研究. 
+• 中国社会科学网 (2024). 双重共情理论研究需关注更多因素. 
+• Wikipedia - 孤独症谱系障碍. 
+• Crompton, C.J. et al. (2020). Autistic peer-to-peer information transfer is highly effective. Autism, 24(7), 1704–1712.</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+    <div class="section-block" id="alexithymia"><h3>述情障碍（Alexithymia）</h3><p class="placeholder">  概念起源与定义
+述情障碍（Alexithymia，源自希腊语：a-缺失、lexis-词语、thymos-情绪，直译为"没有词语表达情绪"），又称"情绪盲"，由精神科医生John Nemiah和Peter Sifneos于1970年代在麻省总医院工作期间首次命名。他们发现一组心身疾病患者在心理治疗中表现出显著的情绪表达困难，无法用语言描述自身情感体验。
+述情障碍的核心特征包括三个维度：识别情绪困难（难以觉察和区分自身情绪），描述情绪困难（难以用语言表达情绪感受），以及外向型思维风格（倾向于关注外部具体信息而非内在情感体验）。
+述情障碍并非DSM-5中的正式诊断分类，而是一种亚临床人格特质和跨诊断（trans-diagnostic）维度。其程度可使用多伦多述情障碍量表（TAS-20）等自评工具进行量化测量。
+
+流行病学数据
+普通人群中述情障碍的患病率约为5-10%。
+在ASD人群中，述情障碍的发生率显著升高。一项2019年发表于《Autism》的系统综述与Meta分析显示，ASD群体中述情障碍的加权平均患病率为49.93%（范围33.3%-63%），而神经典型对照组仅为4.89%，ASD个体发生述情障碍的风险显著增高。
+部分研究报告ASD中述情障碍的比例更高（约50-66%），中文文献中常见引用的范围为50-85%。
+述情障碍同样可见于其他人群中，如PTSD患者约42%，癌症患者约37%，且在ADHD、抑郁症、焦虑症等群体中发生率也高于一般人群。
+
+述情障碍与自闭症的关系
+述情障碍与ASD之间存在显著的相关性，但两者并非同一构念。这一区分具有关键的学术和临床意义：传统上被认为是ASD核心特征的"情绪共情缺陷"，可能实际上源于共病的述情障碍本身，而非ASD本身。研究发现，在控制述情障碍水平后，ASD个体与神经典型个体在情绪识别和共情任务上的差异显著缩小，提示所谓的"自闭症共情缺陷"中相当一部分可归因于述情障碍。
+中国科学院心理研究所陈楚侨研究组基于1360名健康成人的网络分析研究发现，述情障碍是连接孤独特质、内感觉、自我意识和共情的关键网络节点，具有最高的中心性，提示述情障碍在自闭症情绪调节困难中扮演核心角色。
+述情障碍还与抑郁、焦虑、社交恐惧等精神共病的风险增加相关，并可影响治疗反应。
+
+述情障碍的研究中存在几个争议性议题。其一，述情障碍的自评量表（如TAS-20）在ASD群体中的有效性受到质疑——部分条目可能与ASD本身的表现重叠，难以完全区分两种性状。其二，述情障碍与ASD的因果关系尚不明确，两者共享部分基因和神经生物学基础（如杏仁核、前额叶皮质功能异常），但述情障碍究竟是ASD的独立共病还是某一亚群的前驱表现，学界尚无定论。其三，约40-50%的自闭症个体并无临床意义的述情障碍，这提示ASD-述情障碍共现人群应被视为一个特殊的亚群，而非ASD的普遍特征。
+</p><div class="ref">参考文献：• Nemiah, J.C., Freyberger, H., & Sifneos, P.E. (1976). Alexithymia: A view of the psychosomatic process. Modern Trends in Psychosomatic Medicine, 3, 430–439.
+• PMC (2021). Alexithymia. 
+• PMC (2019). Investigating alexithymia in autism: A systematic review and meta-analysis. 
+• Wikipedia - Alexithymia. 
+• 维基百科 - 述情障碍. 
+• 中国科学院心理研究所（2021）. 述情障碍是连接孤独特质、内感觉、自我意识和共情的重要节点. </div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+    <div class="section-block" id="female-asd"><h3>女性自闭症</h3><p class="placeholder">概述与诊断困境
+自闭症谱系障碍的传统流行病学数据显示男女比例约为3:1至4:1，但近年来越来越多的证据表明这一比例可能严重低估了女性自闭症患者的实际数量。2025年发表于《英国医学杂志》（BMJ）的一项基于瑞典全国队列的大规模研究（追踪270万人，1985-2020年出生）发现，到20岁时男性和女性的累积诊断率几乎相等。男孩在10岁前被诊断的可能性是女孩的三到四倍，女孩的中位诊断年龄为15.9岁，而男孩为13.1岁，提示诊断上的性别差异主要源于早期漏诊而非发病率的真正差距。
+平均而言，女性从首次向精神健康服务机构求助到获得自闭症诊断之间经历约10年的延迟。在此期间，她们常被误诊为焦虑症、抑郁症、边缘性人格障碍或饮食障碍等其他精神疾病。
+
+
+女性自闭症表型（Female Autism Phenotype, FAP）
+研究者提出女性自闭症表型的概念，描述自闭症在女性中呈现的独特特征。FAP的核心特点并非缺乏社交兴趣，而是表现出表面上社交适当的兴趣和行为：兴趣内容可能与社会规范一致（如动物、文学、追星），但强度和专注度仍然异常；社交互动方面可能通过刻意的模仿和学习发展出看似良好的社交技能，但内在的社交沟通差异依然存在。
+这些特征与以男性为中心的传统诊断标准不符，导致女性在标准化评估工具（如ADOS）上的得分可能偏低，掩盖了其真实的自闭症特征。
+
+掩蔽或伪装（Camouflaging/Masking）
+掩蔽是女性自闭症研究中最重要的概念之一。掩蔽指自闭症个体有意识地隐藏或补偿自身的自闭特征，以适应主流社交环境。常见的掩蔽行为包括：
+• 刻意调整面部表情、眼神接触和肢体语言
+• 预演社交脚本并在互动中套用
+• 压制刻板行为或特殊兴趣的表露
+• 扮演"角色"或采用社交面具
+多个研究一致发现，女性自闭症患者在掩蔽量表（Camouflaging Autistic Traits Questionnaire, CAT-Q）的各维度分数（同化、掩蔽、补偿）均显著高于男性自闭症患者。
+掩蔽使女性在行为层面看起来"社交能力较好"，降低了早期被识别和转诊的可能性。但这种持续伪装代价高昂——与更高的情绪耗竭、焦虑、抑郁风险以及更差的心理健康结局显著相关。
+
+女性保护效应（Female Protective Effect）
+遗传学研究提出"女性保护效应"的假说：即女性需要更高的遗传负荷（更多的风险基因变异）才能表现出自闭症症状。这意味着自闭症女性的亲属可能携带更多自闭症相关基因变异而不表现出临床症状，也解释了为何自闭症女性的家族中自闭症和更广泛自闭症表型的发生率更高。
+
+女性自闭症的研究仍面临多重挑战。首先，"女性自闭症表型"的概念本身存在争议——部分研究者认为所谓"女性表型"可能只是掩蔽行为的结果，而非真实的性别差异。其次，现有诊断工具大多基于男性样本开发，其文化适应性需要系统改进。第三，"女性保护效应"的遗传学证据尚不充分，其具体生物学机制仍未阐明。此外，目前的研究多集中于具有口语能力、无智力障碍的高功能自闭症女性，对于需要高度支持的自闭症女性的性别差异研究仍十分有限。
+</p><div class="ref">参考文献：• Minutoli, R. et al. (2026). Female gender and autism: underdiagnosis and misdiagnosis – clinical and scientific urgency. Frontiers in Psychiatry, 16, 1704579. 
+• Hull, L. et al. (2020). The Female Autism Phenotype and Camouflaging: A Narrative Review. Review Journal of Autism and Developmental Disorders. 
+• Nature Scientific Reports (2025). A meta-analytic review of quantification methods for camouflaging behaviors. 
+• Autistic Research Institute. Delayed and Missed Diagnoses of Autistic Women. 
+• Wikipedia - 自闭症性别差异. </div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+    <div class="section-block" id="pda"><h3>病理性需求回避 (PDA)</h3><p class="placeholder">概念起源
+病理性需求回避（PDA）由英国诺丁汉大学的Elizabeth Newson教授于1980年代首次提出，用以描述一组被转诊评估社交沟通障碍但表现"非典型"的儿童。Newson认为这些儿童虽然表现出类似自闭症的特征，但存在一个独特的行为模式，与典型自闭症表现有所不同。
+近年来，PDA通常被描述为自闭症谱系下的一个行为剖面（profile），而非独立的诊断分类。在社区中也有用"持续自主驱力"（Persistent Drive for Autonomy）来替代"病理性"这一带有负面含义的表述。
+
+核心特征
+PDA的核心特征是对日常需求和要求产生极端的、以焦虑为驱动力的回避反应。这种回避并非故意违抗，而是神经系统将普通请求感知为威胁，触发战或逃反应。具体表现包括：
+• 使用复杂的社会策略来逃避要求（如转移注意力、找借口、扮演角色、制造对峙）
+• 表面社交能力（superficial sociability）——看似善于社交，但缺乏稳定的社会身份认同
+• 对控制的强烈需求，难以接受由他人主导
+• 情绪不同同龄之间的权力
+
+PDA目前未被纳入DSM-5来源：Wikipedia -和， (c2023年的系统综述总结认为，PDA既不是独立的诊断实体，也不是自闭症的亚型，而应被理解为一个可能对多种障碍病程产生不利影响的行为剖面，其中不仅涉及个体特征，还与养育者的反应和互动模式密切相关。
+
+PDA是神经多样性领域争议最大的概念之一，争议主要集中在以下几个方面：
+其一，概念的有效性受到严重质疑。批评者指出PDA的定义存在循环论证——以"回避要求"来定义PDA，又以PDA来解释"回避要求"。
+其二，缺乏高质量实证研究。目前大多数支持PDA的证据来自临床描述和家庭报告，而非对照实验或系统的流行病学调查。</p><div class="ref">参考文献：请输入参考文献名称</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+</main>
+<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+</body>
+</html>
