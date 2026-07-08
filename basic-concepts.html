@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基础概念 · 神经多样性科普站</title>
+    <style>
+        :root {
+            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
+            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
+            --accent: #C0392B; --accent-light: #FDF0ED;
+            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
+            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
+            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
+            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
+            --max-width: 1000px;
+            --font-serif: 'Noto Serif SC', 'STSong', serif;
+            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.7; display:flex; flex-direction:column; min-height:100vh; }
+        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
+        .header-inner { max-width:var(--max-width); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .site-title { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
+        .site-title span { color:var(--accent); }
+        .main-nav { display:flex; gap:4px; flex-wrap:wrap; }
+        .nav-link { padding:6px 12px; border-radius:20px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; transition:0.2s; border:1.5px solid transparent; }
+        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); }
+        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
+        .nav-link.accent { color:var(--accent); font-weight:600; }
+        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:6px 12px; cursor:pointer; }
+        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;} }
+        .page-content { max-width:var(--max-width); margin:0 auto; padding:24px 24px 48px; width:100%; }
+        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:6px; border-left:6px solid var(--accent); padding-left:16px; }
+        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:18px 22px; margin:20px 0 28px; }
+        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
+        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
+        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; border-bottom:1.5px dashed transparent; transition:0.2s; }
+        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
+        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 22px; margin-bottom:24px; }
+        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:10px; }
+        .section-block .placeholder { color:var(--text-light); font-style:italic; margin:8px 0; }
+        .ref { font-size:0.8rem; color:var(--text-lighter); margin-top:12px; border-top:1px dashed var(--card-border); padding-top:8px; }
+        .back-to-toc { display:inline-block; margin-top:10px; font-size:0.85rem; color:var(--accent); text-decoration:none; font-weight:500; }
+        .back-to-toc:hover { text-decoration:underline; }
+        .site-footer { text-align:center; padding:12px 24px 28px; font-size:0.85rem; color:var(--text-lighter); margin-top:auto; }
+        .site-footer em { color:var(--accent); font-style:normal; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
+        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+        <nav class="main-nav">
+            <a href="basic-concepts.html" class="nav-link active">基础概念</a>
+            <a href="phenomena-mechanisms.html" class="nav-link">现象与机制</a>
+            <a href="asd-special.html" class="nav-link">ASD专题</a>
+            <a href="comorbidity-health.html" class="nav-link">共病与健康</a>
+            <a href="coping-resources.html" class="nav-link">应对与资源</a>
+            <a href="myths-clarification.html" class="nav-link accent">迷思澄清</a>
+        </nav>
+    </div>
+</header>
+<main class="page-content">
+    <h1 class="module-title">基础概念</h1>
+    <div class="toc-box" id="toc">
+        <h2>📑 目录</h2>
+        <ul class="toc-list">
+            <li><a href="#neurodiversity">神经多样性是什么</a></li>
+            <li><a href="#asd">自闭症谱系障碍 (ASD)</a></li>
+            <li><a href="#adhd">注意缺陷多动障碍 (ADHD)</a></li>
+            <li><a href="#audhd">ASD与ADHD共现 (AuDHD)</a></li>
+            <li><a href="#dyslexia">读写障碍</a></li>
+            <li><a href="#dcd">发展性协调障碍</a></li>
+        </ul>
+    </div>
+
+    <div class="section-block" id="neurodiversity">
+        <h3>神经多样性是什么</h3>
+        <p class="placeholder">神经多样性（Neurodiversity）是一个描述人类大脑功能自然变异的生物学事实，也是一个社会/政治范式。该概念最早由澳大利亚社会学家Judy Singer于1998年在其荣誉学位论文中提出，同年由记者Harvey Blume在《大西洋月刊》上公开发表。
+其核心主张是：人类在社交、学习、注意力、情绪处理等认知功能上存在天然差异，这种差异应被视为人类多样性的一部分，而非疾病或缺陷。范式反对为大脑功能设定单一"正常"标准，强调"不同"不等于"有缺陷"。
+神经多样性包涵自闭症谱系、ADHD、读写障碍、发展性协调障碍等多种状况。该框架根植于身心障碍权利运动，借鉴了身心障碍的社会模式——即障碍部分源于社会环境的障碍和人与环境的不匹配，而非纯粹归因于个体先天缺陷。
+
+但同时也存在争议。神经多样性范式并非没有批评。部分观点认为该框架可能淡化某些状况带来的实际功能障碍和痛苦，尤其是对需要高度支持的个体而言，其处境可能被低支持需求者的叙事所遮蔽。此外，围绕Judy Singer本人对"高功能"与"低功能"的区分立场，以及神经多样性概念是否应包含所有神经差异（如精神分裂症、人格障碍等），社群内部也存在持续分歧。学术界和临床领域对神经多样性与医疗模式之间的关系尚未达成共识。</p>
+        <div class="ref">参考文献：Singer, J. (1998). Odd People In: The Birth of Community amongst people on the Autistic Spectrum: A personal exploration of a New Social Movement based on Neurological Diversity. Honours thesis, University of Technology, Sydney.</div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+    <div class="section-block" id="asd">
+        <h3>自闭症谱系障碍 (ASD) 基本框架与数据</h3>
+        <p class="placeholder">ASD的核心诊断标准依据《精神障碍诊断与统计手册》第五版修订版（DSM-5-TR）及《国际疾病分类》第十一版（ICD-11）。两项标准均指向两大核心维度：
+维度A——持续性社交沟通与社会互动缺陷，包括社交-情感互惠不足、非言语沟通行为异常（如眼神、表情、手势）、以及发展/维持/理解人际关系的困难
+维度B——受限重复的行为模式或兴趣，需满足至少两项，包括刻板动作或言语、对同一性和常规的固执坚持、高度固定异常的兴趣、以及对感官输入的超敏或低敏反应。症状须在早期发育阶段显现，造成临床显著功能损害，且需区分是否伴随智力或语言障碍，并按支持需求分为1-3级。
+
+全球流行病学方面，2025年多项Meta分析显示儿童ASD合并患病率约0.77%，即约每130名儿童中1人确诊。美国CDC 2025年ADDM网络报告显示8岁儿童患病率已升至约1/30，男孩约为女孩的4倍。
+中国方面，基于GBD 2021数据的分析显示患病率自1990年持续上升，0-6岁儿童从2017年约0.5%升至2023年约0.9%，男女比例约4:1至5:1。
+
+不同地区患病率数据差异受诊断实践、服务可及性和社会认知水平影响很大。此外，ASD谱系内部高度异质——从需全天候支持的重度病例到可独立生活的高功能个体均在同一诊断框架下，谱系内部的巨大差异对政策制定和资源分配构成持续挑战。</p>
+        <div class="ref">参考文献：• American Psychiatric Association. (2022). DSM-5-TR: Diagnostic and Statistical Manual of Mental Disorders (5th ed., text revision).
+• World Health Organization. (2019). ICD-11: International Classification of Diseases (11th revision).
+• CDC ADDM Network. (2025). Prevalence and Early Identification of ASD. MMWR Surveillance Summaries, 74(2), 1–22.
+• Halemani, K. et al. (2025). The global prevalence of ASD in children: a systematic review and meta-analysis. PMC
+• Li, M. et al. (2025). 基于GBD 2021数据的中国孤独症谱系障碍患病率、发病率及DALYs分析. Chinese Medical Sciences Journal, 40(04), 282–294.
+</div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+    <div class="section-block" id="adhd">
+        <h3>注意缺陷多动障碍 (ADHD) 基本框架与数据</h3>
+        <p class="placeholder">诊断框架
+ADHD的核心诊断标准依据DSM-5-TR。诊断要求存在持续性的注意缺陷和/或多动-冲动模式，干扰功能或发育。具体分为两组症状群。
+注意缺陷维度（需满足至少6项，17岁以上需5项）：常粗心大意忽略细节；难以维持注意力；与人对话时似不在听；难以跟进指示或完成任务；组织任务和活动困难；回避需要持续脑力投入的任务；常丢失必需品；易被外界刺激分心；日常活动中健忘。
+多动-冲动维度（同样需满足至少6项，17岁以上需5项）：坐立不安、手脚拍打；在应保持坐姿的场合离座；在不适当场合奔跑攀爬或感到坐立难安；难以安静地参与休闲活动；常像"装了马达"似忙个不停；话多；问题未说完即抢答；难以等待轮流；常打断或侵扰他人。
+此外须满足：症状持续至少6个月且与发育水平不一致；至少部分症状在12岁前已存在；在两个以上情境中出现（如家庭、学校、工作场所）；有明确证据表明症状干扰或降低了社交、学业或职业功能的质量；且不被其他精神障碍更好地解释。
+DSM-5将既往的"亚型"（如混合型、注意缺陷为主型、多动-冲动为主型）改为"表现型"，以反映患者的主要症状群可能随时间变化。
+
+流行病学数据
+全球范围内，ADHD是儿童期最常见的神经发育障碍之一。一项2025年发表于《Journal of Affective Disorders》的系统综述表明，全球患病率数据总体稳定，诊断数量的上升主要反映了认知提升和诊断工具的改进，而非发病率的真实增长。
+美国方面，2024年数据显示约6.5百万儿童（10.5%）有当前ADHD诊断，约15.5百万成人（6.0%）有当前诊断，合计约2,200万人。
+全球成人ADHD患病率约为3.1%（95% CI: 2.6%-3.6%），基于一项涵盖超过2,100万参与者的伞状综述与Meta分析。
+中国方面，一项纳入20篇研究、总样本量88,755人的Meta分析显示，中国儿童ADHD总患病率为5.6%（95% CI: 5.0%-6.3%），男童7.7%，女童3.4%。来源：中华流行病学杂志（2018）- 中国儿童注意缺陷多动障碍患病率Meta分析
+
+ADHD的诊断一直以来存在争议，包括对过度诊断的担忧、诊断标准的文化适用性问题，以及成人ADHD诊断标准的可靠性。此外，ADHD常与多种状况共病（如焦虑、抑郁、学习障碍、对立违抗障碍等），临床鉴别诊断面临挑战。药物治疗（尤其是兴奋剂类药物）的使用在部分国家引发争议，涉及长期安全性、过度处方以及对儿童发育影响的不同观点。
+</p>
+        <div class="ref">参考文献：• American Psychiatric Association. (2022). DSM-5-TR: Diagnostic and Statistical Manual of Mental Disorders (5th ed., text revision).
+• Danielson, M.L., Claussen, A.H., Bitsko, R.H., et al. (2024). ADHD Prevalence Among U.S. Children and Adolescents in 2022. Journal of Clinical Child & Adolescent Psychology, 1–18.
+• Martin, A.F., Rubin, G.J., et al. (2025). The changing prevalence of ADHD? A systematic review. Journal of Affective Disorders.
+• 李世明等. (2018). 中国儿童注意缺陷多动障碍患病率Meta分析. 中华流行病学杂志, 39(7).</div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+    <div class="section-block" id="audhd">
+        <h3>ASD与ADHD共现 (AuDHD) 基本框架与数据</h3>
+        <p class="placeholder">诊断历史与框架变化
+在2013年DSM-5发布之前，DSM-IV-TR明确将ASD诊断列为ADHD的排除标准，即两者不能同时诊断。这一规定长期限制了临床对共现现象的认识和研究。DSM-5修改了这一条款，首次允许对同时满足两种诊断标准的个体进行双重诊断（"when criteria for both ADHD and autism spectrum disorder are met"）。同时，ADHD的起病年龄要求也从7岁放宽至12岁，以更好覆盖共现病例的临床表现。
+
+流行病学数据
+ASD与ADHD的共现率相当高，且不同研究方向和样本得出的数据存在差异。
+以ASD人群为基数：约52-59%的ASD儿童同时符合ADHD诊断标准，成人中该比例约为59%。
+以ADHD人群为基数：约11-13%的ADHD儿童同时符合ASD诊断标准。综合Meta分析显示，来自临床和社区ADHD样本的ASD共现率约为21%。
+整体人群中的AuDHD患病率：大型健康保险数据库分析显示，儿童中AuDHD（同时具备两种诊断）的患病率约为0.6%，成人中约为0.1%。
+
+神经生物学基础
+针对AuDHD的神经生物学研究正在逐步推进。一项2023年发表于eNeuro的脑成像研究发现，ASD+ADHD共现儿童表现出独特的前顶叶脑动态模式：其社交沟通缺陷与纯ASD组共享"过度稳定"的脑动态特征，但其执行功能特征和神经信号模式并不是两种状况的简单叠加，提示共现状况涉及重叠但可分离的神经环路。
+
+AuDHD并非一个正式诊断分类，而是非正式术语（社区自创词），这本身就反映了诊断系统尚未充分回应共现人群的特殊性。两种状况在某些症状上高度重叠（如社交困难、执行功能缺陷、感官处理差异），鉴别诊断存在实际困难，容易导致漏诊或误诊。此外，共现人群的共病负担（如焦虑、抑郁、睡眠障碍等）显著高于单一诊断人群，临床上需要综合干预策略，但目前针对AuDHD专门的治疗方案研究仍十分有限。
+</p>
+        <div class="ref">参考文献：• American Psychiatric Association. (2013/2022). DSM-5 / DSM-5-TR.
+• PMC (2025). Real-world evaluation of prevalence, cohort characteristics, and healthcare utilization among adults and children with ASD, ADHD, or both.
+• Psych Scene Hub. ADHD and Autism Comorbidity: Clinical Insights & Review.
+• eNeuro (2023). Distinct Frontoparietal Brain Dynamics Underlying the Co-Occurrence of Autism and ADHD.
+• Frontiers in Human Neuroscience (2014). The Co-Occurrence of Autism and ADHD in Children.
+• PMC (2017). DSM-5 Changes in ADHD and ASD: Implications for Comorbid Sleep Issues.</div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+    <div class="section-block" id="dyslexia">
+        <h3>读写障碍</h3>
+        <p class="placeholder">诊断框架
+读写障碍在DSM-5中被归类于"特定学习障碍"（Specific Learning Disorder）下的"阅读损害"亚型，是一种神经发育性障碍。诊断需满足以下条件：
+阅读相关的学习困难持续至少6个月，尽管已提供有针对性的干预；受损害的学业技能显著低于个体年龄所应有的水平，并对学业或日常生活造成临床显著干扰
+困难始于学龄期（但可能到能力要求超出个体局限时才完全显现）；且不能被智力障碍、未矫正的感官缺陷、神经系统疾病或其他精神障碍更好地解释。
+DSM-5明确指出必须标注受损的具体阅读子技能，包括：单词阅读准确性、阅读速率或流畅性、以及/或阅读理解。
+DSM-5保留了"读写障碍"（dyslexia）作为一个可选替代术语，用以描述以准确或流畅的单词识别困难、解码能力差和拼写能力差为特征的学习困难模式。与DSM-IV的关键变化包括：取消了"智商-成就差异"标准（即不再要求阅读成绩显著低于智力预期的水平），以及采用了"对干预的反应"作为诊断参考的一部分。
+国际读写障碍协会（IDA）2002年的定义被广泛采用：读写障碍是一种神经源性的特定学习障碍，其特征是难以进行准确和/或流畅的单词识别，以及拼写和解码能力差。这些困难通常源于语音处理能力的缺陷，且往往与个体的认知能力和充分的教学机会不相称。
+
+流行病学数据
+全球范围内，读写障碍是最常见的学习障碍，占所有学习障碍的约80%。
+患病率估计因诊断切点不同而波动较大：采用1.5个标准差以下作为标准时，约为3-7%；若放宽至第25百分位，学龄儿童患病率可达15-18%。但大多数流行病学调查将总体患病率定在10%以下。
+美国方面，约20%的人口存在某种程度的阅读困难症状，约5-15%的美国人（约1450万至4350万人）符合读写障碍诊断标准，其中超过4000万成年人有读写障碍，但仅约200万人获得诊断。
+中国方面，汉语阅读障碍的研究起步较晚（1980年代后）。学龄儿童汉语阅读障碍的患病率约为3.0-12.6%，多数调查集中在10%左右。北京地区（2012年）一项针对3472名小学生的调查显示学习障碍发生率为6.75%；湖北荆州（2015年）调查显示为7.32%。
+性别方面，尽管男孩被转介评估的比例更高，但研究表明实际患病率男女大致相当，差异主要源于转介偏倚。家族遗传性显著，有读写障碍父母的孩子，患病风险约40-60%。
+
+读写障碍的核心定义和诊断标准长期存在争议。DSM-5取消了"智商-成就差异"标准，并非所有临床工作者和研究者都认同这一改变——部分认为该标准有助于区分真正的特定学习障碍与整体能力偏低导致的阅读困难。此外，在汉语等非字母语言中，读写障碍的神经机制与表音文字存在差异（汉字阅读更多依赖视觉-正字法加工而非语音解码），直接套用西方诊断标准和文化适应性评估工具的有效性仍存疑。读写障碍常与ADHD、焦虑、抑郁等共病，临床鉴别和综合性干预方案的设计面临持续挑战。</p>
+        <div class="ref">参考文献：• American Psychiatric Association. (2013/2022). DSM-5 / DSM-5-TR, Specific Learning Disorder with impairment in reading.
+• University of Florida CEEDAR. Definitions of Dyslexia.
+• PMC (2021). The Prevalence of Dyslexia: A New Approach to its Estimation.
+• Yale Dyslexia. Dyslexia FAQ. 
+• 中国学校卫生（2019）. 从公共卫生政策入手关注儿童阅读障碍. 
+• 科学网（2026）. 10%中国儿童有阅读障碍，他们开发出精准方案！
+• 中国心理学前沿. 学习障碍儿童的特征及早期干预. 
+• Wikipedia - 失读症.
+ </div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>• 
+    <div class="section-block" id="dcd">
+        <h3>发展性协调障碍</h3>
+        <p class="placeholder">诊断框架
+发育型协调障碍（Developmental Coordination Disorder，DCD），也称发展性协调障碍、运动协调障碍，俗称"动作笨拙症"（dyspraxia），在DSM-5中被归类于神经发育障碍下的运动障碍类别。
+DSM-5的四项诊断标准为：
+标准A——协调运动技能的获得和执行显著低于个体的生理年龄和技能学习机会所应达到的水平，表现为笨拙（如撞到物体或摔倒）、动作缓慢和不精确（如接球、使用剪刀或餐具、手写、骑车或参与体育运动）
+标准B——运动技能缺陷显著干扰了日常生活活动、学业表现或休闲活动
+标准C——症状始于早期发育阶段
+标准D——运动困难不能被智力障碍、视力障碍或其他神经系统疾病（如脑性瘫痪、偏瘫、肌肉萎缩）更好地解释。
+DCD通常在5岁前难以确诊，5-11岁是诊断的最佳窗口期。诊断流程一般采用"主观问卷初筛（如DCDQ）+标准化的客观运动测试（如Movement ABC-2）二步确认法"。
+
+流行病学数据
+全球范围内，DCD是最常见的儿童运动障碍之一。2024年发表于PMC的一项系统综述与Meta分析（纳入18项研究，共31,203名参与者）显示，儿童DCD合并患病率为5%。亚组分析显示：男孩约7%，女孩约4%（男女比约1.7:1至2.8:1）；亚洲约4%，欧洲约2%，北美约6%。早产儿（<37周）的患病率显著升高至约18%，极低出生体重儿（<1,250g）中高达31%。
+不同国家和地区报告的患病率差异较大，从土耳其的2%到巴西的近20%不等，台湾约9%，韩国约11%，印度部分地区为12-21%。全球范围内常引用的范围为5-6%。
+中国方面，据中华医学会相关项目报告，国内DCD患病率约为8.3-24.7%，5-11岁儿童国际标准为5-11%。一项基于全国18万学龄前儿童的常模标准研究已建立中国儿童评估工具。
+
+DCD在临床上严重被低估和漏诊，许多患儿被简单归为"笨拙"或"懒散"而未获得诊断。DCD与其他神经发育障碍（尤其是ADHD和ASD）的共现率很高，研究发现DCD儿童中约50%同时符合ADHD诊断标准，这使临床鉴别和干预方案设计面临挑战。此外，DCD与"发展性失用症"（dyspraxia）两术语的关系在学术和临床中仍存在混淆——DSM-5使用DCD，而ICD-11则使用"发育性运动协调障碍"，部分专业人员和社区习惯使用dyspraxia指代更广泛的运动计划障碍。中国目前尚未将DCD纳入残障体系，相关诊断标准和评估工具的本土化工作仍在推进中。
+</p>
+        <div class="ref">参考文献：• American Psychiatric Association. (2013/2022). DSM-5 / DSM-5-TR, Developmental Coordination Disorder (315.4).
+• PMC (2024). The prevalence of developmental coordination disorder in children: a systematic review and meta-analysis.
+• BC Children's Hospital. DCD Assessment Information Sheet. 
+• MDPI (2025). Children Suspected for DCD in Hong Kong and Associated Health-Related Functioning. 
+• Wikipedia - Developmental coordination disorder.
+• 中华医学会. 儿童发育性协调障碍围产期预警评估和筛查诊断模式研究.
+• 同济大学医学院. 一妇婴主办儿童DCD研究和指南编制高峰论坛.
+• Wikipedia - 发展协调障碍. 
+</div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+</main>
+<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+</body>
+</html>
