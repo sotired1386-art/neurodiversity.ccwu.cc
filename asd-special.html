@@ -13,7 +13,7 @@
             --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
             --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
             --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 1100px;
+            --max-width: 1200px;   /* 放宽宽度，增加每行字数 */
             --font-serif: 'Noto Serif SC', 'STSong', serif;
             --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
@@ -42,12 +42,11 @@
         .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:10px 22px; }
         .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
         .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:28px 32px; margin-bottom:28px; }
+        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:24px 28px; margin-bottom:28px; }  /* 内边距略微减小 */
         .section-block h3 { font-size:1.4rem; color:var(--primary-dark); margin-bottom:16px; }
-        /* 关键改动：保留原始换行，同时自动折行 */
         .section-block .placeholder {
             color:var(--text); margin:0 0 1.2em; background:var(--bg);
-            padding:14px 18px; border-radius:var(--radius-sm);
+            padding:12px 16px; border-radius:var(--radius-sm);    /* 内边距更紧凑 */
             line-height:1.8; white-space: pre-line;
         }
         .ref { font-size:0.9rem; color:var(--text-medium); margin-top:18px; border-top:1px dashed var(--card-border); padding-top:14px; line-height:1.7; white-space: pre-line; }
