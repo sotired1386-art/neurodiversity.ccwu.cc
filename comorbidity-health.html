@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>共病与健康 · 神经多样性科普站</title>
+    <style>
+        :root {
+            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
+            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
+            --accent: #C0392B; --accent-light: #FDF0ED;
+            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
+            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
+            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
+            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
+            --max-width: 1000px;
+            --font-serif: 'Noto Serif SC', 'STSong', serif;
+            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.7; display:flex; flex-direction:column; min-height:100vh; }
+        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
+        .header-inner { max-width:var(--max-width); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .site-title { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
+        .site-title span { color:var(--accent); }
+        .main-nav { display:flex; gap:4px; flex-wrap:wrap; }
+        .nav-link { padding:6px 12px; border-radius:20px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; transition:0.2s; border:1.5px solid transparent; }
+        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); }
+        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
+        .nav-link.accent { color:var(--accent); font-weight:600; }
+        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:6px 12px; cursor:pointer; }
+        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;} }
+        .page-content { max-width:var(--max-width); margin:0 auto; padding:24px 24px 48px; width:100%; }
+        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:6px; border-left:6px solid var(--accent); padding-left:16px; }
+        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:18px 22px; margin:20px 0 28px; }
+        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
+        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
+        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; border-bottom:1.5px dashed transparent; }
+        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
+        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 22px; margin-bottom:24px; }
+        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:10px; }
+        .placeholder { color:var(--text-light); font-style:italic; margin:8px 0; }
+        .ref { font-size:0.8rem; color:var(--text-lighter); margin-top:12px; border-top:1px dashed var(--card-border); padding-top:8px; }
+        .back-to-toc { display:inline-block; margin-top:10px; font-size:0.85rem; color:var(--accent); text-decoration:none; font-weight:500; }
+        .back-to-toc:hover { text-decoration:underline; }
+        .site-footer { text-align:center; padding:12px 24px 28px; font-size:0.85rem; color:var(--text-lighter); margin-top:auto; }
+        .site-footer em { color:var(--accent); font-style:normal; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
+        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+        <nav class="main-nav">
+            <a href="basic-concepts.html" class="nav-link">基础概念</a>
+            <a href="phenomena-mechanisms.html" class="nav-link">现象与机制</a>
+            <a href="asd-special.html" class="nav-link">ASD专题</a>
+            <a href="adhd-special.html" class="nav-link">ADHD专题</a>
+            <a href="comorbidity-health.html" class="nav-link active">共病与健康</a>
+            <a href="coping-resources.html" class="nav-link">应对与资源</a>
+            <a href="myths-clarification.html" class="nav-link accent">迷思澄清</a>
+        </nav>
+    </div>
+</header>
+<main class="page-content">
+    <h1 class="module-title">共病与健康</h1>
+    <div class="toc-box" id="toc">
+        <h2>📑 目录</h2>
+        <ul class="toc-list">
+            <li><a href="#sensory">感觉处理鉴别</a></li>
+            <li><a href="#anxiety-depression">焦虑与抑郁</a></li>
+            <li><a href="#physical">躯体共病</a></li>
+            <li><a href="#sleep">睡眠问题</a></li>
+        </ul>
+    </div>
+    <div class="section-block" id="sensory"><h3>感觉处理鉴别</h3><p class="placeholder">请输入文本</p><div class="ref">参考文献：请输入参考文献名称</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+    <div class="section-block" id="anxiety-depression"><h3>焦虑与抑郁</h3><p class="placeholder">请输入文本</p><div class="ref">参考文献：请输入参考文献名称</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+    <div class="section-block" id="physical"><h3>躯体共病</h3><p class="placeholder">请输入文本</p><div class="ref">参考文献：请输入参考文献名称</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+    <div class="section-block" id="sleep"><h3>睡眠问题</h3><p class="placeholder">请输入文本</p><div class="ref">参考文献：请输入参考文献名称</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+</main>
+<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+</body>
+</html>
