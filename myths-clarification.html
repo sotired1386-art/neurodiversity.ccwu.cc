@@ -13,37 +13,40 @@
             --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
             --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
             --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 1000px;
+            --max-width: 960px;
             --font-serif: 'Noto Serif SC', 'STSong', serif;
             --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.7; display:flex; flex-direction:column; min-height:100vh; }
+        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.8; display:flex; flex-direction:column; min-height:100vh; font-size:1rem; }
         .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
-        .header-inner { max-width:var(--max-width); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-        .site-title { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
+        .header-inner { max-width:var(--max-width); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .site-title { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
         .site-title span { color:var(--accent); }
-        .main-nav { display:flex; gap:4px; flex-wrap:wrap; }
-        .nav-link { padding:6px 12px; border-radius:20px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; transition:0.2s; border:1.5px solid transparent; }
-        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); }
+        .main-nav { display:flex; gap:6px; flex-wrap:wrap; }
+        .nav-link { padding:8px 14px; border-radius:22px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; font-weight:500; transition:0.2s; border:1.5px solid transparent; }
+        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); border-color:var(--card-border); }
         .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
         .nav-link.accent { color:var(--accent); font-weight:600; }
-        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:6px 12px; cursor:pointer; }
-        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;} }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:24px 24px 48px; width:100%; }
-        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:6px; border-left:6px solid var(--accent); padding-left:16px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:18px 22px; margin:20px 0 28px; }
+        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
+        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;gap:4px;padding-top:8px;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;border-radius:var(--radius-sm);padding:10px 16px;} }
+        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
+        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
+        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
         .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
         .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
-        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; border-bottom:1.5px dashed transparent; transition:0.2s; }
+        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
         .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 22px; margin-bottom:24px; }
-        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:10px; }
-        .section-block .placeholder { color:var(--text-light); font-style:italic; margin:8px 0; }
-        .back-to-toc { display:inline-block; margin-top:10px; font-size:0.85rem; color:var(--accent); text-decoration:none; font-weight:500; }
+        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
+        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
+        .section-block .placeholder {
+            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
+            line-height:1.8; white-space: pre-line;
+        }
+        .back-to-toc { display:inline-block; margin-top:12px; font-size:0.9rem; color:var(--accent); text-decoration:none; font-weight:500; }
         .back-to-toc:hover { text-decoration:underline; }
-        .site-footer { text-align:center; padding:12px 24px 28px; font-size:0.85rem; color:var(--text-lighter); margin-top:auto; }
-        .site-footer em { color:var(--accent); font-style:normal; }
+        .site-footer { text-align:center; padding:16px 24px 28px; font-size:0.9rem; color:var(--text-light); margin-top:auto; }
+        .site-footer em { color:var(--accent); font-style:normal; font-weight:500; }
     </style>
 </head>
 <body>
@@ -87,72 +90,72 @@
 
     <div class="section-block" id="myth1">
         <h3>1. “神经多样性只是赶时髦”</h3>
-        <p class="placeholder">Neurodiversity一词1998年就已提出，描述的是客观存在的神经差异，不是什么流行趋势。</p>
+        <div class="placeholder">Neurodiversity一词1998年就已提出，描述的是客观存在的神经差异，不是什么流行趋势。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth2">
         <h3>2. “自闭症都是天才 / 都有智力障碍”</h3>
-        <p class="placeholder">约30%有智力障碍，也有许多在平均或以上水平。"天才"只占约10%，两种极端都是刻板印象。</p>
+        <div class="placeholder">约30%有智力障碍，也有许多在平均或以上水平。"天才"只占约10%，两种极端都是刻板印象。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth3">
         <h3>3. “ADHD 就是懒 / 缺乏纪律”</h3>
-        <p class="placeholder">ADHD是涉及多巴胺系统的神经发育差异，不是意志力问题。说懒等于说近视的人"不想看清楚"。</p>
+        <div class="placeholder">ADHD是涉及多巴胺系统的神经发育差异，不是意志力问题。说懒等于说近视的人"不想看清楚"。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth4">
         <h3>4. “能社交/有眼神接触就不是自闭症”</h3>
-        <p class="placeholder">许多自闭症人士通过高强度掩饰维持表面社交。有眼神接触不等于没有社交差异。</p>
+        <div class="placeholder">许多自闭症人士通过高强度掩饰维持表面社交。有眼神接触不等于没有社交差异。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth5">
         <h3>5. “只有男孩才有自闭症/ADHD”</h3>
-        <p class="placeholder">诊断偏见导致女性被系统性漏诊，女性和性别多元群体常因更高掩饰能力被忽略。</p>
+        <div class="placeholder">诊断偏见导致女性被系统性漏诊，女性和性别多元群体常因更高掩饰能力被忽略。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth6">
         <h3>6. “所有人体内都有一点 ADHD / 自闭”</h3>
-        <p class="placeholder">偶尔的走神或尴尬与持续终身、跨情境、有功能损害的神经发育障碍有本质区别。</p>
+        <div class="placeholder">偶尔的走神或尴尬与持续终身、跨情境、有功能损害的神经发育障碍有本质区别。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth7">
         <h3>7. “自闭症是妈妈冷漠造成的（冰箱母亲理论）”</h3>
-        <p class="placeholder">这是Bruno Bettelheim在1950年代提出的伪理论，早已被学界彻底否定。自闭症是先天神经发育差异。</p>
+        <div class="placeholder">这是Bruno Bettelheim在1950年代提出的伪理论，早已被学界彻底否定。自闭症是先天神经发育差异。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth8">
         <h3>8. “自闭症人士没有共情能力”</h3>
-        <p class="placeholder">研究表明ASD人士的情感共情完好甚至更强。问题在于认知共情的处理方式不同，不是没有。</p>
+        <div class="placeholder">研究表明ASD人士的情感共情完好甚至更强。问题在于认知共情的处理方式不同，不是没有。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth9">
         <h3>9. “ADHD 长大了就好了”</h3>
-        <p class="placeholder">60-70%儿童ADHD患者症状持续到成年。表面"好了"的人是以巨大代价在掩饰。</p>
+        <div class="placeholder">60-70%儿童ADHD患者症状持续到成年。表面"好了"的人是以巨大代价在掩饰。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth10">
         <h3>10. “诊断就是贴标签，不如不诊断”</h3>
-        <p class="placeholder">对许多人来说诊断带来的是理解和解脱而非束缚。不诊断是个人选择，但不应否定诊断的价值。</p>
+        <div class="placeholder">对许多人来说诊断带来的是理解和解脱而非束缚。不诊断是个人选择，但不应否定诊断的价值。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth11">
         <h3>11. “高功能 = 没什么问题，不需要支持”</h3>
-        <p class="placeholder">"高功能"标签常被用来否定支持需求。表面功能良好往往以巨大的内在代价维持。</p>
+        <div class="placeholder">"高功能"标签常被用来否定支持需求。表面功能良好往往以巨大的内在代价维持。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth12">
         <h3>12. “成绩好 / 考上大学就不可能是自闭症/ADHD”</h3>
-        <p class="placeholder">成绩好只说明认知能力在某些领域未受损，不代表执行功能、感觉处理、社交等方面没问题。</p>
+        <div class="placeholder">成绩好只说明认知能力在某些领域未受损，不代表执行功能、感觉处理、社交等方面没问题。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth13">
         <h3>13. “神经多样性就是自闭症的另一个说法”</h3>
-        <p class="placeholder">神经多样性涵盖ASD、ADHD、阅读障碍、妥瑞症等多种认知差异，不是ASD的别名。</p>
+        <div class="placeholder">神经多样性涵盖ASD、ADHD、阅读障碍、妥瑞症等多种认知差异，不是ASD的别名。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
     <div class="section-block" id="myth14">
         <h3>14. “疫苗导致自闭症”</h3>
-        <p class="placeholder">大量大规模研究证实疫苗与自闭症之间没有因果关系，原始论文因数据造假已被撤稿。</p>
+        <div class="placeholder">大量大规模研究证实疫苗与自闭症之间没有因果关系，原始论文因数据造假已被撤稿。</div>
         <a href="#toc" class="back-to-toc">↑ 回到目录</a>
     </div>
 </main>
