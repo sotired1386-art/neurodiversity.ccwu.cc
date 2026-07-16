@@ -30,18 +30,17 @@
         .nav-link.accent { color:var(--accent); font-weight:600; }
         .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
         @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;gap:4px;padding-top:8px;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;border-radius:var(--radius-sm);padding:10px 16px;} }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 24px 52px; width:100%; }
+        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
         .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 28px; margin:24px 0 32px; }
+        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
         .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
         .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
         .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
         .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:24px 28px; margin-bottom:24px; }
+        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
         .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
         .section-block .placeholder {
-            color:var(--text); margin:0 0 1.2em; background:var(--bg);
-            padding:14px 18px; border-radius:var(--radius-sm);
+            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
             line-height:1.8; white-space: pre-line;
         }
         .ref { font-size:0.9rem; color:var(--text-medium); margin-top:16px; border-top:1px dashed var(--card-border); padding-top:14px; line-height:1.7; white-space: pre-line; }
