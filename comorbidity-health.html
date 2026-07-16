@@ -13,38 +13,41 @@
             --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
             --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
             --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 1000px;
+            --max-width: 960px;
             --font-serif: 'Noto Serif SC', 'STSong', serif;
             --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.7; display:flex; flex-direction:column; min-height:100vh; }
+        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.8; display:flex; flex-direction:column; min-height:100vh; font-size:1rem; }
         .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
-        .header-inner { max-width:var(--max-width); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-        .site-title { font-family:var(--font-serif); font-size:1.5rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
+        .header-inner { max-width:var(--max-width); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .site-title { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
         .site-title span { color:var(--accent); }
-        .main-nav { display:flex; gap:4px; flex-wrap:wrap; }
-        .nav-link { padding:6px 12px; border-radius:20px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; transition:0.2s; border:1.5px solid transparent; }
-        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); }
+        .main-nav { display:flex; gap:6px; flex-wrap:wrap; }
+        .nav-link { padding:8px 14px; border-radius:22px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; font-weight:500; transition:0.2s; border:1.5px solid transparent; }
+        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); border-color:var(--card-border); }
         .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
         .nav-link.accent { color:var(--accent); font-weight:600; }
-        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:6px 12px; cursor:pointer; }
-        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;} }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:24px 24px 48px; width:100%; }
-        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:6px; border-left:6px solid var(--accent); padding-left:16px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:18px 22px; margin:20px 0 28px; }
+        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
+        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;gap:4px;padding-top:8px;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;border-radius:var(--radius-sm);padding:10px 16px;} }
+        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
+        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
+        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
         .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
         .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
-        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; border-bottom:1.5px dashed transparent; }
+        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
         .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 22px; margin-bottom:24px; }
-        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:10px; }
-        .placeholder { color:var(--text-light); font-style:italic; margin:8px 0; }
-        .ref { font-size:0.8rem; color:var(--text-lighter); margin-top:12px; border-top:1px dashed var(--card-border); padding-top:8px; }
-        .back-to-toc { display:inline-block; margin-top:10px; font-size:0.85rem; color:var(--accent); text-decoration:none; font-weight:500; }
+        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
+        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
+        .section-block .placeholder {
+            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
+            line-height:1.8; white-space: pre-line;
+        }
+        .ref { font-size:0.9rem; color:var(--text-medium); margin-top:16px; border-top:1px dashed var(--card-border); padding-top:14px; line-height:1.7; white-space: pre-line; }
+        .back-to-toc { display:inline-block; margin-top:12px; font-size:0.9rem; color:var(--accent); text-decoration:none; font-weight:500; }
         .back-to-toc:hover { text-decoration:underline; }
-        .site-footer { text-align:center; padding:12px 24px 28px; font-size:0.85rem; color:var(--text-lighter); margin-top:auto; }
-        .site-footer em { color:var(--accent); font-style:normal; }
+        .site-footer { text-align:center; padding:16px 24px 28px; font-size:0.9rem; color:var(--text-light); margin-top:auto; }
+        .site-footer em { color:var(--accent); font-style:normal; font-weight:500; }
     </style>
 </head>
 <body>
@@ -74,7 +77,9 @@
             <li><a href="#sleep">睡眠问题</a></li>
         </ul>
     </div>
-    <div class="section-block" id="sensory"><h3>感觉处理鉴别</h3><p class="placeholder">概念界定
+    <div class="section-block" id="sensory">
+        <h3>感觉处理鉴别</h3>
+        <div class="placeholder">概念界定
 感觉处理差异指大脑接收、调节、整合和回应感官刺激的方式偏离典型模式。表现为感觉过度敏感（hypersensitivity，对刺激反应过度）、感觉迟钝（hyposensitivity，对刺激反应不足）和感觉寻求（sensory seeking，主动追求高强度感官输入）。常见受影响的感官通道包括听觉、视觉、触觉、嗅觉、味觉、前庭觉、本体感觉和内感受
 
 感觉处理障碍（Sensory Processing Disorder, SPD）在临床中被广泛认可和治疗（尤其是在作业治疗领域），但未被纳入DSM-5-TR作为独立诊断类别。DSM-5将感觉反应异常作为ASD的诊断标准之一（维度B下的感官超敏或低敏），也承认ADHD中感觉处理的共病表现，但两者对感觉问题的定位不同。
@@ -90,13 +95,18 @@ ADHD中的感觉处理差异：ADHD的感觉问题更多与注意力调节困难
 流行率与重叠
 约90-95%的ASD儿童同时存在有临床意义的感觉处理困难。约50-64%的ADHD儿童报告有意义的感觉处理差异。一般儿童群体中约5-16%符合SPD筛查标准。三种状况的感觉处理特征高度重叠，但感觉差异本身不能单独用于鉴别诊断——核心鉴别点在于社交沟通、限制性重复行为和注意力/冲动控制的表现。
 
-感觉处理障碍作为独立诊断类别的地位仍存在争议。支持者认为SPD有独特的神经生物学基础（白质异常模式区别于ASD），在作业治疗中有成熟的评估和干预体系。反对者则认为感觉问题在ASD和ADHD中已充分覆盖，将其单列为诊断类别可能导致过度诊断和医疗化。此外，感觉处理的评估工具主要依赖行为观察和照顾者报告，缺乏客观生物标志物。在中国，感觉统合训练在干预中广泛应用，但其理论基础和疗效证据仍有争议——部分训练方案缺乏严格随机对照试验支持。</p><div class="ref">参考文献：• PMC (2023). Sensory Processing Differences in Individuals With Autism Spectrum Disorder: A Narrative Review. 
+感觉处理障碍作为独立诊断类别的地位仍存在争议。支持者认为SPD有独特的神经生物学基础（白质异常模式区别于ASD），在作业治疗中有成熟的评估和干预体系。反对者则认为感觉问题在ASD和ADHD中已充分覆盖，将其单列为诊断类别可能导致过度诊断和医疗化。此外，感觉处理的评估工具主要依赖行为观察和照顾者报告，缺乏客观生物标志物。在中国，感觉统合训练在干预中广泛应用，但其理论基础和疗效证据仍有争议——部分训练方案缺乏严格随机对照试验支持。</div>
+        <div class="ref">参考文献：• PMC (2023). Sensory Processing Differences in Individuals With Autism Spectrum Disorder: A Narrative Review. 
 • PMC (2009). Physiological and Behavioral Differences in Sensory Processing: A Comparison of Children with ASD and SMD. 
 • Medical News Today. SPD vs. autism: Differences explained. 
 • PMC (2011). Sensory Processing Problems in Children with ADHD, a Systematic Review. 
 • Emotiv. 自闭症与多动症的重叠. 
-• 彩虹中心. 自闭症和感觉超负荷. </div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
-    <div class="section-block" id="anxiety-depression"><h3>焦虑与抑郁</h3><p class="placeholder">流行率
+• 彩虹中心. 自闭症和感觉超负荷. </div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+    <div class="section-block" id="anxiety-depression">
+        <h3>焦虑与抑郁</h3>
+        <div class="placeholder">流行率
 焦虑和抑郁是ADHD和ASD群体中最常见的内化共病，发生率显著高于一般人群。
 ASD中：Meta分析显示ASD成人当前焦虑障碍的合并患病率约27%，终生患病率约42%；当前抑郁约23%，终生约37%。
 ADHD中：ADHD成人抑郁共病率在19-53%之间，焦虑共病率约50%。ADHD儿童的焦虑共病率在5.6-37.9%之间。
@@ -120,13 +130,18 @@ ADHD中的焦虑和抑郁与执行功能缺陷和情绪失调密切相关。
 易怒/激越：在ADHD（冲动控制不良）、抑郁（激越性抑郁）、焦虑（高唤醒状态）中均常见，需要结合伴随症状（快感缺失、睡眠、食欲等核心抑郁症状的存在与否）判断。
 
 临床意义
-共病焦虑或抑郁的神经多元个体功能损害更严重、生活质量更低、自杀风险更高、治疗反应可能更差。治疗建议遵循"先治疗最严重或最核心的疾病"原则——如果ADHD或ASD的核心症状显著且未经治疗，通常优先处理；如果焦虑/抑郁达到中重度且影响安全（尤其是自杀风险），则应优先干预焦虑/抑郁。心理治疗（尤其CBT）需针对神经多元群体进行适应调整：增加结构化、使用视觉支持、减少对隐喻的依赖、纳入特殊兴趣。药物选择需考虑共病间的交互作用。</p><div class="ref">参考文献：• Hollocks, M.J. et al. (2019). Anxiety and depression in adults with ASD: a systematic review and meta-analysis. Psychological Medicine, 49(4), 559–572. 
+共病焦虑或抑郁的神经多元个体功能损害更严重、生活质量更低、自杀风险更高、治疗反应可能更差。治疗建议遵循"先治疗最严重或最核心的疾病"原则——如果ADHD或ASD的核心症状显著且未经治疗，通常优先处理；如果焦虑/抑郁达到中重度且影响安全（尤其是自杀风险），则应优先干预焦虑/抑郁。心理治疗（尤其CBT）需针对神经多元群体进行适应调整：增加结构化、使用视觉支持、减少对隐喻的依赖、纳入特殊兴趣。药物选择需考虑共病间的交互作用。</div>
+        <div class="ref">参考文献：• Hollocks, M.J. et al. (2019). Anxiety and depression in adults with ASD: a systematic review and meta-analysis. Psychological Medicine, 49(4), 559–572. 
 • Frontiers in Psychiatry (2025). Adult ADHD and comorbid anxiety and depressive disorders. 
 • MedSci (2025). 柳叶刀最新发表: 1990-2021年中国青少年精神障碍的流行病学分析. 
 • J Neuropsychiatry. Differential diagnosis and comorbidity: distinguishing autism from other mental health issues. 
 • CADDRA. Differential diagnosis and comorbid disorders. 
-• PMC (2020). Moderated mediation analysis for ADHD symptoms with anxiety symptoms. </div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
-    <div class="section-block" id="physical"><h3>躯体共病</h3><p class="placeholder">概述
+• PMC (2020). Moderated mediation analysis for ADHD symptoms with anxiety symptoms. </div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+    <div class="section-block" id="physical">
+        <h3>躯体共病</h3>
+        <div class="placeholder">概述
 ASD和ADHD不仅是神经发育障碍，还伴随广泛的躯体共病，涉及消化、神经、免疫、内分泌和代谢等多个系统。这些共病并非偶然并存，而是与核心症状共享部分神经生物学通路，相互影响和加重。
 
 ASD的躯体共病
@@ -144,19 +159,27 @@ ADHD的躯体共病
 癫痫：ADHD中癫痫的发生率也高于一般人群，但关联强度低于ASD与癫痫之间的关联。
 
 临床意义
-躯体共病对神经发育障碍的诊断和治疗有重要影响：部分躯体症状（如睡眠问题导致的注意力困难、癫痫发作后的意识改变）可能被误认为ADHD或ASD核心症状，需要仔细鉴别；躯体共病显著增加了疾病负担和功能损害，加剧了认知、行为和情绪问题；多学科协作管理至关重要——儿科、精神科、消化科、神经科、营养科等的联合评估；干预策略需要综合考量共病因素，以提高整体生活质量和改善预后。尤其值得注意的是，ASD和ADHD群体存在显著的健康不平等——他们的躯体疾病更容易被忽视或归因于行为问题，需要提高临床工作者的警惕性。</p><div class="ref">参考文献：• European Child & Adolescent Psychiatry (2017). Medical comorbidities in children and adolescents with ASD and ADHD. 
+躯体共病对神经发育障碍的诊断和治疗有重要影响：部分躯体症状（如睡眠问题导致的注意力困难、癫痫发作后的意识改变）可能被误认为ADHD或ASD核心症状，需要仔细鉴别；躯体共病显著增加了疾病负担和功能损害，加剧了认知、行为和情绪问题；多学科协作管理至关重要——儿科、精神科、消化科、神经科、营养科等的联合评估；干预策略需要综合考量共病因素，以提高整体生活质量和改善预后。尤其值得注意的是，ASD和ADHD群体存在显著的健康不平等——他们的躯体疾病更容易被忽视或归因于行为问题，需要提高临床工作者的警惕性。</div>
+        <div class="ref">参考文献：• European Child & Adolescent Psychiatry (2017). Medical comorbidities in children and adolescents with ASD and ADHD. 
 • The British Journal of Psychiatry. Umbrella systematic review on comorbid physical conditions in people with ASD. 
 • PMC (2019). Characterizing the Interplay Between ASD and Comorbid Medical Conditions. 
 • 北京协和医院. 自闭症发病或与免疫、肠道菌群相关. 
 • Psych Scene Hub. ADHD and Autism Comorbidity: Clinical Insights & Review. 
 • 世界ADHD联盟国际共识声明：208条循证结论. 
 • ADxS.org. Somatic comorbidities in ADHD. 
-• 热心肠研究院. 关于孤独症（自闭症）的10大必读知识.</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
-    <div class="section-block" id="sleep"><h3>睡眠问题</h3><p class="placeholder">（由于前面提到了，做简单描述）睡眠障碍是ASD和ADHD群体中最常见且影响最深远的躯体共病之一。
+• 热心肠研究院. 关于孤独症（自闭症）的10大必读知识.</div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
+    <div class="section-block" id="sleep">
+        <h3>睡眠问题</h3>
+        <div class="placeholder">（由于前面提到了，做简单描述）睡眠障碍是ASD和ADHD群体中最常见且影响最深远的躯体共病之一。
 ASD中：约44-83%的ASD个体经历睡眠质量下降，包括入睡困难、频繁夜醒、睡眠潜伏期延长和睡眠效率降低。睡眠问题与ASD核心症状（重复刻板行为、易怒、注意困难）之间存在双向恶化关系。
 ADHD中：睡眠障碍同样高发。数据显示ADHD群体中日间嗜睡38%（对照组11-18%）、睡眠呼吸障碍8%（对照组4-4.5%）、不宁腿综合征12%（对照组2.7-7.2%）。ADHD共病ASD的儿童睡眠障碍可达86%。ADHD本身的情绪失调和执行功能缺陷与睡眠问题相互加重。
 常见机制涉及褪黑素分泌异常、感觉处理差异、焦虑共病以及药物（尤其是兴奋剂）对睡眠的干扰。
-临床建议：常规评估睡眠状况（PSQI等工具）；行为干预（规律作息、睡眠卫生）作为一线方案；必要时考虑褪黑素补充，需注意剂量和使用时机；区分原发睡眠障碍与ADHD/ASD共病导致的睡眠问题。</p><div class="ref">参考文献：Psych Scene Hub - ADHD and Autism Comorbidity</div><a href="#toc" class="back-to-toc">↑ 回到目录</a></div>
+临床建议：常规评估睡眠状况（PSQI等工具）；行为干预（规律作息、睡眠卫生）作为一线方案；必要时考虑褪黑素补充，需注意剂量和使用时机；区分原发睡眠障碍与ADHD/ASD共病导致的睡眠问题。</div>
+        <div class="ref">参考文献：Psych Scene Hub - ADHD and Autism Comorbidity</div>
+        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+    </div>
 </main>
 <footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
 </body>
