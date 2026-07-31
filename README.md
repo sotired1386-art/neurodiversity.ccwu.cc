@@ -1,1 +1,1 @@
-# neurodiversity.ccwu.cc
+# 神经多样性科普站
