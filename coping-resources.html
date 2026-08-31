@@ -1,164 +1,365 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>应对与资源 · 神经多样性科普站</title>
-    <style>
-        :root {
-            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
-            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
-            --accent: #C0392B; --accent-light: #FDF0ED;
-            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
-            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
-            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
-            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 960px;
-            --font-serif: 'Noto Serif SC', 'STSong', serif;
-            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.8; display:flex; flex-direction:column; min-height:100vh; font-size:1rem; }
-        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
-        .header-inner { max-width:var(--max-width); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-        .site-title { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
-        .site-title span { color:var(--accent); }
-        .main-nav { display:flex; gap:6px; flex-wrap:wrap; }
-        .nav-link { padding:8px 14px; border-radius:22px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; font-weight:500; transition:0.2s; border:1.5px solid transparent; }
-        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); border-color:var(--card-border); }
-        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
-        .nav-link.accent { color:var(--accent); font-weight:600; }
-        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
-        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;gap:4px;padding-top:8px;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;border-radius:var(--radius-sm);padding:10px 16px;} }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
-        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
-        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
-        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
-        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
-        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
-        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
-        .section-block .placeholder {
-            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
-            line-height:2.1; white-space: pre-line;
-        }
-        .ref { font-size:0.9rem; color:var(--text-medium); margin-top:16px; border-top:1px dashed var(--card-border); padding-top:14px; line-height:1.7; white-space: pre-line; }
-        .back-to-toc { display:inline-block; margin-top:12px; font-size:0.9rem; color:var(--accent); text-decoration:none; font-weight:500; }
-        .back-to-toc:hover { text-decoration:underline; }
-        .site-footer { text-align:center; padding:16px 24px 28px; font-size:0.9rem; color:var(--text-light); margin-top:auto; }
-        .site-footer em { color:var(--accent); font-style:normal; font-weight:500; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>应对与资源 · 神经多样性科普站</title>
+<meta name="description" content="社交策略、能量管理、量表介绍与中国就诊现状：神经多元群体的实用资源。">
+<meta property="og:title" content="应对与资源 · 神经多样性科普站">
+<meta property="og:description" content="社交策略、能量管理、量表介绍与中国就诊现状。">
+<style>
+/* ============ 设计变量（与全站一致） ============ */
+:root {
+  --bg: #FBFBF9;
+  --text: #262626;
+  --text-2: #6B6B6B;
+  --text-3: #9A9A96;
+  --border: #E7E5DE;
+  --border-dashed: #DDDACF;
+  --accent: #2E6E5E;
+  --accent-weak: #E9F1ED;
+  --font-serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --max-w: 720px;
+  --header-h: 60px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181A; --text: #D8D6D0; --text-2: #9C9B95; --text-3: #6E6D68;
+    --border: #2B2D30; --border-dashed: #35383B;
+    --accent: #6FBFA8; --accent-weak: #1E2B27;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans); background: var(--bg); color: var(--text);
+  font-size: 16.5px; line-height: 1.95; -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-weak); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  background: var(--accent); z-index: 200;
+  transform-origin: 0 50%; transform: scaleX(0);
+}
+@supports (animation-timeline: scroll()) {
+  #progress { animation: pagegrow linear; animation-timeline: scroll(root block); }
+  @keyframes pagegrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: 960px; margin: 0 auto; padding: 0 20px;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
+  color: var(--text); letter-spacing: .02em; white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.brand .dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); margin-left: 7px; vertical-align: 2px;
+}
+.nav-details { position: relative; }
+.nav-details summary {
+  list-style: none; cursor: pointer; user-select: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 5px 12px; font-size: 1.05rem; color: var(--text-2);
+  transition: background .15s;
+}
+.nav-details summary::-webkit-details-marker { display: none; }
+.nav-details[open] summary { background: var(--accent-weak); color: var(--accent); border-color: var(--accent); }
+.site-nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--text-2); font-size: .88rem; padding: 4px 0;
+  border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s;
+}
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+.site-nav a.active { color: var(--accent); font-weight: 600; border-bottom-color: var(--accent); }
+@media (max-width: 820px) {
+  .nav-details .site-nav {
+    display: none; position: absolute; top: calc(100% + 10px); right: 0;
+    flex-direction: column; gap: 0; min-width: 42vw;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 6px 18px; box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  }
+  .nav-details[open] .site-nav { display: flex; }
+  .site-nav a { padding: 11px 0; font-size: .95rem; border-bottom: 1px solid var(--border); }
+  .site-nav a:last-child { border-bottom: none; }
+}
+@media (min-width: 821px) {
+  .nav-details summary { display: none; }
+}
+
+.page { padding-top: 56px; padding-bottom: 72px; }
+.page-head { margin-bottom: 20px; }
+.page-head h1 {
+  font-family: var(--font-serif); font-size: 2.1rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 10px;
+}
+.page-head .sub { color: var(--text-3); font-size: .92rem; letter-spacing: .04em; }
+.page-toc {
+  margin-top: 26px; padding: 14px 0 18px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px;
+}
+.page-toc a { color: var(--text-2); font-size: .88rem; }
+.page-toc a:hover { color: var(--accent); text-decoration: none; }
+
+.entry { padding-top: 46px; margin-top: 46px; border-top: 1px solid var(--border); scroll-margin-top: calc(var(--header-h) + 20px); }
+.entry:first-of-type { border-top: none; margin-top: 0; padding-top: 34px; }
+.entry > h2 {
+  font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700;
+  line-height: 1.4; margin-bottom: 4px;
+}
+details.body summary {
+  display: block; cursor: pointer; list-style: none;
+  margin: 10px -14px 0; padding: 12px 14px; border-radius: 8px;
+  transition: background .15s;
+}
+details.body summary::-webkit-details-marker { display: none; }
+details.body summary:hover { background: var(--accent-weak); }
+.digest { display: block; color: var(--text-2); font-size: .95rem; line-height: 1.8; }
+.hint { display: block; margin-top: 6px; color: var(--accent); font-size: .84rem; letter-spacing: .03em; }
+.hint .less { display: none; }
+details[open] > summary .more { display: none; }
+details[open] > summary .less { display: inline; }
+details[open] > summary { margin-bottom: 6px; border-bottom: 1px dashed var(--border-dashed); border-radius: 8px 8px 0 0; }
+details[open] > summary:hover { border-bottom-color: var(--accent); }
+.entry:target details.body:not([open]) .prose { display: block; animation: reveal .28s ease; }
+.entry:target details.body:not([open]) summary .more { display: none; }
+.entry:target details.body:not([open]) summary .less { display: inline; }
+
+.prose { animation: reveal .28s ease; padding-top: 6px; }
+@keyframes reveal { from { opacity: 0; transform: translateY(-5px); } }
+.prose h3 {
+  font-size: 1.02rem; font-weight: 600; margin: 1.9em 0 .5em;
+  display: flex; align-items: center; gap: 9px; line-height: 1.6;
+}
+.prose h3::before {
+  content: ""; width: 14px; height: 3px; border-radius: 2px;
+  background: var(--accent); flex: none;
+}
+.prose p { margin: 0 0 1.1em; }
+.prose ul { margin: 0 0 1.1em; padding-left: 1.3em; }
+.prose li { margin-bottom: .45em; }
+.prose li::marker { color: var(--accent); }
+.prose strong { font-weight: 600; }
+
+.disclaim {
+  margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--border);
+  color: var(--text-3); font-size: .82rem; line-height: 1.8;
+}
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 26px 0 34px; text-align: center;
+  color: var(--text-3); font-size: .85rem;
+}
+.site-footer em { font-style: normal; color: var(--accent); }
+
+@media (max-width: 820px) {
+  .page-head h1 { font-size: 1.7rem; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
+
 <header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
-        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-        <nav class="main-nav">
-            <a href="basic-concepts.html" class="nav-link">基础概念</a>
-            <a href="phenomena-mechanisms.html" class="nav-link">现象与机制</a>
-            <a href="asd-special.html" class="nav-link">ASD专题</a>
-            <a href="adhd-special.html" class="nav-link">ADHD专题</a>
-            <a href="comorbidity-health.html" class="nav-link">共病与健康</a>
-            <a href="coping-resources.html" class="nav-link active">应对与资源</a>
-            <a href="myths-clarification.html" class="nav-link accent">迷思澄清</a>
-        </nav>
-    </div>
+  <div class="header-inner">
+    <a class="brand" href="index.html">神经多样性科普站<span class="dot" aria-hidden="true"></span></a>
+    <details class="nav-details">
+      <summary aria-label="站内导航菜单">☰</summary>
+      <nav class="site-nav" aria-label="站内导航">
+        <a href="basic-concepts.html">基础概念</a>
+        <a href="phenomena-mechanisms.html">现象与机制</a>
+        <a href="asd-special.html">ASD专题</a>
+        <a href="adhd-special.html">ADHD专题</a>
+        <a href="comorbidity-health.html">共病与健康</a>
+        <a href="coping-resources.html" class="active" aria-current="page">应对与资源</a>
+        <a href="myths-clarification.html">迷思澄清</a>
+      </nav>
+    </details>
+  </div>
 </header>
-<main class="page-content">
-    <h1 class="module-title">应对与资源</h1>
-    <div class="toc-box" id="toc">
-        <h2>📑 目录</h2>
-        <ul class="toc-list">
-            <li><a href="#social">社交策略</a></li>
-            <li><a href="#energy">能量管理</a></li>
-            <li><a href="#scales">量表介绍</a></li>
-            <li><a href="#china">中国就诊现状</a></li>
+
+<main class="wrap page">
+  <header class="page-head">
+    <h1>应对与资源</h1>
+    <p class="sub">社交策略 · 能量管理 · 量表介绍 · 中国就诊现状</p>
+    <nav class="page-toc" aria-label="本页目录">
+      <a href="#social">社交策略</a>
+      <a href="#energy">能量管理</a>
+      <a href="#scales">量表介绍</a>
+      <a href="#china">中国就诊现状</a>
+    </nav>
+  </header>
+
+  <!-- ================= 1. 社交策略 ================= -->
+  <article class="entry" id="social">
+    <h2>社交策略</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">传统社交技能训练以神经典型模式为标准，本质上是在训练掩蔽；双向共情研究证实自闭症个体之间的信息传递效率与典型群体相当。新一代策略转向同辈连接、双方责任与自我倡导。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <p>传统社交技能训练（SST）以行为主义为基础，采用直接教学、示范、角色扮演和视频建模等方法，系统教授眼神接触、发起对话、轮流发言等具体技能。循证项目如 PEERS 在改善社交响应性和减轻社交焦虑方面显示了效果。但这类方法将神经典型社交模式设为唯一标准，本质上是在训练掩蔽。</p>
+        <p>神经多样性肯定框架对此提出了根本性质疑。研究证实自闭症个体之间信息传递的效率与神经典型个体之间同样高——社交困难的主因是神经类型间沟通风格的错配，而非自闭症个体本身的技能缺陷。基于双向共情理论（详见 <a href="asd-special.html#empathy">ASD 专题页</a>），新一代社交支持策略聚焦于让神经多元个体"纠正"自己的社交方式，转向几个方向：</p>
+        <ul>
+          <li><strong>同辈连接</strong>：创造机会让神经多元个体与认知处理风格相似的同伴互动。在自闭症-自闭症或 ADHD-ADHD 配对中，沟通更顺畅、舒适度更高。</li>
+          <li><strong>适应性沟通的双方责任</strong>：非自闭症同伴也被纳入教育和支持对象——学习理解和适应神经多元的沟通风格。沟通是一个双向过程，需要双方共同承担。</li>
+          <li><strong>自我倡导与边界设定</strong>：帮助个体识别自己的社交偏好和极限，学习何时、如何表达需求、说"不"、请求调整，而非一味迎合他人的期望。</li>
+          <li><strong>做自己的社交方式</strong>：接受不同社交智力形式的存在——有的个体喜欢深度讨论而非闲聊，有的需要更多处理时间，有的通过并行活动（如一起走路、各自做手工时聊天）建立连接。这些是需要被尊重的差异。</li>
         </ul>
-    </div>
-    <div class="section-block" id="social">
-        <h3>社交策略</h3>
-        <div class="placeholder">传统社交技能训练（SST）以行为主义为基础，采用直接教学、示范、角色扮演和视频建模等方法，系统教授眼神接触、发起对话、轮流发言等具体技能。循证项目如PEERS在改善社交响应性和减轻社交焦虑方面显示了效果。但这类方法将神经典型社交模式设为唯一标准，本质上是在训练掩蔽。
-神经多样性肯定框架对此提出了根本性质疑。研究证实自闭症个体之间信息传递的效率与神经典型个体之间同样高——社交困难的主因是神经类型间沟通风格的错配，而非自闭症个体本身的技能缺陷。基于双向共情理论，新一代社交支持策略不再聚焦于让神经多元个体"纠正"自己的社交方式，而是转向几个方向：
-同辈连接：创造机会让神经多元个体与认知处理风格相似的同伴互动。在自闭症-自闭症或ADHD-ADHD配对中，沟通更顺畅、舒适度更高。
-适应性沟通的双方责任：非自闭症同伴也被纳入教育和支持对象——学习理解和适应神经多元的沟通风格。沟通是一个双向过程，需要双方共同承担。
-自我倡导与边界设定：帮助个体识别自己的社交偏好和极限，学习何时、如何表达需求、说"不"、请求调整，而非一味迎合他人的期望。
-做自己的社交方式：接受不同社交智力形式的存在——有的个体喜欢深度讨论而非闲聊，有的需要更多处理时间，有的通过并行活动（如一起走路、各自做手工时聊天）建立连接。这些不是需要"纠正"的缺陷，而是值得尊重的差异。
-具体实践策略层面，不论框架如何，一些实用方法对提升社交舒适度有帮助：使用具体直接的语言、减少对隐喻和暗示的依赖、允许使用替代沟通方式（书面文字、图标等）、为社交互动设置明确的结构（时限、主题、期待的清晰说明）、预留充裕的加工时间、对过渡进行预告。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="energy">
-        <h3>能量管理</h3>
-        <div class="placeholder">能量管理
-神经多元个体的能量消耗模式与神经典型群体存在本质差异。日常生活中的许多活动对他们来说需要更多的认知资源——感官处理、社交互动、执行功能和掩蔽都持续消耗能量，而这些消耗往往是不可见的。
-勺子理论（Spoon Theory）是能量管理中最常用的概念框架。由Christine Miserandino最初为慢性病患者提出，后被Cynthia Kim等人改编适用于神经多元群体。其核心比喻：每人每天有一定数量的"勺子"代表可用能量，每项活动消耗一定数量的勺子——起床、穿衣、通勤、开会、社交，用完后当天的功能就会显著下降甚至崩溃。Cynthia Kim进一步提出不同类型的"勺子"——心理能量、执行功能、感官处理、社交互动和身体活动——可以独立波动，增加了框架的精细度。
-神经多元个体的能量陷阱包括：感官处理持续消耗勺子（即使在安静环境中，大脑可能需要更努力地过滤背景噪音或处理触觉输入）；掩蔽消耗大量能量（持续监控自己的表情、语气、肢体语言，努力看起来"正常"）；执行功能任务的勺子消耗更高（计划、组织、任务切换、时间管理等对ADHD/ASD大脑来说天然更费力）；超焦点后的反弹（高强度专注后的能量耗竭可能导致数小时的失能）。
-常见的能量管理策略包括：节奏控制（Pacing）——将任务分散而非集中完成，避免"要么全力以赴要么彻底躺平"的波动循环；将抽象能量转化为可观察信号（绿灯/黄灯/红灯系统，帮助自我监测能量状态并做出调整）；使用优先矩阵——按紧急程度和能量消耗两个维度对任务分类，优先处理高紧急低消耗的项目，避免在高耗能任务上消耗稀缺能量；在一天中嵌入主动而非被动的恢复时段（如短暂散步、安静空间停留、从事低认知负荷的爱好）；自我倡导——学会向他人沟通自己的能量限制，请求合理的调整（灵活的工作时间、安静的工作空间、减少不必要的社交要求）。
-能量的每日和每周波动是常态而非例外。接受这一点是可持续能量管理的前提。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="scales">
-        <h3>量表介绍</h3>
-        <div class="placeholder">神经发育障碍的评估体系分为筛查（screening）和诊断（diagnostic）两个层级，覆盖ASD、ADHD及相关共病领域。以下按用途分类介绍常用量表。
-ASD筛查量表
-M-CHAT-R/F（改良婴幼儿孤独症筛查量表，附后续问题）：家长填写的20项问卷，适用于16-30月龄幼儿。敏感度约78%，特异度约98%，是国际通用的ASD一级筛查工具，也嵌入中国多地妇幼保健系统的发育筛查流程。
-SRS-2（社交反应量表第二版）：家长/教师填写的65项量表，适用于2.5岁至成人。评估社交知觉、社交认知、社交沟通、社交动机和孤独症行为方式。基于DSM-5做了兼容调整，提供社交交流互动和局限兴趣刻板行为两个亚量表。在中国精神科和发育行为科广泛使用。
-SCQ（社会沟通问卷）：家长填写的40项是与否问卷，适用于4岁以上。用于快速评估ASD风险。
-ABC（孤独症行为量表）：家长填写的57项量表，适用于18月龄以上，涵盖感觉、交往、运动、语言和自我照顾五个方面。对典型ASD识别效果好，但对高功能个体可能有漏诊。
-ASD诊断量表
-ADOS-2（孤独症诊断观察量表第二版）：国际公认的ASD诊断金标准。半结构化的标准化互动评估，由经过培训的专业人员操作，用时40-60分钟。根据语言水平和年龄分为5个模块（Module T及1-4），评估交流、社交互动、游戏/想象性以及局限兴趣和刻板行为。敏感度约87%，特异度约75%。
-ADI-R（孤独症诊断访谈量表修订版）：针对照顾者的结构化访谈，评估社交互动、沟通和重复行为三个领域。与ADOS-2配合使用可提高诊断准确性。敏感度约77%，特异度约68%。
-CARS-2（儿童自闭症评定量表第二版）：基于观察的15项评估工具，适用于2岁以上。敏感度约89%，特异度约79%。有标准版和高功能版两个版本。
+        <p>具体实践策略层面，不论框架如何，一些实用方法对提升社交舒适度有帮助：使用具体直接的语言、减少对隐喻和暗示的依赖、允许使用替代沟通方式（书面文字、图标等）、为社交互动设置明确的结构（时限、主题、期待的清晰说明）、预留充裕的加工时间、对过渡进行预告。</p>
+      </div>
+    </details>
+  </article>
 
-成人ASD自我筛查
-AQ（自闭症光谱系数）：50项自评量表，测验分数32或以上提示可能存在ASD。简版AQ-10的切分为6分。
-RAADS-R（Ritvo自闭症-阿斯伯格诊断量表修订版）：80项成人自评量表，主要面向智力和语言能力在平均水平的成人。切分为65分。是成人自我筛查中常用工具之一。
-CAT-Q（掩蔽自评量表）：25项自评量表，用于量化个体在社交场合中隐藏或补偿ASD特征的掩蔽行为。总分100以上提示显著掩蔽。在女性ASD识别中尤其有价值——高CAT-Q分加RAADS-R边缘分常提示被掩盖的自闭症。
-TAS-20（多伦多述情障碍量表）：20项自评量表，测量识别情绪困难、描述情绪困难和外向型思维三个维度。61-100分提示述情障碍存在。约50%的ASD个体得分在临床范围。
+  <!-- ================= 2. 能量管理 ================= -->
+  <article class="entry" id="energy">
+    <h2>能量管理</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">勺子理论是能量管理的核心框架：心理、执行功能、感官、社交等不同类型的"勺子"可以独立波动。掩蔽与感官过滤持续消耗能量；节奏控制、优先矩阵与主动恢复时段是核心策略。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>能量差异的本质</h3>
+        <p>神经多元个体的能量消耗模式与神经典型群体存在本质差异。日常生活中的许多活动对他们来说需要更多的认知资源——感官处理、社交互动、执行功能和掩蔽都持续消耗能量，而这些消耗往往是不可见的。</p>
 
-ADHD筛查与评估
-ASRS-v1.1（成人ADHD自评量表）：WHO和哈佛医学院合作开发的18项成人自评量表，基于DSM-IV/5标准。分为注意缺陷和多动-冲动两个维度。广泛用于成人ADHD的筛查。筛查阳性后需结合临床访谈进行确认。
-Conners-3（Conners行为评定量表第三版）：标准化家长、教师和自评量表，评估注意缺陷、多动/冲动、对立违抗和学习问题等。有常模数据可进行年龄和性别匹配的比较。适用于6-18岁。
-Vanderbilt（范德比尔特ADHD评定量表）：家长（55项）和教师（43项）问卷，适用于6-12岁。包含症状评估和功能损害评估。在中国临床中也有应用。
-ADHD-RS（ADHD评定量表）：基于DSM标准的结构化量表，评估核心症状的严重程度。
+        <h3>勺子理论（Spoon Theory）</h3>
+        <p>勺子理论是能量管理中最常用的概念框架。由 Christine Miserandino 最初为慢性病患者提出，后被 Cynthia Kim 等人改编适用于神经多元群体。其核心比喻：每人每天有一定数量的"勺子"代表可用能量，每项活动消耗一定数量的勺子——起床、穿衣、通勤、开会、社交，用完后当天的功能就会显著下降甚至崩溃。Cynthia Kim 进一步提出不同类型的"勺子"——心理能量、执行功能、感官处理、社交互动和身体活动——可以独立波动，增加了框架的精细度。</p>
 
-功能与共病评估
-ADI-R（已在上文ASD诊断部分描述）
-ABC量表（已在上文ASD筛查部分描述）
+        <h3>能量陷阱</h3>
+        <p>神经多元个体的能量陷阱包括：</p>
+        <ul>
+          <li><strong>感官处理持续消耗勺子</strong>：即使在安静环境中，大脑可能需要更努力地过滤背景噪音或处理触觉输入。</li>
+          <li><strong>掩蔽消耗大量能量</strong>：持续监控自己的表情、语气、肢体语言，努力看起来"正常"。</li>
+          <li><strong>执行功能任务的勺子消耗更高</strong>：计划、组织、任务切换、时间管理等对 ADHD/ASD 大脑来说天然更费力。</li>
+          <li><strong>超焦点后的反弹</strong>：高强度专注后的能量耗竭可能导致数小时的失能。</li>
+        </ul>
 
-量表是辅助工具而非诊断本身。筛查量表的阳性结果不能替代专业临床评估。诊断金标准（如ADOS-2、结构化临床访谈）需要由经过培训的专业人员操作。量表的文化适应性是重要问题——许多国际量表的中文译本虽完成了信效度检验，但常模数据可能滞后或来源有限。成人自我筛查量表的网络传播广泛，但其使用存在风险：缺乏专业解读时可能误导自我诊断或过度诊断；部分量表（如RAADS-R）在ASD与焦虑、抑郁等共病群体中的区分效度有限。
-量表是辅助工具而非诊断本身。筛查量表的阳性结果不能替代专业临床评估。诊断金标准（如ADOS-2、结构化临床访谈）需要由经过培训的专业人员操作。量表的文化适应性是重要问题——许多国际量表的中文译本虽完成了信效度检验，但常模数据可能滞后或来源有限。成人自我筛查量表的网络传播广泛，但其使用存在风险：缺乏专业解读时可能误导自我诊断或过度诊断；部分量表（如RAADS-R）在ASD与焦虑、抑郁等共病群体中的区分效度有限。
-</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="china">
-        <h3>中国就诊现状</h3>
-        <div class="placeholder">患病率与疾病负担
-中国儿童ADHD总患病率约5.6%（男童7.7%、女童3.4%）。ASD发病率约0.7%，患者总数超过1300万，其中0-14岁儿童约300-500万，并以每年约20万人的速度增长。成人ADHD患病率约3%，对应超过2000万潜在患者。
+        <h3>能量管理策略</h3>
+        <p>常见的能量管理策略包括：</p>
+        <ul>
+          <li><strong>节奏控制（Pacing）</strong>：将任务分散而非集中完成，避免"要么全力以赴要么彻底躺平"的波动循环。</li>
+          <li><strong>红绿灯系统</strong>：将抽象能量转化为可观察信号（绿灯/黄灯/红灯），帮助自我监测能量状态并做出调整。</li>
+          <li><strong>优先矩阵</strong>：按紧急程度和能量消耗两个维度对任务分类，优先处理高紧急低消耗的项目，避免在高耗能任务上消耗稀缺能量。</li>
+          <li><strong>主动恢复时段</strong>：在一天中嵌入主动而非被动的恢复时段——短暂散步、安静空间停留、从事低认知负荷的爱好。</li>
+          <li><strong>自我倡导</strong>：学会向他人沟通自己的能量限制，请求合理的调整（灵活的工作时间、安静的工作空间、减少不必要的社交要求）。</li>
+        </ul>
+        <p>能量的每日和每周波动是常态而非例外。接受这一点是可持续能量管理的前提。</p>
+      </div>
+    </details>
+  </article>
 
-诊断现状与核心问题
-就诊率低、漏诊率高。一项涉及全国13个城市的多中心研究显示，ADHD筛查阳性儿童的就诊率仅为24%（虽较10年前的10%已有提升）。农村地区ASD诊断延迟比城市长约1.5年。成人ADHD的实际就诊人数远低于患病规模，估计仅约5-10%被识别。北京安定医院医生李玉龙指出，在其门诊中自认为患有ADHD的成年人，最终确诊比例不足10%。
+  <!-- ================= 3. 量表介绍 ================= -->
+  <article class="entry" id="scales">
+    <h2>量表介绍</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">评估体系分筛查与诊断两层：M-CHAT-R/F 与 SRS-2 用于筛查，ADOS-2 与 ADI-R 为诊断金标准；成人可用 AQ、RAADS-R、CAT-Q 自评。量表是辅助工具，网络自评存在误导风险。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <p>神经发育障碍的评估体系分为筛查（screening）和诊断（diagnostic）两个层级，覆盖 ASD、ADHD 及相关共病领域。以下按用途分类介绍常用量表。</p>
 
-城乡差异
-诊断和服务可获得性的城乡差异显著。ASD患病率在城乡间接近（农村约0.9%，城市约1.0%），但农村儿童的诊断延迟明显更长。ADHD在农村儿童中诊断率反而更高（11.4% vs 城市9.2%），但农村家庭获得后续精神健康服务的比例显著更低。儿童精神科专科医生总量严重不足（约0.3/10万人），且高度集中于一线城市，中西部农村地区专科密度极低。
+        <h3>ASD 筛查量表</h3>
+        <ul>
+          <li><strong>M-CHAT-R/F（改良婴幼儿孤独症筛查量表，附后续问题）</strong>：家长填写的 20 项问卷，适用于 16-30 月龄幼儿。敏感度约 78%，特异度约 98%，是国际通用的 ASD 一级筛查工具，也嵌入中国多地妇幼保健系统的发育筛查流程。</li>
+          <li><strong>SRS-2（社交反应量表第二版）</strong>：家长/教师填写的 65 项量表，适用于 2.5 岁至成人。评估社交知觉、社交认知、社交沟通、社交动机和孤独症行为方式。基于 DSM-5 做了兼容调整，提供社交交流互动和局限兴趣刻板行为两个亚量表。在中国精神科和发育行为科广泛使用。</li>
+          <li><strong>SCQ（社会沟通问卷）</strong>：家长填写的 40 项是与否问卷，适用于 4 岁以上。用于快速评估 ASD 风险。</li>
+          <li><strong>ABC（孤独症行为量表）</strong>：家长填写的 57 项量表，适用于 18 月龄以上，涵盖感觉、交往、运动、语言和自我照顾五个方面。对典型 ASD 识别效果好，但对高功能个体可能有漏诊。</li>
+        </ul>
 
-疾病负担的上升趋势
-基于GBD数据的研究显示，1990-2021年中国儿童青少年ADHD的年龄标准化发病率（ASIR）从280.61/10万增至356.80/10万，年龄标准化患病率（ASPR）从3079.72/10万增至3653.25/10万。中国ADHD年龄标准化患病率呈上升趋势，与全球下降趋势形成鲜明对比。
+        <h3>ASD 诊断量表</h3>
+        <ul>
+          <li><strong>ADOS-2（孤独症诊断观察量表第二版）</strong>：国际公认的 ASD 诊断金标准。半结构化的标准化互动评估，由经过培训的专业人员操作，用时 40-60 分钟。根据语言水平和年龄分为 5 个模块（Module T 及 1-4），评估交流、社交互动、游戏/想象性以及局限兴趣和刻板行为。敏感度约 87%，特异度约 75%。</li>
+          <li><strong>ADI-R（孤独症诊断访谈量表修订版）</strong>：针对照顾者的结构化访谈，评估社交互动、沟通和重复行为三个领域。与 ADOS-2 配合使用可提高诊断准确性。敏感度约 77%，特异度约 68%。</li>
+          <li><strong>CARS-2（儿童自闭症评定量表第二版）</strong>：基于观察的 15 项评估工具，适用于 2 岁以上。敏感度约 89%，特异度约 79%。有标准版和高功能版两个版本。</li>
+        </ul>
 
+        <h3>成人 ASD 自我筛查</h3>
+        <ul>
+          <li><strong>AQ（自闭症光谱系数）</strong>：50 项自评量表，测验分数 32 或以上提示可能存在 ASD。简版 AQ-10 的切分为 6 分。</li>
+          <li><strong>RAADS-R（Ritvo 自闭症-阿斯伯格诊断量表修订版）</strong>：80 项成人自评量表，主要面向智力和语言能力在平均水平的成人。切分为 65 分。是成人自我筛查中常用工具之一。</li>
+          <li><strong>CAT-Q（掩蔽自评量表）</strong>：25 项自评量表，用于量化个体在社交场合中隐藏或补偿 ASD 特征的掩蔽行为。总分 100 以上提示显著掩蔽。在女性 ASD 识别中尤其有价值——高 CAT-Q 分加 RAADS-R 边缘分常提示被掩盖的自闭症。</li>
+          <li><strong>TAS-20（多伦多述情障碍量表）</strong>：20 项自评量表，测量识别情绪困难、描述情绪困难和外向型思维三个维度。61-100 分提示述情障碍存在。约 50% 的 ASD 个体得分在临床范围。</li>
+        </ul>
 
-成人ADHD诊断的推进
-2023年，中华医学会精神医学分会和中国医师协会精神科分会发布了《中国成人注意缺陷多动障碍诊断和治疗专家共识》，这是中国首部针对成人ADHD的专家共识。共识指出成人ADHD在中国长期被忽视，大量患者因症状被共病（焦虑、抑郁、双相、物质使用等）掩盖而漏诊，建议在抑郁障碍、双相障碍、焦虑障碍、SUD及人格障碍患者中常规筛查ADHD，并呼吁设立成人ADHD专病门诊。
-自2010年起，因ADHD就诊的成年人数逐步增加。2022年北京安定医院儿童精神科增设面向成人的ADHD综合干预门诊。但整体而言，成人ADHD在中国精神科临床中仍处于边缘位置——诊断意识不足、诊疗路径不成熟、治疗可及性有限。
+        <h3>ADHD 筛查与评估</h3>
+        <ul>
+          <li><strong>ASRS-v1.1（成人 ADHD 自评量表）</strong>：WHO 和哈佛医学院合作开发的 18 项成人自评量表，基于 DSM-IV/5 标准。分为注意缺陷和多动-冲动两个维度。广泛用于成人 ADHD 的筛查。筛查阳性后需结合临床访谈进行确认。</li>
+          <li><strong>Conners-3（Conners 行为评定量表第三版）</strong>：标准化家长、教师和自评量表，评估注意缺陷、多动/冲动、对立违抗和学习问题等。有常模数据可进行年龄和性别匹配的比较。适用于 6-18 岁。</li>
+          <li><strong>Vanderbilt（范德比尔特 ADHD 评定量表）</strong>：家长（55 项）和教师（43 项）问卷，适用于 6-12 岁。包含症状评估和功能损害评估。在中国临床中也有应用。</li>
+          <li><strong>ADHD-RS（ADHD 评定量表）</strong>：基于 DSM 标准的结构化量表，评估核心症状的严重程度。</li>
+        </ul>
 
-ASD诊断体系建设
-中国ASD诊断路径一般为：社区儿保机构或基层医院使用M-CHAT-R/F等筛查工具进行一级筛查；筛查阳性者转介至妇幼保健院进行复查；疑似病例到有资质的医院（通常为三级甲等医院的精神科/发育行为儿科）使用ADOS-2、CARS-2等工具进行确诊。但目前的问题是：具备ADOS-2操作资质且经过充分培训的专业人员极为有限，多数集中在大型城市的顶级医院；确诊后的康复资源同样分布不均，康复中心、行为干预和特殊教育供给远不能满足需求；社会认知度仍然较低——2017-2018年中国国民心理健康发展报告显示，抑郁、焦虑的公众知晓率达90%以上，而读写困难的知晓率不足50%。
+        <h3>使用警示</h3>
+        <p>量表是辅助工具而非诊断本身。筛查量表的阳性结果不能替代专业临床评估。诊断金标准（如 ADOS-2、结构化临床访谈）需要由经过培训的专业人员操作。量表的文化适应性是重要问题——许多国际量表的中文译本虽完成了信效度检验，但常模数据可能滞后或来源有限。成人自我筛查量表的网络传播广泛，但其使用存在风险：缺乏专业解读时可能误导自我诊断或过度诊断；部分量表（如 RAADS-R）在 ASD 与焦虑、抑郁等共病群体中的区分效度有限。</p>
+      </div>
+    </details>
+  </article>
 
-面临的结构性挑战
-当前中国神经发育障碍诊断面临的主要问题包括：精神健康资源总量不足且高度集中，基层识别能力有限；社会认知和病耻感使部分家庭回避求助；成人ADHD/ASD的诊断标准和流程尚未充分建立，多数精神科医生未接受过成人神经发育障碍的系统培训；筛查与诊断的本土化工具虽有引进和修订，但常模数据较大规模更新不足；2023版中国成人ADHD防治指南仍将重点放在儿童，成人部分篇幅有限；社交媒体上的自我诊断热潮带来"过度诊断"和"过度简单化"的双重风险。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
+  <!-- ================= 4. 中国就诊现状 ================= -->
+  <article class="entry" id="china">
+    <h2>中国就诊现状</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">ADHD 筛查阳性儿童的就诊率仅 24%，成人识别率约 5-10%；儿童精神科专科医生约 0.3/10 万且集中一线城市。2023 年首部成人 ADHD 专家共识发布；结构性挑战包括资源集中、病耻感与常模滞后。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>患病率与疾病负担</h3>
+        <p>中国儿童 ADHD 总患病率约 5.6%（男童 7.7%、女童 3.4%）。ASD 发病率约 0.7%，患者总数超过 1300 万，其中 0-14 岁儿童约 300-500 万，并以每年约 20 万人的速度增长。成人 ADHD 患病率约 3%，对应超过 2000 万潜在患者。</p>
+
+        <h3>诊断现状与核心问题</h3>
+        <p>就诊率低、漏诊率高。一项涉及全国 13 个城市的多中心研究显示，ADHD 筛查阳性儿童的就诊率仅为 24%（虽较 10 年前的 10% 已有提升）。农村地区 ASD 诊断延迟比城市长约 1.5 年。成人 ADHD 的实际就诊人数远低于患病规模，估计仅约 5-10% 被识别。北京安定医院医生李玉龙指出，在其门诊中自认为患有 ADHD 的成年人，最终确诊比例不足 10%。</p>
+
+        <h3>城乡差异</h3>
+        <p>诊断和服务可获得性的城乡差异显著。ASD 患病率在城乡间接近（农村约 0.9%，城市约 1.0%），但农村儿童的诊断延迟明显更长。ADHD 在农村儿童中诊断率反而更高（11.4% vs 城市 9.2%），但农村家庭获得后续精神健康服务的比例显著更低。儿童精神科专科医生总量严重不足（约 0.3/10 万人），且高度集中于一线城市，中西部农村地区专科密度极低。</p>
+
+        <h3>疾病负担的上升趋势</h3>
+        <p>基于 GBD 数据的研究显示，1990-2021 年中国儿童青少年 ADHD 的年龄标准化发病率（ASIR）从 280.61/10 万增至 356.80/10 万，年龄标准化患病率（ASPR）从 3079.72/10 万增至 3653.25/10 万。中国 ADHD 年龄标准化患病率呈上升趋势，与全球下降趋势形成鲜明对比。</p>
+
+        <h3>成人 ADHD 诊断的推进</h3>
+        <p>2023 年，中华医学会精神医学分会和中国医师协会精神科分会发布了《中国成人注意缺陷多动障碍诊断和治疗专家共识》，这是中国首部针对成人 ADHD 的专家共识。共识指出成人 ADHD 在中国长期被忽视，大量患者因症状被共病（焦虑、抑郁、双相、物质使用等）掩盖而漏诊，建议在抑郁障碍、双相障碍、焦虑障碍、SUD 及人格障碍患者中常规筛查 ADHD，并呼吁设立成人 ADHD 专病门诊。</p>
+        <p>自 2010 年起，因 ADHD 就诊的成年人数逐步增加。2022 年北京安定医院儿童精神科增设面向成人的 ADHD 综合干预门诊。但整体而言，成人 ADHD 在中国精神科临床中仍处于边缘位置——诊断意识不足、诊疗路径不成熟、治疗可及性有限。</p>
+
+        <h3>ASD 诊断体系建设</h3>
+        <p>中国 ASD 诊断路径一般为：社区儿保机构或基层医院使用 M-CHAT-R/F 等筛查工具进行一级筛查；筛查阳性者转介至妇幼保健院进行复查；疑似病例到有资质的医院（通常为三级甲等医院的精神科/发育行为儿科）使用 ADOS-2、CARS-2 等工具进行确诊。但目前的问题是：具备 ADOS-2 操作资质且经过充分培训的专业人员极为有限，多数集中在大型城市的顶级医院；确诊后的康复资源同样分布不均，康复中心、行为干预和特殊教育供给远不能满足需求；社会认知度仍然较低——2017-2018 年中国国民心理健康发展报告显示，抑郁、焦虑的公众知晓率达 90% 以上，而读写困难的知晓率不足 50%。</p>
+
+        <h3>面临的结构性挑战</h3>
+        <p>当前中国神经发育障碍诊断面临的主要问题包括：精神健康资源总量不足且高度集中，基层识别能力有限；社会认知和病耻感使部分家庭回避求助；成人 ADHD/ASD 的诊断标准和流程尚未充分建立，多数精神科医生未接受过成人神经发育障碍的系统培训；筛查与诊断的本土化工具虽有引进和修订，但常模数据较大规模更新不足；2023 版中国成人 ADHD 防治指南仍将重点放在儿童，成人部分篇幅有限；社交媒体上的自我诊断热潮带来"过度诊断"和"过度简单化"的双重风险。</p>
+      </div>
+    </details>
+  </article>
+
+  <p class="disclaim">本页基于 DSM-5-TR / ICD-11 及同行评审论文整理，内容更新于 2026 年 8 月。仅供科普参考，不构成诊断或治疗建议；就诊相关资源以各医疗机构最新信息为准。</p>
 </main>
-<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+
+<footer class="site-footer">
+  <div>神经多样性科普站 · <em>医学是以人为本</em></div>
+</footer>
+
 </body>
 </html>
