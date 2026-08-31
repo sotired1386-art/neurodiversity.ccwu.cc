@@ -1,164 +1,303 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>迷思澄清 · 神经多样性科普站</title>
-    <style>
-        :root {
-            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
-            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
-            --accent: #C0392B; --accent-light: #FDF0ED;
-            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
-            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
-            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
-            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 960px;
-            --font-serif: 'Noto Serif SC', 'STSong', serif;
-            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:2.1; display:flex; flex-direction:column; min-height:100vh; font-size:1rem; }
-        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
-        .header-inner { max-width:var(--max-width); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-        .site-title { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
-        .site-title span { color:var(--accent); }
-        .main-nav { display:flex; gap:6px; flex-wrap:wrap; }
-        .nav-link { padding:8px 14px; border-radius:22px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; font-weight:500; transition:0.2s; border:1.5px solid transparent; }
-        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); border-color:var(--card-border); }
-        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
-        .nav-link.accent { color:var(--accent); font-weight:600; }
-        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
-        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;gap:4px;padding-top:8px;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;border-radius:var(--radius-sm);padding:10px 16px;} }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
-        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
-        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
-        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
-        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
-        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
-        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
-        .section-block .placeholder {
-            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
-            line-height:1.8; white-space: pre-line;
-        }
-        .back-to-toc { display:inline-block; margin-top:12px; font-size:0.9rem; color:var(--accent); text-decoration:none; font-weight:500; }
-        .back-to-toc:hover { text-decoration:underline; }
-        .site-footer { text-align:center; padding:16px 24px 28px; font-size:0.9rem; color:var(--text-light); margin-top:auto; }
-        .site-footer em { color:var(--accent); font-style:normal; font-weight:500; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>迷思澄清 · 神经多样性科普站</title>
+<meta name="description" content="用研究证据回应关于自闭症与 ADHD 的 14 个常见误解。">
+<meta property="og:title" content="迷思澄清 · 神经多样性科普站">
+<meta property="og:description" content="用研究证据回应关于自闭症与 ADHD 的常见误解。">
+<style>
+/* ============ 设计变量（与全站一致） ============ */
+:root {
+  --bg: #FBFBF9;
+  --text: #262626;
+  --text-2: #6B6B6B;
+  --text-3: #9A9A96;
+  --border: #E7E5DE;
+  --accent: #2E6E5E;
+  --accent-weak: #E9F1ED;
+  --font-serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --max-w: 720px;
+  --header-h: 60px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181A; --text: #D8D6D0; --text-2: #9C9B95; --text-3: #6E6D68;
+    --border: #2B2D30; --accent: #6FBFA8; --accent-weak: #1E2B27;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans); background: var(--bg); color: var(--text);
+  font-size: 16.5px; line-height: 1.95; -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-weak); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  background: var(--accent); z-index: 200;
+  transform-origin: 0 50%; transform: scaleX(0);
+}
+@supports (animation-timeline: scroll()) {
+  #progress { animation: pagegrow linear; animation-timeline: scroll(root block); }
+  @keyframes pagegrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: 960px; margin: 0 auto; padding: 0 20px;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
+  color: var(--text); letter-spacing: .02em; white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.brand .dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); margin-left: 7px; vertical-align: 2px;
+}
+.nav-details { position: relative; }
+.nav-details summary {
+  list-style: none; cursor: pointer; user-select: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 5px 12px; font-size: 1.05rem; color: var(--text-2);
+  transition: background .15s;
+}
+.nav-details summary::-webkit-details-marker { display: none; }
+.nav-details[open] summary { background: var(--accent-weak); color: var(--accent); border-color: var(--accent); }
+.site-nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--text-2); font-size: .88rem; padding: 4px 0;
+  border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s;
+}
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+.site-nav a.active { color: var(--accent); font-weight: 600; border-bottom-color: var(--accent); }
+@media (max-width: 820px) {
+  .nav-details .site-nav {
+    display: none; position: absolute; top: calc(100% + 10px); right: 0;
+    flex-direction: column; gap: 0; min-width: 42vw;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 6px 18px; box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  }
+  .nav-details[open] .site-nav { display: flex; }
+  .site-nav a { padding: 11px 0; font-size: .95rem; border-bottom: 1px solid var(--border); }
+  .site-nav a:last-child { border-bottom: none; }
+}
+@media (min-width: 821px) {
+  .nav-details summary { display: none; }
+}
+
+.page { padding-top: 56px; padding-bottom: 72px; }
+.page-head { margin-bottom: 20px; }
+.page-head h1 {
+  font-family: var(--font-serif); font-size: 2.1rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 10px;
+}
+.page-head .sub { color: var(--text-3); font-size: .92rem; letter-spacing: .04em; }
+.page-toc {
+  margin-top: 26px; padding: 14px 0 18px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px;
+}
+.page-toc a { color: var(--text-2); font-size: .88rem; }
+.page-toc a:hover { color: var(--accent); text-decoration: none; }
+
+.entry { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--border); scroll-margin-top: calc(var(--header-h) + 20px); }
+.entry:first-of-type { border-top: none; margin-top: 0; padding-top: 34px; }
+.entry > h2 {
+  font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700;
+  line-height: 1.45; margin-bottom: 12px;
+}
+.entry > h2 .myth-label {
+  display: block; font-family: var(--font-sans); font-size: .8rem; font-weight: 400;
+  color: var(--text-3); letter-spacing: .14em; margin-bottom: 6px;
+}
+.myth-answer { color: var(--text); }
+.myth-answer p { margin: 0 0 1em; }
+.myth-answer strong { font-weight: 600; color: var(--accent); }
+
+.disclaim {
+  margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--border);
+  color: var(--text-3); font-size: .82rem; line-height: 1.8;
+}
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 26px 0 34px; text-align: center;
+  color: var(--text-3); font-size: .85rem;
+}
+.site-footer em { font-style: normal; color: var(--accent); }
+
+@media (max-width: 820px) {
+  .page-head h1 { font-size: 1.7rem; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
-<header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
-        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-        <nav class="main-nav">
-            <a href="basic-concepts.html" class="nav-link">基础概念</a>
-            <a href="phenomena-mechanisms.html" class="nav-link">现象与机制</a>
-            <a href="asd-special.html" class="nav-link">ASD专题</a>
-            <a href="adhd-special.html" class="nav-link">ADHD专题</a>
-            <a href="comorbidity-health.html" class="nav-link">共病与健康</a>
-            <a href="coping-resources.html" class="nav-link">应对与资源</a>
-            <a href="myths-clarification.html" class="nav-link active accent">迷思澄清</a>
-        </nav>
-    </div>
-</header>
-<main class="page-content">
-    <h1 class="module-title">迷思澄清</h1>
-    <p style="color:var(--text-medium); margin-bottom:8px;">用研究证据回应常见误解</p>
-    <div class="toc-box" id="toc">
-        <h2>📑 目录</h2>
-        <ul class="toc-list">
-            <li><a href="#myth1">1. “神经多样性只是赶时髦”</a></li>
-            <li><a href="#myth2">2. “自闭症都是天才 / 都有智力障碍”</a></li>
-            <li><a href="#myth3">3. “ADHD 就是懒 / 缺乏纪律”</a></li>
-            <li><a href="#myth4">4. “能社交/有眼神接触就不是自闭症”</a></li>
-            <li><a href="#myth5">5. “只有男孩才有自闭症/ADHD”</a></li>
-            <li><a href="#myth6">6. “所有人体内都有一点 ADHD / 自闭”</a></li>
-            <li><a href="#myth7">7. “自闭症是妈妈冷漠造成的（冰箱母亲理论）”</a></li>
-            <li><a href="#myth8">8. “自闭症人士没有共情能力”</a></li>
-            <li><a href="#myth9">9. “ADHD 长大了就好了”</a></li>
-            <li><a href="#myth10">10. “诊断就是贴标签，不如不诊断”</a></li>
-            <li><a href="#myth11">11. “高功能 = 没什么问题，不需要支持”</a></li>
-            <li><a href="#myth12">12. “成绩好 / 考上大学就不可能是自闭症/ADHD”</a></li>
-            <li><a href="#myth13">13. “神经多样性就是自闭症的另一个说法”</a></li>
-            <li><a href="#myth14">14. “疫苗导致自闭症”</a></li>
-        </ul>
-    </div>
+<div id="progress" aria-hidden="true"></div>
 
-    <div class="section-block" id="myth1">
-        <h3>1. “神经多样性只是赶时髦”</h3>
-        <div class="placeholder">Neurodiversity一词1998年就已提出，描述的是客观存在的神经差异，不是什么流行趋势。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">神经多样性科普站<span class="dot" aria-hidden="true"></span></a>
+    <details class="nav-details">
+      <summary aria-label="站内导航菜单">☰</summary>
+      <nav class="site-nav" aria-label="站内导航">
+        <a href="basic-concepts.html">基础概念</a>
+        <a href="phenomena-mechanisms.html">现象与机制</a>
+        <a href="asd-special.html">ASD专题</a>
+        <a href="adhd-special.html">ADHD专题</a>
+        <a href="comorbidity-health.html">共病与健康</a>
+        <a href="coping-resources.html">应对与资源</a>
+        <a href="myths-clarification.html" class="active" aria-current="page">迷思澄清</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main class="wrap page">
+  <header class="page-head">
+    <h1>迷思澄清</h1>
+    <p class="sub">用研究证据回应常见误解</p>
+    <nav class="page-toc" aria-label="本页目录">
+      <a href="#myth1">赶时髦</a>
+      <a href="#myth2">天才或智障</a>
+      <a href="#myth3">ADHD是懒</a>
+      <a href="#myth4">能社交就没自闭</a>
+      <a href="#myth5">只有男孩</a>
+      <a href="#myth6">人人都有一点</a>
+      <a href="#myth7">冰箱母亲</a>
+      <a href="#myth8">没有共情</a>
+      <a href="#myth9">长大就好</a>
+      <a href="#myth10">贴标签</a>
+      <a href="#myth11">高功能</a>
+      <a href="#myth12">成绩好</a>
+      <a href="#myth13">ASD别名</a>
+      <a href="#myth14">疫苗</a>
+    </nav>
+  </header>
+
+  <article class="entry" id="myth1">
+    <h2><span class="myth-label">迷思 01</span>"神经多样性只是赶时髦"</h2>
+    <div class="myth-answer">
+      <p>Neurodiversity 一词 1998 年就已提出，描述的是客观存在的神经差异，并非流行趋势。</p>
     </div>
-    <div class="section-block" id="myth2">
-        <h3>2. “自闭症都是天才 / 都有智力障碍”</h3>
-        <div class="placeholder">约30%有智力障碍，也有许多在平均或以上水平。"天才"只占约10%，两种极端都是刻板印象。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth2">
+    <h2><span class="myth-label">迷思 02</span>"自闭症都是天才 / 都有智力障碍"</h2>
+    <div class="myth-answer">
+      <p>约 30% 有智力障碍，也有许多在平均或以上水平。"天才"只占约 10%，两种极端都是刻板印象。</p>
     </div>
-    <div class="section-block" id="myth3">
-        <h3>3. “ADHD 就是懒 / 缺乏纪律”</h3>
-        <div class="placeholder">ADHD是涉及多巴胺系统的神经发育差异，不是意志力问题。说懒等于说近视的人"不想看清楚"。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth3">
+    <h2><span class="myth-label">迷思 03</span>"ADHD 就是懒 / 缺乏纪律"</h2>
+    <div class="myth-answer">
+      <p>ADHD 是涉及多巴胺系统的神经发育差异，与意志力无关。说懒，等于说近视的人"不想看清楚"。</p>
     </div>
-    <div class="section-block" id="myth4">
-        <h3>4. “能社交/有眼神接触就不是自闭症”</h3>
-        <div class="placeholder">许多自闭症人士通过高强度掩饰维持表面社交。有眼神接触不等于没有社交差异。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth4">
+    <h2><span class="myth-label">迷思 04</span>"能社交 / 有眼神接触就不是自闭症"</h2>
+    <div class="myth-answer">
+      <p>许多自闭症人士通过高强度掩饰维持表面社交。有眼神接触，不等于没有社交差异。</p>
     </div>
-    <div class="section-block" id="myth5">
-        <h3>5. “只有男孩才有自闭症/ADHD”</h3>
-        <div class="placeholder">诊断偏见导致女性被系统性漏诊，女性和性别多元群体常因更高掩饰能力被忽略。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth5">
+    <h2><span class="myth-label">迷思 05</span>"只有男孩才有自闭症 / ADHD"</h2>
+    <div class="myth-answer">
+      <p>诊断偏见导致女性被系统性漏诊，女性和性别多元群体常因更高的掩饰能力被忽略。</p>
     </div>
-    <div class="section-block" id="myth6">
-        <h3>6. “所有人体内都有一点 ADHD / 自闭”</h3>
-        <div class="placeholder">偶尔的走神或尴尬与持续终身、跨情境、有功能损害的神经发育障碍有本质区别。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth6">
+    <h2><span class="myth-label">迷思 06</span>"所有人体内都有一点 ADHD / 自闭"</h2>
+    <div class="myth-answer">
+      <p>偶尔的走神或尴尬，与持续终身、跨情境、有功能损害的神经发育障碍有本质区别。</p>
     </div>
-    <div class="section-block" id="myth7">
-        <h3>7. “自闭症是妈妈冷漠造成的（冰箱母亲理论）”</h3>
-        <div class="placeholder">这是Bruno Bettelheim在1950年代提出的伪理论，早已被学界彻底否定。自闭症是先天神经发育差异。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth7">
+    <h2><span class="myth-label">迷思 07</span>"自闭症是妈妈冷漠造成的（冰箱母亲理论）"</h2>
+    <div class="myth-answer">
+      <p>这是 Bruno Bettelheim 在 1950 年代提出的伪理论，早已被学界彻底否定。自闭症是先天的神经发育差异。</p>
     </div>
-    <div class="section-block" id="myth8">
-        <h3>8. “自闭症人士没有共情能力”</h3>
-        <div class="placeholder">研究表明ASD人士的情感共情完好甚至更强。问题在于认知共情的处理方式不同，不是没有。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth8">
+    <h2><span class="myth-label">迷思 08</span>"自闭症人士没有共情能力"</h2>
+    <div class="myth-answer">
+      <p>研究表明 ASD 人士的情感共情完好甚至更强。差异在于认知共情的处理方式，共情能力本身一直都在。</p>
     </div>
-    <div class="section-block" id="myth9">
-        <h3>9. “ADHD 长大了就好了”</h3>
-        <div class="placeholder">60-70%儿童ADHD患者症状持续到成年。表面"好了"的人是以巨大代价在掩饰。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth9">
+    <h2><span class="myth-label">迷思 09</span>"ADHD 长大了就好了"</h2>
+    <div class="myth-answer">
+      <p>60-70% 儿童 ADHD 患者症状持续到成年。表面"好了"的人，往往以巨大代价在掩饰。</p>
     </div>
-    <div class="section-block" id="myth10">
-        <h3>10. “诊断就是贴标签，不如不诊断”</h3>
-        <div class="placeholder">对许多人来说诊断带来的是理解和解脱而非束缚。不诊断是个人选择，但不应否定诊断的价值。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth10">
+    <h2><span class="myth-label">迷思 10</span>"诊断就是贴标签，不如不诊断"</h2>
+    <div class="myth-answer">
+      <p>对许多人来说，诊断带来的是理解和解脱。不诊断是个人选择，但不应否定诊断的价值。</p>
     </div>
-    <div class="section-block" id="myth11">
-        <h3>11. “高功能 = 没什么问题，不需要支持”</h3>
-        <div class="placeholder">"高功能"标签常被用来否定支持需求。表面功能良好往往以巨大的内在代价维持。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth11">
+    <h2><span class="myth-label">迷思 11</span>"高功能 = 没什么问题，不需要支持"</h2>
+    <div class="myth-answer">
+      <p>"高功能"标签常被用来否定支持需求。表面功能良好，往往以巨大的内在代价维持。</p>
     </div>
-    <div class="section-block" id="myth12">
-        <h3>12. “成绩好 / 考上大学就不可能是自闭症/ADHD”</h3>
-        <div class="placeholder">成绩好只说明认知能力在某些领域未受损，不代表执行功能、感觉处理、社交等方面没问题。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth12">
+    <h2><span class="myth-label">迷思 12</span>"成绩好 / 考上大学就不可能是自闭症 / ADHD"</h2>
+    <div class="myth-answer">
+      <p>成绩好只说明认知能力在某些领域未受损，执行功能、感觉处理、社交等方面照样可能吃力。</p>
     </div>
-    <div class="section-block" id="myth13">
-        <h3>13. “神经多样性就是自闭症的另一个说法”</h3>
-        <div class="placeholder">神经多样性涵盖ASD、ADHD、阅读障碍、妥瑞症等多种认知差异，不是ASD的别名。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth13">
+    <h2><span class="myth-label">迷思 13</span>"神经多样性就是自闭症的另一个说法"</h2>
+    <div class="myth-answer">
+      <p>神经多样性涵盖 ASD、ADHD、阅读障碍、妥瑞症等多种认知差异，范围远大于 ASD。</p>
     </div>
-    <div class="section-block" id="myth14">
-        <h3>14. “疫苗导致自闭症”</h3>
-        <div class="placeholder">大量大规模研究证实疫苗与自闭症之间没有因果关系，原始论文因数据造假已被撤稿。</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
+  </article>
+
+  <article class="entry" id="myth14">
+    <h2><span class="myth-label">迷思 14</span>"疫苗导致自闭症"</h2>
+    <div class="myth-answer">
+      <p>大量大规模研究证实疫苗与自闭症之间没有因果关系。原始论文因数据造假已被撤稿。</p>
     </div>
+  </article>
+
+  <p class="disclaim">本页回应基于 DSM-5-TR / ICD-11 及同行评审研究整理，内容更新于 2026 年 8 月。仅供科普参考，不构成诊断建议。</p>
 </main>
-<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+
+<footer class="site-footer">
+  <div>神经多样性科普站 · <em>医学是以人为本</em></div>
+</footer>
+
 </body>
 </html>
