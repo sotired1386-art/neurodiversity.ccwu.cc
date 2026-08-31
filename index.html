@@ -44,7 +44,7 @@ a { color: var(--accent); text-decoration: none; }
 .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 
 /* ============ Hero ============ */
-.hero { padding: 80px 0 64px; animation: rise .55s ease both; }
+.hero { padding: 80px 0 56px; animation: rise .55s ease both; }
 .hero h1 {
   font-family: var(--font-serif); font-weight: 700;
   font-size: clamp(2.1rem, 6.5vw, 3rem);
@@ -79,6 +79,7 @@ a { color: var(--accent); text-decoration: none; }
 .index-item:nth-child(5) { animation-delay: .30s; }
 .index-item:nth-child(6) { animation-delay: .36s; }
 .index-item:nth-child(7) { animation-delay: .42s; }
+.index-item:nth-child(8) { animation-delay: .48s; }
 .index-item:hover { background: var(--accent-weak); }
 .index-item:hover .index-title { color: var(--accent); }
 .index-item:hover .index-arrow { transform: translateX(5px); color: var(--accent); }
@@ -118,7 +119,7 @@ a { color: var(--accent); text-decoration: none; }
 
 /* ============ 移动端 ============ */
 @media (max-width: 640px) {
-  .hero { padding: 60px 0 46px; }
+  .hero { padding: 60px 0 42px; }
   .index-item { padding: 20px 6px; margin: 0 -6px; gap: 14px; }
   .index-title { font-size: 1.15rem; }
   .index-desc { font-size: .86rem; }
@@ -134,10 +135,18 @@ a { color: var(--accent); text-decoration: none; }
   <section class="hero">
     <h1>神经多样性科普站<span class="dot" aria-hidden="true"></span></h1>
     <p class="tagline">理解神经多样性，从科学开始</p>
-    <p class="intro">基于 DSM-5-TR、ICD-11 与同行评审研究，整理 ASD、ADHD 与 AuDHD 的科学证据、机制与争议。欢迎扩列——qq：3906355369</p>
+    <p class="intro">基于 DSM-5-TR、ICD-11 与同行评审研究，整理 ASD、ADHD 与 AuDHD 的科学证据、机制与争议。欢迎提出建议——联系本人（qq：3906355369）或直接发送邮箱（3906355369@qq.com）。</p>
   </section>
 
   <nav class="index-list" aria-label="站点目录">
+    <a class="index-item" href="glossary/index.html">
+      <span class="index-num" aria-hidden="true">00</span>
+      <span class="index-body">
+        <span class="index-title">术语解析</span>
+        <span class="index-desc">关键术语的中英对照与逐条解释 · 持续更新中</span>
+      </span>
+      <span class="index-arrow" aria-hidden="true">→</span>
+    </a>
     <a class="index-item" href="basic-concepts.html">
       <span class="index-num" aria-hidden="true">01</span>
       <span class="index-body">
