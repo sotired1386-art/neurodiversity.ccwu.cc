@@ -1,183 +1,407 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>现象与机制 · 神经多样性科普站</title>
-    <style>
-        :root {
-            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
-            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
-            --accent: #C0392B; --accent-light: #FDF0ED;
-            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
-            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
-            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
-            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 960px;
-            --font-serif: 'Noto Serif SC', 'STSong', serif;
-            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.8; display:flex; flex-direction:column; min-height:100vh; font-size:1rem; }
-        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
-        .header-inner { max-width:var(--max-width); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-        .site-title { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
-        .site-title span { color:var(--accent); }
-        .main-nav { display:flex; gap:6px; flex-wrap:wrap; }
-        .nav-link { padding:8px 14px; border-radius:22px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; font-weight:500; transition:0.2s; border:1.5px solid transparent; }
-        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); border-color:var(--card-border); }
-        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
-        .nav-link.accent { color:var(--accent); font-weight:600; }
-        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
-        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;gap:4px;padding-top:8px;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;border-radius:var(--radius-sm);padding:10px 16px;} }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
-        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
-        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
-        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
-        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
-        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
-        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
-        .section-block .placeholder {
-            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
-            line-height:1.8; white-space: pre-line;
-        }
-        .ref { font-size:0.9rem; color:var(--text-medium); margin-top:16px; border-top:1px dashed var(--card-border); padding-top:14px; line-height:1.7; white-space: pre-line; }
-        .back-to-toc { display:inline-block; margin-top:12px; font-size:0.9rem; color:var(--accent); text-decoration:none; font-weight:500; }
-        .back-to-toc:hover { text-decoration:underline; }
-        .site-footer { text-align:center; padding:16px 24px 28px; font-size:0.9rem; color:var(--text-light); margin-top:auto; }
-        .site-footer em { color:var(--accent); font-style:normal; font-weight:500; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>现象与机制 · 神经多样性科普站</title>
+<meta name="description" content="Masking、执行功能、倦怠（Burnout）、Stimming 与 RSD：机制、证据与争议的系统整理。">
+<meta property="og:title" content="现象与机制 · 神经多样性科普站">
+<meta property="og:description" content="Masking、执行功能、倦怠、Stimming 与 RSD 的机制、证据与争议。">
+<style>
+/* ============ 设计变量（与全站一致） ============ */
+:root {
+  --bg: #FBFBF9;
+  --text: #262626;
+  --text-2: #6B6B6B;
+  --text-3: #9A9A96;
+  --border: #E7E5DE;
+  --border-dashed: #DDDACF;
+  --accent: #2E6E5E;
+  --accent-weak: #E9F1ED;
+  --font-serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --max-w: 720px;
+  --header-h: 60px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181A; --text: #D8D6D0; --text-2: #9C9B95; --text-3: #6E6D68;
+    --border: #2B2D30; --border-dashed: #35383B;
+    --accent: #6FBFA8; --accent-weak: #1E2B27;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans); background: var(--bg); color: var(--text);
+  font-size: 16.5px; line-height: 1.95; -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-weak); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  background: var(--accent); z-index: 200;
+  transform-origin: 0 50%; transform: scaleX(0);
+}
+@supports (animation-timeline: scroll()) {
+  #progress { animation: pagegrow linear; animation-timeline: scroll(root block); }
+  @keyframes pagegrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: 960px; margin: 0 auto; padding: 0 20px;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
+  color: var(--text); letter-spacing: .02em; white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.brand .dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); margin-left: 7px; vertical-align: 2px;
+}
+.nav-details { position: relative; }
+.nav-details summary {
+  list-style: none; cursor: pointer; user-select: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 5px 12px; font-size: 1.05rem; color: var(--text-2);
+  transition: background .15s;
+}
+.nav-details summary::-webkit-details-marker { display: none; }
+.nav-details[open] summary { background: var(--accent-weak); color: var(--accent); border-color: var(--accent); }
+.site-nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--text-2); font-size: .88rem; padding: 4px 0;
+  border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s;
+}
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+.site-nav a.active { color: var(--accent); font-weight: 600; border-bottom-color: var(--accent); }
+@media (max-width: 820px) {
+  .nav-details .site-nav {
+    display: none; position: absolute; top: calc(100% + 10px); right: 0;
+    flex-direction: column; gap: 0; min-width: 42vw;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 6px 18px; box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  }
+  .nav-details[open] .site-nav { display: flex; }
+  .site-nav a { padding: 11px 0; font-size: .95rem; border-bottom: 1px solid var(--border); }
+  .site-nav a:last-child { border-bottom: none; }
+}
+@media (min-width: 821px) {
+  .nav-details summary { display: none; }
+}
+
+.page { padding-top: 56px; padding-bottom: 72px; }
+.page-head { margin-bottom: 20px; }
+.page-head h1 {
+  font-family: var(--font-serif); font-size: 2.1rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 10px;
+}
+.page-head .sub { color: var(--text-3); font-size: .92rem; letter-spacing: .04em; }
+.page-toc {
+  margin-top: 26px; padding: 14px 0 18px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px;
+}
+.page-toc a { color: var(--text-2); font-size: .88rem; }
+.page-toc a:hover { color: var(--accent); text-decoration: none; }
+
+.entry { padding-top: 46px; margin-top: 46px; border-top: 1px solid var(--border); scroll-margin-top: calc(var(--header-h) + 20px); }
+.entry:first-of-type { border-top: none; margin-top: 0; padding-top: 34px; }
+.entry > h2 {
+  font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700;
+  line-height: 1.4; margin-bottom: 4px;
+}
+details.body summary {
+  display: block; cursor: pointer; list-style: none;
+  margin: 10px -14px 0; padding: 12px 14px; border-radius: 8px;
+  transition: background .15s;
+}
+details.body summary::-webkit-details-marker { display: none; }
+details.body summary:hover { background: var(--accent-weak); }
+.digest { display: block; color: var(--text-2); font-size: .95rem; line-height: 1.8; }
+.hint { display: block; margin-top: 6px; color: var(--accent); font-size: .84rem; letter-spacing: .03em; }
+.hint .less { display: none; }
+details[open] > summary .more { display: none; }
+details[open] > summary .less { display: inline; }
+details[open] > summary { margin-bottom: 6px; border-bottom: 1px dashed var(--border-dashed); border-radius: 8px 8px 0 0; }
+details[open] > summary:hover { border-bottom-color: var(--accent); }
+.entry:target details.body:not([open]) .prose { display: block; animation: reveal .28s ease; }
+.entry:target details.body:not([open]) summary .more { display: none; }
+.entry:target details.body:not([open]) summary .less { display: inline; }
+
+.prose { animation: reveal .28s ease; padding-top: 6px; }
+@keyframes reveal { from { opacity: 0; transform: translateY(-5px); } }
+.prose h3 {
+  font-size: 1.02rem; font-weight: 600; margin: 1.9em 0 .5em;
+  display: flex; align-items: center; gap: 9px; line-height: 1.6;
+}
+.prose h3::before {
+  content: ""; width: 14px; height: 3px; border-radius: 2px;
+  background: var(--accent); flex: none;
+}
+.prose p { margin: 0 0 1.1em; }
+.prose ul { margin: 0 0 1.1em; padding-left: 1.3em; }
+.prose li { margin-bottom: .45em; }
+.prose li::marker { color: var(--accent); }
+.prose strong { font-weight: 600; }
+
+details.refs { margin-top: 20px; border-top: 1px dashed var(--border-dashed); }
+details.refs summary {
+  cursor: pointer; list-style: none; padding: 12px 0;
+  color: var(--text-3); font-size: .85rem; letter-spacing: .04em;
+  transition: color .15s;
+}
+details.refs summary::-webkit-details-marker { display: none; }
+details.refs summary:hover { color: var(--accent); }
+details.refs summary .chev { display: inline-block; margin-right: 6px; transition: transform .2s; font-size: .75em; }
+details[open].refs summary .chev { transform: rotate(90deg); }
+details.refs ol { padding: 2px 0 8px 1.25em; }
+details.refs li { font-size: .84rem; color: var(--text-2); line-height: 1.75; margin-bottom: .5em; }
+details.refs li::marker { color: var(--text-3); font-size: .8em; }
+details.refs a { font-size: .8rem; white-space: nowrap; }
+
+.disclaim {
+  margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--border);
+  color: var(--text-3); font-size: .82rem; line-height: 1.8;
+}
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 26px 0 34px; text-align: center;
+  color: var(--text-3); font-size: .85rem;
+}
+.site-footer em { font-style: normal; color: var(--accent); }
+
+@media (max-width: 820px) {
+  .page-head h1 { font-size: 1.7rem; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
+
 <header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
-        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-        <nav class="main-nav">
-            <a href="basic-concepts.html" class="nav-link">基础概念</a>
-            <a href="phenomena-mechanisms.html" class="nav-link active">现象与机制</a>
-            <a href="asd-special.html" class="nav-link">ASD专题</a>
-            <a href="adhd-special.html" class="nav-link">ADHD专题</a>
-            <a href="comorbidity-health.html" class="nav-link">共病与健康</a>
-            <a href="coping-resources.html" class="nav-link">应对与资源</a>
-            <a href="myths-clarification.html" class="nav-link accent">迷思澄清</a>
-        </nav>
-    </div>
+  <div class="header-inner">
+    <a class="brand" href="index.html">神经多样性科普站<span class="dot" aria-hidden="true"></span></a>
+    <details class="nav-details">
+      <summary aria-label="站内导航菜单">☰</summary>
+      <nav class="site-nav" aria-label="站内导航">
+        <a href="basic-concepts.html">基础概念</a>
+        <a href="phenomena-mechanisms.html" class="active" aria-current="page">现象与机制</a>
+        <a href="asd-special.html">ASD专题</a>
+        <a href="adhd-special.html">ADHD专题</a>
+        <a href="comorbidity-health.html">共病与健康</a>
+        <a href="coping-resources.html">应对与资源</a>
+        <a href="myths-clarification.html">迷思澄清</a>
+      </nav>
+    </details>
+  </div>
 </header>
-<main class="page-content">
-    <h1 class="module-title">现象与机制</h1>
-    <div class="toc-box" id="toc">
-        <h2>📑 目录</h2>
-        <ul class="toc-list">
-            <li><a href="#masking">伪装 (Masking)</a></li>
-            <li><a href="#executive">执行功能</a></li>
-            <li><a href="#burnout">倦怠 (Burnout)</a></li>
-            <li><a href="#stimming">自我刺激行为 (Stimming)</a></li>
-            <li><a href="#rsd">拒绝敏感性烦躁 (RSD)</a></li>
-        </ul>
-    </div>
 
-    <div class="section-block" id="masking">
-        <h3>伪装 (Masking)</h3>
-        <div class="placeholder">概念与起源
-伪装（camouflaging/masking）指自闭症个体有意识地隐藏或补偿自身的自闭特征，以在社交环境中显得"正常"。这一概念的系统研究始于2017年：Hull等人对77名自闭症成人的定性研究发现，参与者将这种持续的自我监控和表演描述为"戴上我最好的正常面具"（putting on my best normal），策略包括强迫自己进行眼神接触、预演社交脚本、压制重复性动作、模仿他人的表情和语调。2019年，同一团队开发了掩蔽自评量表（Camouflaging Autistic Traits Questionnaire, CAT-Q），将掩蔽分解为三个维度：补偿（compensation，主动发展策略弥补社交差异）、掩蔽（masking，隐藏自闭特征）和同化（assimilation，努力融入并符合他人期待）。
+<main class="wrap page">
+  <header class="page-head">
+    <h1>现象与机制</h1>
+    <p class="sub">Masking · 执行功能 · Burnout · Stimming · RSD</p>
+    <nav class="page-toc" aria-label="本页目录">
+      <a href="#masking">伪装 (Masking)</a>
+      <a href="#executive">执行功能</a>
+      <a href="#burnout">倦怠 (Burnout)</a>
+      <a href="#stimming">自我刺激行为 (Stimming)</a>
+      <a href="#rsd">拒绝敏感性烦躁 (RSD)</a>
+    </nav>
+  </header>
 
-谁在掩蔽
-掩蔽在自闭症女性中被记录得最多——Lai等人（2017）的研究发现女性自闭症患者在掩蔽行为上得分显著高于男性，Hull等人（2019/2020）的研究也一致报告女性在CAT-Q各维度得分更高，这使掩蔽成为解释"女性自闭症表型"和女性诊断延迟的核心机制之一。但需要明确的是，掩蔽并不限于女性：所有性别、所有支持需求水平的自闭症个体都可能掩蔽，且研究一致表明掩蔽与较差的心理健康相关，与性别无关。
+  <!-- ================= 1. Masking ================= -->
+  <article class="entry" id="masking">
+    <h2>伪装（Masking）</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">自闭症个体有意识隐藏或补偿自闭特征的行为，系统研究始于 2017 年。CAT-Q 量表将其分为补偿、掩蔽、同化三个维度；女性得分更高，掩蔽与压力、焦虑、抑郁和自杀意念相关，代价已被多项研究量化。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念与起源</h3>
+        <p>伪装（camouflaging/masking）指自闭症个体有意识地隐藏或补偿自身的自闭特征，以在社交环境中显得"正常"。这一概念的系统研究始于 2017 年：Hull 等人对 77 名自闭症成人的定性研究发现，参与者将这种持续的自我监控和表演描述为"戴上我最好的正常面具"（putting on my best normal），策略包括强迫自己进行眼神接触、预演社交脚本、压制重复性动作、模仿他人的表情和语调。2019 年，同一团队开发了掩蔽自评量表（Camouflaging Autistic Traits Questionnaire, CAT-Q），将掩蔽分解为三个维度：<strong>补偿</strong>（compensation，主动发展策略弥补社交差异）、<strong>掩蔽</strong>（masking，隐藏自闭特征）和<strong>同化</strong>（assimilation，努力融入并符合他人期待）。</p>
 
-心理代价
-掩蔽的代价在多项研究中被量化：Cage和Troxell-Whitman（2019）对262名自闭症成人的调查发现，无论是持续高水平的掩蔽，还是在不同情境间反复"切换"掩蔽与不掩蔽，都与更高的压力、焦虑、抑郁和自杀意念相关；Hull等人（2021）发现掩蔽与焦虑、抑郁显著相关；Cook等人（2021）的系统综述总结认为，掩蔽与抑郁、焦虑症状呈中等程度正相关，与自杀意念呈小到中等程度关联。掩蔽还会导致长期耗竭——不少研究将自闭症倦怠（autistic burnout）部分归因于持续掩蔽消耗的心理能量。
+        <h3>谁在掩蔽</h3>
+        <p>掩蔽在自闭症女性中被记录得最多。Lai 等人（2017）的研究发现女性自闭症患者在掩蔽行为上得分显著高于男性，Hull 等人（2019/2020）的研究也一致报告女性在 CAT-Q 各维度得分更高，这使掩蔽成为解释"女性自闭症表型"和女性诊断延迟的核心机制之一。但需要明确的是，掩蔽并不限于女性：所有性别、所有支持需求水平的自闭症个体都可能掩蔽，且研究一致表明掩蔽与较差的心理健康相关，与性别无关。</p>
 
-地位与争议
-掩蔽研究存在几个争议点。其一，测量问题：掩蔽主要依赖自我报告（CAT-Q等），而自评可能受到自我觉察水平的影响；Cancino-Barros等人（2025）的元分析发现现有掩蔽测量工具高度异质，缺乏统一框架。其二，"减少掩蔽"的倡导与现实可行性的张力：自闭症社群中兴起"去掩蔽"（unmasking）运动，主张减少伪装以维护心理健康，但掩蔽常是安全策略——在许多环境（学校、职场、家庭）中，暴露自闭特征可能带来真实的排斥风险，因此研究者更强调结构性解决方案（减少环境中的社交压力与歧视）而非单纯要求个体停止掩蔽。其三，掩蔽与"女性表型"概念的纠缠：部分研究者质疑所谓女性表型可能只是掩蔽行为的结果而非真实的性别差异。</div>
-        <div class="ref">参考文献：• Hull, L., Petrides, K.V., Allison, C., Smith, P., Baron-Cohen, S., Lai, M.-C., & Mandy, W. (2017). "Putting on my best normal": Social camouflaging in adults with autism spectrum conditions. Journal of Autism and Developmental Disorders, 47(8), 2519–2534.
-• Hull, L., Mandy, W., Lai, M.-C., Baron-Cohen, S., Allison, C., Smith, P., & Petrides, K.V. (2019). Development and validation of the camouflaging autistic traits questionnaire (CAT-Q). Journal of Autism and Developmental Disorders, 49(3), 819–833.
-• Lai, M.-C., Lombardo, M.V., Ruigrok, A.N., Chakrabarti, B., Auyeung, B., Szatmari, P., et al. (2017). Quantifying and exploring camouflaging in men and women with autism. Autism, 21(6), 690–702.
-• Cage, E., & Troxell-Whitman, Z. (2019). Understanding the Reasons, Contexts and Costs of Camouflaging for Autistic Adults. Journal of Autism and Developmental Disorders, 49(5), 1899–1911.
-• Hull, L., Levy, L., Lai, M.-C., Petrides, K.V., Baron-Cohen, S., Allison, C., Smith, P., & Mandy, W. (2021). Is social camouflaging associated with anxiety and depression in autistic adults? Molecular Autism, 12(1), 13.
-• Cook, J., Hull, L., Crane, L., & Mandy, W. (2021). Camouflaging in autism: A systematic review. Clinical Psychology Review, 89, 102080.
-• Cancino-Barros, I., Villacura-Herrera, C., & Castillo, R.D. (2025). A meta-analytic review of quantification methods for camouflaging behaviors in autistic and neurotypical individuals. Scientific Reports, 15, 22885.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="executive">
-        <h3>执行功能</h3>
-        <div class="placeholder">概念与神经基础
-执行功能（Executive Function, EF）是一组高阶认知控制过程的统称，由前额叶皮层主导，依赖额叶-纹状体等神经环路。Diamond（2013）提出的框架将EF分为三个核心成分：抑制控制（抑制无关反应和冲动）、工作记忆（在脑中暂存并操作信息）、认知灵活性（在不同任务和规则间切换）。在此基础上衍生出计划、组织、任务启动、时间管理、情绪调节等更复杂的能力。前额叶的成熟贯穿儿童期至成年早期，因此执行功能的发展是生命早期最漫长的认知发育过程之一。
+        <h3>心理代价</h3>
+        <p>掩蔽的代价在多项研究中被量化：Cage 和 Troxell-Whitman（2019）对 262 名自闭症成人的调查发现，无论是持续高水平的掩蔽，还是在不同情境间反复"切换"掩蔽与不掩蔽，都与更高的压力、焦虑、抑郁和自杀意念相关；Hull 等人（2021）发现掩蔽与焦虑、抑郁显著相关；Cook 等人（2021）的系统综述总结认为，掩蔽与抑郁、焦虑症状呈中等程度正相关，与自杀意念呈小到中等程度关联。掩蔽还会导致长期耗竭——不少研究将自闭症倦怠（autistic burnout）部分归因于持续掩蔽消耗的心理能量。</p>
 
-神经多样性中的执行功能差异
-执行功能差异是多个神经发育状况的交叉点，但各群体呈现不同的模式。
-ADHD：Barkley（1997）的模型主张行为抑制缺陷是ADHD最根本的认知缺损，抑制缺陷继而导致工作记忆、情绪自我调节、行为重构等次级执行功能受损。这一模型至今仍是ADHD执行功能研究中最有影响力的框架（详见ADHD专题页）。
-ASD：Demetriou等人（2018）对80余项研究的元分析发现，ASD群体存在中等的整体EF缺陷（效应量约-0.45），其中反应抑制和认知灵活性受损最明显（约-0.55），工作记忆和计划受损较小（约-0.35），且缺陷跨年龄持续存在，不能被共病注意症状完全解释。ASD中认知灵活性困难的具体表现包括对常规改变的强烈抗拒、难以从一种活动切换至另一种、"卡住"在既定思路中等——这些现象与ASD诊断标准中的"固着"维度高度相关，提示EF与核心症状之间存在深层关联。
-此外，执行功能还包括与动机、情绪相关的过程（有时称"热执行功能"）——情绪调节、延迟满足、对奖惩的敏感性。在ADHD和ASD中，热执行功能的困难常与冷认知任务（实验室纸笔任务）的表现分离，这引出了生态效度问题。
+        <h3>地位与争议</h3>
+        <p>掩蔽研究存在几个争议点。<strong>其一，测量问题</strong>：掩蔽主要依赖自我报告（CAT-Q 等），而自评可能受到自我觉察水平的影响；Cancino-Barros 等人（2025）的元分析发现现有掩蔽测量工具高度异质，缺乏统一框架。<strong>其二，"减少掩蔽"的倡导与现实可行性的张力</strong>：自闭症社群中兴起"去掩蔽"（unmasking）运动，主张减少伪装以维护心理健康，但掩蔽常是安全策略——在许多环境（学校、职场、家庭）中，暴露自闭特征可能带来真实的排斥风险，因此研究者更强调结构性解决方案（减少环境中的社交压力与歧视）而非单纯要求个体停止掩蔽。<strong>其三，掩蔽与"女性表型"概念的纠缠</strong>：部分研究者质疑所谓女性表型可能只是掩蔽行为的结果而非真实的性别差异。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 7 条</summary>
+      <ol>
+        <li>Hull, L., Petrides, K.V., Allison, C., Smith, P., Baron-Cohen, S., Lai, M.-C., &amp; Mandy, W. (2017). "Putting on my best normal": Social camouflaging in adults with autism spectrum conditions. <em>Journal of Autism and Developmental Disorders</em>, 47(8), 2519–2534. <a href="https://doi.org/10.1007/s10803-017-3166-5" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Hull, L., Mandy, W., Lai, M.-C., Baron-Cohen, S., Allison, C., Smith, P., &amp; Petrides, K.V. (2019). Development and validation of the Camouflaging Autistic Traits Questionnaire (CAT-Q). <em>Journal of Autism and Developmental Disorders</em>, 49(3), 819–833. <a href="https://doi.org/10.1007/s10803-018-3792-6" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Lai, M.-C., Lombardo, M.V., Ruigrok, A.N., Chakrabarti, B., Auyeung, B., Szatmari, P., et al. (2017). Quantifying and exploring camouflaging in men and women with autism. <em>Autism</em>, 21(6), 690–702. <a href="https://doi.org/10.1177/1362361316671012" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Cage, E., &amp; Troxell-Whitman, Z. (2019). Understanding the Reasons, Contexts and Costs of Camouflaging for Autistic Adults. <em>Journal of Autism and Developmental Disorders</em>, 49(5), 1899–1911. <a href="https://doi.org/10.1007/s10803-018-03878-x" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Hull, L., Levy, L., Lai, M.-C., Petrides, K.V., Baron-Cohen, S., Allison, C., Smith, P., &amp; Mandy, W. (2021). Is social camouflaging associated with anxiety and depression in autistic adults? <em>Molecular Autism</em>, 12(1), 13. <a href="https://doi.org/10.1186/s13229-021-00421-1" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Cook, J., Hull, L., Crane, L., &amp; Mandy, W. (2021). Camouflaging in autism: A systematic review. <em>Clinical Psychology Review</em>, 89, 102080. <a href="https://doi.org/10.1016/j.cpr.2021.102080" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Cancino-Barros, I., Villacura-Herrera, C., &amp; Castillo, R.D. (2025). A meta-analytic review of quantification methods for camouflaging behaviors in autistic and neurotypical individuals. <em>Scientific Reports</em>, 15, 22885. <a href="https://doi.org/10.1038/s41598-025-06137-z" target="_blank" rel="noopener">DOI ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-从实验室到生活
-执行功能的测量存在著名的"实验室-生活鸿沟"：个体在标准化认知任务上可能表现正常，但日常生活中仍存在严重的执行困难（反之亦然）。自我报告和日常行为评定量表（如BRIEF）与实验室任务之间的相关性通常很弱。这意味着执行功能差异的最佳理解方式是同时考虑多个层面：实验室任务反映基础认知能力，行为量表反映日常功能，二者互补而非等同。ADHD和ASD中常见的"启动困难""时间盲""组织混乱"等体验，往往只有通过日常功能测量才能捕捉到。
+  <!-- ================= 2. 执行功能 ================= -->
+  <article class="entry" id="executive">
+    <h2>执行功能</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">由前额叶主导的高阶认知控制，含抑制控制、工作记忆、认知灵活性三成分（Diamond 2013）。ASD 群体存在中等程度的整体缺陷（Demetriou 2018 元分析），实验室表现与日常功能之间存在著名的"实验室-生活鸿沟"。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念与神经基础</h3>
+        <p>执行功能（Executive Function, EF）是一组高阶认知控制过程的统称，由前额叶皮层主导，依赖额叶-纹状体等神经环路。Diamond（2013）提出的框架将 EF 分为三个核心成分：<strong>抑制控制</strong>（抑制无关反应和冲动）、<strong>工作记忆</strong>（在脑中暂存并操作信息）、<strong>认知灵活性</strong>（在不同任务和规则间切换）。在此基础上衍生出计划、组织、任务启动、时间管理、情绪调节等更复杂的能力。前额叶的成熟贯穿儿童期至成年早期，因此执行功能的发展是生命早期最漫长的认知发育过程之一。</p>
 
-地位与争议
-其一，执行功能缺陷并非ADHD或ASD的特异性标记——学习障碍、创伤性脑损伤、抑郁、焦虑等也普遍存在EF困难，因此EF测量不能单独用作诊断工具（Demetriou等人2018的元分析同时指出，单项EF任务对ASD诊断的敏感性和特异性有限）。其二，Barkley"行为抑制是核心"的主张受到挑战：部分研究（如结构方程模型分析）发现工作记忆与抑制控制更可能是相对独立的缺陷而非线性层级关系。其三，EF差异是维度性的——执行功能在一般人群中也呈连续分布，神经多元群体与典型群体的差异更多是程度与模式而非有无之分。近年来，执行功能被视为跨诊断的"共享维度"，这一视角与研究域标准（RDoC）框架呼应。</div>
-        <div class="ref">参考文献：• Diamond, A. (2013). Executive functions. Annual Review of Psychology, 64, 135–168.
-• Barkley, R.A. (1997). Behavioral inhibition, sustained attention, and executive functions: constructing a unifying theory of ADHD. Psychological Bulletin, 121(1), 65–94.
-• Demetriou, E.A., Lampit, A., Quintana, D.S., Naismith, S.L., Song, Y.J.C., Pye, J.E., Hickie, I., & Guastella, A.J. (2018). Autism spectrum disorders: a meta-analysis of executive function. Molecular Psychiatry, 23(5), 1198–1204.
-• 王勇慧, 周晓林, 王玉凤, 杨炯炯. (2002). 执行功能与注意缺陷多动障碍. 中华精神科杂志, 35(4).</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="burnout">
-        <h3>倦怠 (Burnout)</h3>
-        <div class="placeholder"> 概念与起源
-自闭症倦怠（autistic burnout）的概念长期存在于自闭症社群的自我描述中（社交平台上的#AutisticBurnout标签），但直到2020年才进入学术研究。Raymaker等人（2020）通过访谈和网络讨论首次系统描述了这一现象，其论文标题直接采用了亲历者的原话："所有内部资源都被耗尽到无法再透支，身边却没有能帮忙收拾残局的人"。2021年，Higgins等人让23名亲身经历过倦怠的自闭症成人作为"亲历专家"，用Grounded Delphi方法共同制定了共识定义。
+        <h3>神经多样性中的执行功能差异</h3>
+        <p>执行功能差异是多个神经发育状况的交叉点，但各群体呈现不同的模式。</p>
+        <p><strong>ADHD</strong>：Barkley（1997）的模型主张行为抑制缺陷是 ADHD 最根本的认知缺损，抑制缺陷继而导致工作记忆、情绪自我调节、行为重构等次级执行功能受损。这一模型至今仍是 ADHD 执行功能研究中最有影响力的框架（详见 <a href="adhd-special.html#executive">ADHD 专题页</a>）。</p>
+        <p><strong>ASD</strong>：Demetriou 等人（2018）对 80 余项研究的元分析发现，ASD 群体存在中等的整体 EF 缺陷（效应量约 -0.45），其中反应抑制和认知灵活性受损最明显（约 -0.55），工作记忆和计划受损较小（约 -0.35），且缺陷跨年龄持续存在，不能被共病注意症状完全解释。ASD 中认知灵活性困难的具体表现包括对常规改变的强烈抗拒、难以从一种活动切换至另一种、"卡住"在既定思路中等——这些现象与 ASD 诊断标准中的"固着"维度高度相关，提示 EF 与核心症状之间存在深层关联。</p>
+        <p>此外，执行功能还包括与动机、情绪相关的过程（有时称"热执行功能"）——情绪调节、延迟满足、对奖惩的敏感性。在 ADHD 和 ASD 中，热执行功能的困难常与冷认知任务（实验室纸笔任务）的表现分离，这引出了生态效度问题。</p>
 
-核心特征
-根据共识定义，自闭症倦怠是一种高度致残的状态，核心特征包括：长期的深度耗竭（身体、心理、情绪）；社交退缩；执行功能和思考能力下降；日常生活技能暂时退化（如难以完成原本熟悉的自我照顾任务）；自闭症特征（如感觉敏感、重复行为）暂时性增强。发作通常持续数月甚至数年，许多人在青春期首次经历，且后续发作可能更频繁、恢复更困难。
+        <h3>从实验室到生活</h3>
+        <p>执行功能的测量存在著名的"实验室-生活鸿沟"：个体在标准化认知任务上可能表现正常，但日常生活中仍存在严重的执行困难（反之亦然）。自我报告和日常行为评定量表（如 BRIEF）与实验室任务之间的相关性通常很弱。这意味着执行功能差异的最佳理解方式是同时考虑多个层面：实验室任务反映基础认知能力，行为量表反映日常功能，二者互补而非等同。ADHD 和 ASD 中常见的"启动困难""时间盲""组织混乱"等体验，往往只有通过日常功能测量才能捕捉到。</p>
 
-成因与保护因素
-倦怠的触发因素被普遍认为是长期累积的压力——尤其是持续掩蔽（masking）、感觉过载、以及生活在一个不为自己需求而设计的"神经典型世界"中所需付出的额外努力，叠加缺乏充分支持（如过渡期、学业/职场压力、生活变故）。Mantzalas等人（2022）对1000余条在线帖子的分析提出了保护因素模型：能够及早识别压力上升信号、允许自我刺激行为（stimming）、投入特殊兴趣、以及拥有理解自己的社会支持，都有助于预防和缓解倦怠。
+        <h3>地位与争议</h3>
+        <p><strong>其一</strong>，执行功能缺陷并非 ADHD 或 ASD 的特异性标记——学习障碍、创伤性脑损伤、抑郁、焦虑等也普遍存在 EF 困难，因此 EF 测量不能单独用作诊断工具（Demetriou 等人 2018 的元分析同时指出，单项 EF 任务对 ASD 诊断的敏感性和特异性有限）。<strong>其二</strong>，Barkley"行为抑制是核心"的主张受到挑战：部分研究（如结构方程模型分析）发现工作记忆与抑制控制更可能是相对独立的缺陷而非线性层级关系。<strong>其三</strong>，EF 差异是维度性的——执行功能在一般人群中也呈连续分布，神经多元群体与典型群体的差异更多是程度与模式而非有无之分。近年来，执行功能被视为跨诊断的"共享维度"，这一视角与研究域标准（RDoC）框架呼应。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 4 条</summary>
+      <ol>
+        <li>Diamond, A. (2013). Executive functions. <em>Annual Review of Psychology</em>, 64, 135–168. <a href="https://doi.org/10.1146/annurev-psych-113011-143750" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Barkley, R.A. (1997). Behavioral inhibition, sustained attention, and executive functions: constructing a unifying theory of ADHD. <em>Psychological Bulletin</em>, 121(1), 65–94. <a href="https://doi.org/10.1037/0033-2909.121.1.65" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Demetriou, E.A., Lampit, A., Quintana, D.S., Naismith, S.L., Song, Y.J.C., Pye, J.E., Hickie, I., &amp; Guastella, A.J. (2018). Autism spectrum disorders: a meta-analysis of executive function. <em>Molecular Psychiatry</em>, 23(5), 1198–1204. <a href="https://doi.org/10.1038/mp.2017.75" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>王勇慧, 周晓林, 王玉凤, 杨炯炯. (2002). 执行功能与注意缺陷多动障碍. <em>中华精神科杂志</em>, 35(4). <a href="https://scholar.google.com/scholar?q=王勇慧+执行功能+注意缺陷多动障碍+中华精神科杂志" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-与抑郁症和职业倦怠的区分
-这是临床上最关键的议题。自闭症倦怠与抑郁症在表面上有大量重叠（疲惫、退缩、兴趣下降），但本质不同：倦怠源于长期的环境-个体不匹配和透支，而非情绪障碍本身；其"能力暂时性丧失"和"自闭特征增强"的特征在抑郁症中不典型。这一区分有实际的治疗意义——针对抑郁症的某些治疗方式可能对处于倦怠中的自闭症个体不适用甚至有害，正确的干预方向是减少压力源、允许恢复性休息和去掩蔽。ADHD群体的倦怠（常与AuDHD一起讨论）研究更少，但机制类似：长期用补偿策略维持"正常"功能后的崩溃。
+  <!-- ================= 3. 倦怠 ================= -->
+  <article class="entry" id="burnout">
+    <h2>倦怠（Burnout）</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">长期存在于社群自我描述中，2020 年进入学术研究。核心特征为长期深度耗竭、社交退缩、执行功能下降与自闭特征暂时增强；区分倦怠与抑郁症是临床关键议题，测量工具 2023 年才初步开发。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念与起源</h3>
+        <p>自闭症倦怠（autistic burnout）的概念长期存在于自闭症社群的自我描述中（社交平台上的 #AutisticBurnout 标签），但直到 2020 年才进入学术研究。Raymaker 等人（2020）通过访谈和网络讨论首次系统描述了这一现象，其论文标题直接采用了亲历者的原话："所有内部资源都被耗尽到无法再透支，身边却没有能帮忙收拾残局的人"。2021 年，Higgins 等人让 23 名亲身经历过倦怠的自闭症成人作为"亲历专家"，用 Grounded Delphi 方法共同制定了共识定义。</p>
 
-地位与争议
-自闭症倦怠作为一个独立概念的学术地位仍在建立中。争议包括：其一，与抑郁症、慢性疲劳的区分缺乏生物标志物，主要依赖临床描述和亲历者报告；其二，测量工具2023年才由Arnold等人初步开发并验证，尚未进入临床常规；其三，现有证据以横断面和质性研究为主，因果路径（掩蔽是否直接导致倦怠）仍需纵向研究确认。但无论如何，这一概念已被自闭症社群广泛接受，并推动临床重新审视"表面功能良好"的个体所承受的隐性代价。</div>
-        <div class="ref">参考文献：• Raymaker, D.M., Teo, A.R., Steckler, N.A., Lentz, B., Scharer, M., Delos Santos, A., Kapp, S.K., Hunter, M., Joyce, A., & Nicolaidis, C. (2020). "Having all of your internal resources exhausted beyond measure and being left with no clean-up crew": Defining autistic burnout. Autism in Adulthood, 2(2), 132–143.
-• Higgins, J.M., Arnold, S.R., Weise, J., Pellicano, E., & Trollor, J.N. (2021). Defining autistic burnout through experts by lived experience: Grounded Delphi method investigating #AutisticBurnout. Autism, 25(8), 2356–2369.
-• Mantzalas, J., Richdale, A.L., Adikari, A., Lowe, J., & Dissanayake, C. (2022). What Is Autistic Burnout? A Thematic Analysis of Posts on Two Online Platforms. Autism in Adulthood, 4(1), 52–65.
-• Arnold, S.R., Higgins, J.M., Weise, J., Desai, A., Pellicano, E., & Trollor, J.N. (2023). Confirming the nature of autistic burnout. Autism, 27(7), 1906–1918.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="stimming">
-        <h3>自我刺激行为 (Stimming)</h3>
-        <div class="placeholder">概念与起源
-自我刺激行为（self-stimulatory behavior）是临床术语，指重复性的动作、声音或视觉行为——如摇晃身体、拍手、旋转、反复开关物品、盯着旋转的物体等。在DSM-5中，这类行为被列为自闭症谱系障碍诊断标准维度B的特征之一（"刻板或重复的运动动作"）。而"stimming"一词来自自闭症社群自身的重新定义：它把这一诊断标签转化为一个中性的、描述性的日常词汇，强调这些行为的适应功能而非"异常"。这一重新命名本身反映了叙事权的转移——由外部观察者定义的"症状"被亲历者重新解释为"工具"。
+        <h3>核心特征</h3>
+        <p>根据共识定义，自闭症倦怠是一种高度致残的状态，核心特征包括：长期的深度耗竭（身体、心理、情绪）；社交退缩；执行功能和思考能力下降；日常生活技能暂时退化（如难以完成原本熟悉的自我照顾任务）；自闭症特征（如感觉敏感、重复行为）暂时性增强。发作通常持续数月甚至数年，许多人在青春期首次经历，且后续发作可能更频繁、恢复更困难。</p>
 
-功能
-多项研究（尤其是Kapp等人2019年对32名自闭症成人的质性研究）表明，stimming的核心功能是自我调节：在感官过载时帮助安抚和整理神经系统（例如在嘈杂环境中通过摇晃来调节唤醒水平）；在情绪强烈时提供表达和舒缓的通道；在需要专注时帮助组织认知资源（不少成人描述stimming帮助他们"把注意力收拢"）。Kapp研究的参与者几乎一致地将stimming描述为自动的、通常是愉悦的，且"只要不影响到别人就应该被允许"。值得注意的是，stimming并非自闭症独有——非自闭症成人普遍存在的抖腿、转笔、咬指甲等小动作与之同源，只是强度、频率和可见度不同。
+        <h3>成因与保护因素</h3>
+        <p>倦怠的触发因素被普遍认为是长期累积的压力——尤其是持续掩蔽（masking）、感觉过载、以及生活在一个不为自己需求而设计的"神经典型世界"中所需付出的额外努力，叠加缺乏充分支持（如过渡期、学业/职场压力、生活变故）。Mantzalas 等人（2022）对 1000 余条在线帖子的分析提出了保护因素模型：能够及早识别压力上升信号、允许自我刺激行为（stimming）、投入特殊兴趣、以及拥有理解自己的社会支持，都有助于预防和缓解倦怠。</p>
 
-被压制的代价
-自闭症成人报告，因社会压力而压抑stimming（在学校、职场、家庭中被要求"安静下来"）会带来负面后果：情绪和认知功能受损、焦虑升高，长期压抑本身也是倦怠的诱因之一——这与掩蔽的代价在机制上相互关联。当stimming被允许自然发生时，许多个体反而能在之后更好地参与社交和学习。</div>
-        <div class="ref">参考文献：• Kapp, S.K., Steward, R., Crane, L., Elliott, D., Elphick, C., Pellicano, E., & Russell, G. (2019). 'People should be allowed to do what they like': Autistic adults' views and experiences of stimming. Autism, 23(7), 1782–1792.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="rsd">
-        <h3>拒绝敏感性烦躁 (RSD)</h3>
-        <div class="placeholder">概念
-拒绝敏感性烦躁（Rejection Sensitive Dysphoria, RSD）由美国精神科医生William Dodson在2010年代提出，描述一种由真实或想象的拒绝、批评、戏弄或失败所触发的、压倒性的情绪和身体痛苦反应。"Dysphoria"（烦躁/不快）一词暗示了这种体验的剧烈程度——被批评后立即出现极端的羞愧、愤怒、悲伤或焦虑，反应强度远超事件的客观严重性，并可能伴随躯体感受（胸口发紧、胃部翻搅）或突然的"情绪关闭"（情感麻木和退缩）。RSD被主要描述为ADHD情绪失调谱系中最剧烈的一种表现形式，但也见于自闭症等神经多元群体。
+        <h3>与抑郁症和职业倦怠的区分</h3>
+        <p>这是临床上最关键的议题。自闭症倦怠与抑郁症在表面上有大量重叠（疲惫、退缩、兴趣下降），但本质不同：倦怠源于长期的环境-个体不匹配和透支，而非情绪障碍本身；其"能力暂时性丧失"和"自闭特征增强"的特征在抑郁症中不典型。这一区分有实际的治疗意义——针对抑郁症的某些治疗方式可能对处于倦怠中的自闭症个体不适用甚至有害，正确的干预方向是减少压力源、允许恢复性休息和去掩蔽。ADHD 群体的倦怠（常与 AuDHD 一起讨论）研究更少，但机制类似：长期用补偿策略维持"正常"功能后的崩溃。</p>
 
-与"拒绝敏感性"的区别
-需要区分两个容易混淆的概念。"拒绝敏感性"（rejection sensitivity）是社会心理学和临床心理学中一个有数十年研究积累的人格构念——指焦虑地预期、轻易察觉并强烈回应拒绝的倾向，有成熟的测量工具。RSD则特指神经多样性背景下（尤其是ADHD）那种更剧烈、近似躯体疼痛的急性情绪爆发。两者关系尚无定论，这是RSD学术争议的核心之一。
+        <h3>地位与争议</h3>
+        <p>自闭症倦怠作为一个独立概念的学术地位仍在建立中。争议包括：<strong>其一</strong>，与抑郁症、慢性疲劳的区分缺乏生物标志物，主要依赖临床描述和亲历者报告；<strong>其二</strong>，测量工具 2023 年才由 Arnold 等人初步开发并验证，尚未进入临床常规；<strong>其三</strong>，现有证据以横断面和质性研究为主，因果路径（掩蔽是否直接导致倦怠）仍需纵向研究确认。但无论如何，这一概念已被自闭症社群广泛接受，并推动临床重新审视"表面功能良好"的个体所承受的隐性代价。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 4 条</summary>
+      <ol>
+        <li>Raymaker, D.M., Teo, A.R., Steckler, N.A., Lentz, B., Scharer, M., Delos Santos, A., Kapp, S.K., Hunter, M., Joyce, A., &amp; Nicolaidis, C. (2020). "Having all of your internal resources exhausted beyond measure and being left with no clean-up crew": Defining autistic burnout. <em>Autism in Adulthood</em>, 2(2), 132–143. <a href="https://doi.org/10.1089/aut.2019.0079" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Higgins, J.M., Arnold, S.R., Weise, J., Pellicano, E., &amp; Trollor, J.N. (2021). Defining autistic burnout through experts by lived experience: Grounded Delphi method investigating #AutisticBurnout. <em>Autism</em>, 25(8), 2356–2369. <a href="https://doi.org/10.1177/13623613211019858" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Mantzalas, J., Richdale, A.L., Adikari, A., Lowe, J., &amp; Dissanayake, C. (2022). What Is Autistic Burnout? A Thematic Analysis of Posts on Two Online Platforms. <em>Autism in Adulthood</em>, 4(1), 52–65. <a href="https://doi.org/10.1089/aut.2021.0021" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Arnold, S.R., Higgins, J.M., Weise, J., Desai, A., Pellicano, E., &amp; Trollor, J.N. (2023). Confirming the nature of autistic burnout. <em>Autism</em>, 27(7), 1906–1918. <a href="https://doi.org/10.1177/13623613221147410" target="_blank" rel="noopener">DOI ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-证据现状
-RSD的学术证据基础在神经多样性相关概念中属于最薄弱的一档：目前主要证据来自Dodson等人的病例系列报告（2024年，4名ADHD成人）和几项小样本定性研究——Sandland（2025）访谈了8名神经多元成人，发现参与者对RSD的定义缺乏一致性，并强调环境因素（早期的批评、排斥、家庭否定）的作用；Rowney-Smith等人（2026）的ADHD本科生焦点小组则描述了退缩、掩蔽、躯体感受和预期性回避的模式。截至目前，尚无经过验证的RSD专用测量工具、缺乏系统的流行病学数据，也没有针对RSD的随机对照干预试验。临床工作者常引用的"70%或99%的ADHD成人有RSD"等数字均来自临床观察而非系统调查。
+  <!-- ================= 4. Stimming ================= -->
+  <article class="entry" id="stimming">
+    <h2>自我刺激行为（Stimming）</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">重复性的动作、声音或视觉行为，DSM-5 将其列为诊断标准维度 B 的特征之一。社群将其重新定义为中性的自我调节工具；研究表明压抑 stimming 会带来情绪和认知功能受损，长期压抑是倦怠诱因之一。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念与起源</h3>
+        <p>自我刺激行为（self-stimulatory behavior）是临床术语，指重复性的动作、声音或视觉行为——如摇晃身体、拍手、旋转、反复开关物品、盯着旋转的物体等。在 DSM-5 中，这类行为被列为自闭症谱系障碍诊断标准维度 B 的特征之一（"刻板或重复的运动动作"）。而"stimming"一词来自自闭症社群自身的重新定义：它把这一诊断标签转化为一个中性的、描述性的日常词汇，强调这些行为的适应功能而非"异常"。这一重新命名本身反映了叙事权的转移——由外部观察者定义的"症状"被亲历者重新解释为"工具"。</p>
 
-争议
-其一，构念边界不明确：RSD在多大程度上区别于既有的"拒绝敏感性"构念尚无定论。其二，病因路径分歧：Dodson主张RSD是ADHD"与生俱来"的神经特征，与创伤无关；但纵向证据表明ADHD儿童从小比同龄人更频繁地经历批评和拒绝，累积的负面社交经验可能通过致敏化机制放大情绪反应（"后天创伤假说"）——两种路径可能并存。其三，分类学地位：RSD是ADHD情绪失调的极端亚型、独立现象、还是更广泛人格特质的ADHD特异性表达，尚无共识。其四，社交媒体传播速度远超学术证据积累，存在概念泛化风险——把日常社交焦虑或正常挫折反应都归入RSD。RSD是ADHD社群讨论最热烈、学术证据最薄弱的概念之一，其完整论述见ADHD专题页。</div>
-        <div class="ref">参考文献：• Dodson, W.W. (2017/2023). Rejection Sensitive Dysphoria. ADDitude Magazine.
-• Dodson, W.W., Modestino, E.J., Titiz-Ceritoğlu, H., & Zayed, B. (2024). Rejection Sensitivity Dysphoria in Attention-Deficit/Hyperactivity Disorder: A Case Series. Acta Scientific Neurology, 7(8), 23–30.
-• Sandland, B. (2025). Neurodivergent experiences of rejection sensitive dysphoria expose the environmental factors too often overlooked. Neurodiversity, 3.
-• Rowney-Smith, A., Sutton, B., Quadt, L., & Eccles, J.A. (2026). The lived experience of rejection sensitivity in ADHD – A qualitative exploration. PLoS ONE, 21(1), e0314669.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
+        <h3>功能</h3>
+        <p>多项研究（尤其是 Kapp 等人 2019 年对 32 名自闭症成人的质性研究）表明，stimming 的核心功能是<strong>自我调节</strong>：在感官过载时帮助安抚和整理神经系统（例如在嘈杂环境中通过摇晃来调节唤醒水平）；在情绪强烈时提供表达和舒缓的通道；在需要专注时帮助组织认知资源（不少成人描述 stimming 帮助他们"把注意力收拢"）。Kapp 研究的参与者几乎一致地将 stimming 描述为自动的、通常是愉悦的，且"只要不影响到别人就应该被允许"。值得注意的是，stimming 并非自闭症独有——非自闭症成人普遍存在的抖腿、转笔、咬指甲等小动作与之同源，只是强度、频率和可见度不同。</p>
+
+        <h3>被压制的代价</h3>
+        <p>自闭症成人报告，因社会压力而压抑 stimming（在学校、职场、家庭中被要求"安静下来"）会带来负面后果：情绪和认知功能受损、焦虑升高，长期压抑本身也是倦怠的诱因之一——这与掩蔽的代价在机制上相互关联。当 stimming 被允许自然发生时，许多个体反而能在之后更好地参与社交和学习。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 1 条</summary>
+      <ol>
+        <li>Kapp, S.K., Steward, R., Crane, L., Elliott, D., Elphick, C., Pellicano, E., &amp; Russell, G. (2019). 'People should be allowed to do what they like': Autistic adults' views and experiences of stimming. <em>Autism</em>, 23(7), 1782–1792. <a href="https://doi.org/10.1177/1362361319829628" target="_blank" rel="noopener">DOI ↗</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- ================= 5. RSD ================= -->
+  <article class="entry" id="rsd">
+    <h2>拒绝敏感性烦躁（RSD）</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">由 Dodson 在 2010 年代提出，描述被拒绝触发的剧烈情绪痛苦。学术证据在神经多样性概念中属于最薄弱的一档：无经过验证的测量工具，无流行病学数据，与既有"拒绝敏感性"构念的关系尚无定论。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念</h3>
+        <p>拒绝敏感性烦躁（Rejection Sensitive Dysphoria, RSD）由美国精神科医生 William Dodson 在 2010 年代提出，描述一种由真实或想象的拒绝、批评、戏弄或失败所触发的、压倒性的情绪和身体痛苦反应。"Dysphoria"（烦躁/不快）一词暗示了这种体验的剧烈程度——被批评后立即出现极端的羞愧、愤怒、悲伤或焦虑，反应强度远超事件的客观严重性，并可能伴随躯体感受（胸口发紧、胃部翻搅）或突然的"情绪关闭"（情感麻木和退缩）。RSD 被主要描述为 ADHD 情绪失调谱系中最剧烈的一种表现形式，但也见于自闭症等神经多元群体。</p>
+
+        <h3>与"拒绝敏感性"的区别</h3>
+        <p>需要区分两个容易混淆的概念。"拒绝敏感性"（rejection sensitivity）是社会心理学和临床心理学中一个有数十年研究积累的人格构念——指焦虑地预期、轻易察觉并强烈回应拒绝的倾向，有成熟的测量工具。RSD 则特指神经多样性背景下（尤其是 ADHD）那种更剧烈、近似躯体疼痛的急性情绪爆发。两者关系尚无定论，这是 RSD 学术争议的核心之一。</p>
+
+        <h3>证据现状</h3>
+        <p>RSD 的学术证据基础在神经多样性相关概念中属于最薄弱的一档：目前主要证据来自 Dodson 等人的病例系列报告（2024 年，4 名 ADHD 成人）和几项小样本定性研究——Sandland（2025）访谈了 8 名神经多元成人，发现参与者对 RSD 的定义缺乏一致性，并强调环境因素（早期的批评、排斥、家庭否定）的作用；Rowney-Smith 等人（2026）的 ADHD 本科生焦点小组则描述了退缩、掩蔽、躯体感受和预期性回避的模式。截至目前，尚无经过验证的 RSD 专用测量工具、缺乏系统的流行病学数据，也没有针对 RSD 的随机对照干预试验。临床工作者常引用的"70% 或 99% 的 ADHD 成人有 RSD"等数字均来自临床观察而非系统调查。</p>
+
+        <h3>争议</h3>
+        <p><strong>其一，构念边界不明确</strong>：RSD 在多大程度上区别于既有的"拒绝敏感性"构念尚无定论。<strong>其二，病因路径分歧</strong>：Dodson 主张 RSD 是 ADHD"与生俱来"的神经特征，与创伤无关；但纵向证据表明 ADHD 儿童从小比同龄人更频繁地经历批评和拒绝，累积的负面社交经验可能通过致敏化机制放大情绪反应（"后天创伤假说"）——两种路径可能并存。<strong>其三，分类学地位</strong>：RSD 是 ADHD 情绪失调的极端亚型、独立现象、还是更广泛人格特质的 ADHD 特异性表达，尚无共识。<strong>其四，社交媒体传播速度远超学术证据积累</strong>，存在概念泛化风险——把日常社交焦虑或正常挫折反应都归入 RSD。RSD 是 ADHD 社群讨论最热烈、学术证据最薄弱的概念之一，其完整论述见 <a href="adhd-special.html#rsd">ADHD 专题页</a>。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 4 条</summary>
+      <ol>
+        <li>Dodson, W.W. (2017/2023). Rejection Sensitive Dysphoria. <em>ADDitude Magazine</em>. <a href="https://scholar.google.com/scholar?q=Dodson+rejection+sensitive+dysphoria+ADDitude" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Dodson, W.W., Modestino, E.J., Titiz Ceritoğlu, H., &amp; Zayed, B. (2024). Rejection Sensitivity Dysphoria in Attention-Deficit/Hyperactivity Disorder: A Case Series. <em>Acta Scientific Neurology</em>, 7(8), 23–30.（注：该刊属争议性出版商，证据效力有限） <a href="https://actascientific.com/ASNE/ASNE-07-0762.php" target="_blank" rel="noopener">全文 ↗</a></li>
+        <li>Sandland, B. (2025). Neurodivergent experiences of rejection sensitive dysphoria expose the environmental factors too often overlooked. <em>Neurodiversity</em>, 3. <a href="https://doi.org/10.1177/27546330251394516" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Rowney-Smith, A., Sutton, B., Quadt, L., &amp; Eccles, J.A. (2026). The lived experiences of rejection sensitivity in ADHD – A qualitative exploration. <em>PLoS ONE</em>, 21(1), e0314669.（标题依 2026-03 官方更正） <a href="https://doi.org/10.1371/journal.pone.0314669" target="_blank" rel="noopener">DOI ↗</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <p class="disclaim">本页基于 DSM-5-TR / ICD-11 及同行评审论文整理，内容更新于 2026 年 8 月。仅供科普参考，不构成诊断或治疗建议；如需评估请前往精神科或临床心理科就诊。</p>
 </main>
-<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+
+<footer class="site-footer">
+  <div>神经多样性科普站 · <em>医学是以人为本</em></div>
+</footer>
+
 </body>
 </html>
