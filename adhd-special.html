@@ -1,318 +1,587 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADHD专题 · 神经多样性科普站</title>
-    <style>
-        :root {
-            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
-            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
-            --accent: #C0392B; --accent-light: #FDF0ED;
-            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
-            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
-            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
-            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 960px;
-            --font-serif: 'Noto Serif SC', 'STSong', serif;
-            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.8; display:flex; flex-direction:column; min-height:100vh; font-size:1rem; }
-        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
-        .header-inner { max-width:var(--max-width); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-        .site-title { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
-        .site-title span { color:var(--accent); }
-        .main-nav { display:flex; gap:6px; flex-wrap:wrap; }
-        .nav-link { padding:8px 14px; border-radius:22px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; font-weight:500; transition:0.2s; border:1.5px solid transparent; }
-        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); border-color:var(--card-border); }
-        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
-        .nav-link.accent { color:var(--accent); font-weight:600; }
-        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
-        @media (max-width:768px) {
-            .nav-toggle { display:block; }
-            .main-nav { display:none; flex-direction:column; width:100%; gap:4px; padding-top:8px; }
-            .main-nav.open { display:flex; }
-            .nav-link { width:100%; text-align:center; border-radius:var(--radius-sm); padding:10px 16px; }
-        }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
-        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
-        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
-        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
-        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
-        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
-        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
-        .section-block .placeholder {
-            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
-            line-height:2.1; white-space: pre-line;
-        }
-        .ref { font-size:0.9rem; color:var(--text-medium); margin-top:16px; border-top:1px dashed var(--card-border); padding-top:14px; line-height:1.7; white-space: pre-line; }
-        .back-to-toc { display:inline-block; margin-top:12px; font-size:0.9rem; color:var(--accent); text-decoration:none; font-weight:500; }
-        .back-to-toc:hover { text-decoration:underline; }
-        .site-footer { text-align:center; padding:16px 24px 28px; font-size:0.9rem; color:var(--text-light); margin-top:auto; }
-        .site-footer em { color:var(--accent); font-style:normal; font-weight:500; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADHD 专题 · 神经多样性科普站</title>
+<meta name="description" content="ADHD 的性别差异、执行功能、情绪失调、RSD、成人表现与共病谱：基于 DSM-5-TR 与同行评审研究的系统整理。">
+<meta property="og:title" content="ADHD 专题 · 神经多样性科普站">
+<meta property="og:description" content="基于 DSM-5-TR 与同行评审研究的 ADHD 系统科普：性别差异、执行功能、情绪失调、RSD、生命周期与共病。">
+<style>
+:root {
+  --bg: #FBFBF9;
+  --text: #262626;
+  --text-2: #6B6B6B;
+  --text-3: #9A9A96;
+  --border: #E7E5DE;
+  --border-dashed: #DDDACF;
+  --accent: #2E6E5E;
+  --accent-weak: #E9F1ED;
+  --font-serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --max-w: 720px;
+  --header-h: 60px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181A; --text: #D8D6D0; --text-2: #9C9B95; --text-3: #6E6D68;
+    --border: #2B2D30; --border-dashed: #35383B;
+    --accent: #6FBFA8; --accent-weak: #1E2B27;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans); background: var(--bg); color: var(--text);
+  font-size: 16.5px; line-height: 1.95; -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-weak); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+/* 进度条：纯 CSS 滚动动画，零 JS；不支持的浏览器自动没有此条 */
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  background: var(--accent); z-index: 200;
+  transform-origin: 0 50%; transform: scaleX(0);
+}
+@supports (animation-timeline: scroll()) {
+  #progress { animation: pagegrow linear; animation-timeline: scroll(root block); }
+  @keyframes pagegrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+/* 顶部导航 */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: 960px; margin: 0 auto; padding: 0 20px;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
+  color: var(--text); letter-spacing: .02em; white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.brand .dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); margin-left: 7px; vertical-align: 2px;
+}
+.nav-details { position: relative; }
+.nav-details summary {
+  list-style: none; cursor: pointer; user-select: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 5px 12px; font-size: 1.05rem; color: var(--text-2);
+  transition: background .15s;
+}
+.nav-details summary::-webkit-details-marker { display: none; }
+.nav-details[open] summary { background: var(--accent-weak); color: var(--accent); border-color: var(--accent); }
+.site-nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--text-2); font-size: .88rem; padding: 4px 0;
+  border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s;
+}
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+.site-nav a.active { color: var(--accent); font-weight: 600; border-bottom-color: var(--accent); }
+@media (max-width: 820px) {
+  .nav-details .site-nav {
+    display: none; position: absolute; top: calc(100% + 10px); right: 0;
+    flex-direction: column; gap: 0; min-width: 42vw;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 6px 18px; box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  }
+  .nav-details[open] .site-nav { display: flex; }
+  .site-nav a { padding: 11px 0; font-size: .95rem; border-bottom: 1px solid var(--border); }
+  .site-nav a:last-child { border-bottom: none; }
+}
+@media (min-width: 821px) {
+  .nav-details summary { display: none; }
+}
+
+/* 页头 */
+.page { padding-top: 56px; padding-bottom: 72px; }
+.page-head { margin-bottom: 20px; }
+.page-head h1 {
+  font-family: var(--font-serif); font-size: 2.1rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 10px;
+}
+.page-head .sub { color: var(--text-3); font-size: .92rem; letter-spacing: .04em; }
+.page-toc {
+  margin-top: 26px; padding: 14px 0 18px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px;
+}
+.page-toc a { color: var(--text-2); font-size: .88rem; }
+.page-toc a:hover { color: var(--accent); text-decoration: none; }
+
+/* 词条 */
+.entry { padding-top: 46px; margin-top: 46px; border-top: 1px solid var(--border); scroll-margin-top: calc(var(--header-h) + 20px); }
+.entry:first-of-type { border-top: none; margin-top: 0; padding-top: 34px; }
+.entry > h2 {
+  font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700;
+  line-height: 1.4; margin-bottom: 4px;
+}
+
+/* 正文折叠 */
+details.body summary {
+  display: block; cursor: pointer; list-style: none;
+  margin: 10px -14px 0; padding: 12px 14px; border-radius: 8px;
+  transition: background .15s;
+}
+details.body summary::-webkit-details-marker { display: none; }
+details.body summary:hover { background: var(--accent-weak); }
+.digest { display: block; color: var(--text-2); font-size: .95rem; line-height: 1.8; }
+.hint { display: block; margin-top: 6px; color: var(--accent); font-size: .84rem; letter-spacing: .03em; }
+.hint .less { display: none; }
+details[open] > summary .more { display: none; }
+details[open] > summary .less { display: inline; }
+details[open] > summary { margin-bottom: 6px; border-bottom: 1px dashed var(--border-dashed); border-radius: 8px 8px 0 0; }
+details[open] > summary:hover { border-bottom-color: var(--accent); }
+
+/* 目录跳转的零 JS 替代：锚点定位到某节时，正文强制展开显示 */
+.entry:target details.body:not([open]) .prose { display: block; animation: reveal .28s ease; }
+.entry:target details.body:not([open]) summary .more { display: none; }
+.entry:target details.body:not([open]) summary .less { display: inline; }
+
+.prose { animation: reveal .28s ease; padding-top: 6px; }
+@keyframes reveal { from { opacity: 0; transform: translateY(-5px); } }
+.prose h3 {
+  font-size: 1.02rem; font-weight: 600; margin: 1.9em 0 .5em;
+  display: flex; align-items: center; gap: 9px; line-height: 1.6;
+}
+.prose h3::before {
+  content: ""; width: 14px; height: 3px; border-radius: 2px;
+  background: var(--accent); flex: none;
+}
+.prose p { margin: 0 0 1.1em; }
+.prose ul { margin: 0 0 1.1em; padding-left: 1.3em; }
+.prose li { margin-bottom: .45em; }
+.prose li::marker { color: var(--accent); }
+.prose strong { font-weight: 600; }
+
+/* 参考文献 */
+details.refs { margin-top: 20px; border-top: 1px dashed var(--border-dashed); }
+details.refs summary {
+  cursor: pointer; list-style: none; padding: 12px 0;
+  color: var(--text-3); font-size: .85rem; letter-spacing: .04em;
+  transition: color .15s;
+}
+details.refs summary::-webkit-details-marker { display: none; }
+details.refs summary:hover { color: var(--accent); }
+details.refs summary .chev { display: inline-block; margin-right: 6px; transition: transform .2s; font-size: .75em; }
+details[open].refs summary .chev { transform: rotate(90deg); }
+details.refs ol { padding: 2px 0 8px 1.25em; }
+details.refs li { font-size: .84rem; color: var(--text-2); line-height: 1.75; margin-bottom: .5em; }
+details.refs li::marker { color: var(--text-3); font-size: .8em; }
+details.refs a { font-size: .8rem; white-space: nowrap; }
+
+.disclaim {
+  margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--border);
+  color: var(--text-3); font-size: .82rem; line-height: 1.8;
+}
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 26px 0 34px; text-align: center;
+  color: var(--text-3); font-size: .85rem;
+}
+.site-footer em { font-style: normal; color: var(--accent); }
+
+@media (max-width: 820px) {
+  .page-head h1 { font-size: 1.7rem; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
+
 <header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
-        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-        <nav class="main-nav">
-            <a href="basic-concepts.html" class="nav-link">基础概念</a>
-            <a href="phenomena-mechanisms.html" class="nav-link">现象与机制</a>
-            <a href="asd-special.html" class="nav-link">ASD专题</a>
-            <a href="adhd-special.html" class="nav-link active">ADHD专题</a>
-            <a href="comorbidity-health.html" class="nav-link">共病与健康</a>
-            <a href="coping-resources.html" class="nav-link">应对与资源</a>
-            <a href="myths-clarification.html" class="nav-link accent">迷思澄清</a>
-        </nav>
-    </div>
+  <div class="header-inner">
+    <a class="brand" href="index.html">神经多样性科普站<span class="dot"></span></a>
+    <details class="nav-details">
+      <summary aria-label="站内导航菜单">☰</summary>
+      <nav class="site-nav" aria-label="站内导航">
+        <a href="basic-concepts.html">基础概念</a>
+        <a href="phenomena-mechanisms.html">现象与机制</a>
+        <a href="asd-special.html">ASD专题</a>
+        <a href="adhd-special.html" class="active" aria-current="page">ADHD专题</a>
+        <a href="comorbidity-health.html">共病与健康</a>
+        <a href="coping-resources.html">应对与资源</a>
+        <a href="myths-clarification.html">迷思澄清</a>
+      </nav>
+    </details>
+  </div>
 </header>
-<main class="page-content">
-    <h1 class="module-title">ADHD专题</h1>
-    <div class="toc-box" id="toc">
-        <h2>📑 目录</h2>
-        <ul class="toc-list">
-            <li><a href="#gender">ADHD的性别差异</a></li>
-            <li><a href="#executive">ADHD与执行功能</a></li>
-            <li><a href="#emotion">ADHD的情绪失调</a></li>
-            <li><a href="#rsd">拒绝敏感烦躁症 (RSD)</a></li>
-            <li><a href="#adult">ADHD的成人表现与生命周期</a></li>
-            <li><a href="#comorbidity">ADHD的共病谱</a></li>
-            <li><a href="#neurodiversity">ADHD的神经多样性视角</a></li>
+
+<main class="wrap page">
+  <header class="page-head">
+    <h1>ADHD 专题</h1>
+    <p class="sub">性别差异 · 执行功能 · 情绪失调 · RSD · 成人表现 · 共病谱 · 神经多样性视角</p>
+    <nav class="page-toc" aria-label="本页目录">
+      <a href="#gender">性别差异</a>
+      <a href="#executive">执行功能</a>
+      <a href="#emotion">情绪失调</a>
+      <a href="#rsd">RSD</a>
+      <a href="#adult">成人表现</a>
+      <a href="#comorbidity">共病谱</a>
+      <a href="#neurodiversity">神经多样性视角</a>
+    </nav>
+  </header>
+
+  <!-- ================= 1. 性别差异 ================= -->
+  <article class="entry" id="gender">
+    <h2>ADHD 的性别差异</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">女性 ADHD 长期被系统性漏诊：症状以内化为主、掩蔽策略普遍，从起病到确诊平均比男性晚约 4 年，常先被误诊为情绪障碍。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>诊断率的性别差距</h3>
+        <p>ADHD 长期以来被视为"男孩的障碍"。儿童期数据显示，男孩被诊断为 ADHD 的比例约为女孩的 2:1 至 9:1，但这一差距在成年期显著缩小至约 1.5:1 至 1.6:1。这种缩小的趋势强烈提示女性在儿童期存在系统性诊断不足。</p>
+        <p>女性从首次出现症状到获得诊断，平均比男性晚约 4 年。许多女性是在孩子被确诊 ADHD 后、或因焦虑/抑郁长期治疗效果不佳后才被识别。</p>
+
+        <h3>症状表现的性别差异</h3>
+        <p>女性 ADHD 的核心特征是症状<strong>"内化"倾向更强</strong>。与男性更多表现为外显的多动和冲动行为不同，女性患者以注意力缺陷为主型（ADHD-I）更为常见。</p>
+        <p>女性常见的表现包括：难以维持注意力、组织困难、健忘、回避需要持续脑力投入的任务、内部焦躁不安、情绪波动、完美主义倾向。而典型的多动行为（如坐立不安、无法静坐、打断对话）在女性中不那么突出，这使得她们在课堂和工作场所对他人造成的干扰较小，不易触发转诊和评估。</p>
+
+        <h3>掩蔽与补偿策略</h3>
+        <p>女性 ADHD 患者比男性更倾向于发展补偿机制来掩盖症状。常见的策略包括：严格自我监控、制定详尽的待办清单防止遗漏、反复检查、情绪压抑、回避可能暴露困难的场合。这些策略在短期内有效，但消耗大量心理能量，长期导致倦怠、焦虑和抑郁。当生活压力超出自我调节能力的临界点（如升学、入职、为人父母等阶段），掩蔽策略往往崩溃，患者才会出现显著的功能障碍——这也是许多女性在成年后才被诊断的原因之一。</p>
+        <p>研究还发现 ADHD 群体也存在与自闭症类似的掩蔽行为。一项研究显示，ADHD 成人患者在 CAT-Q 掩蔽量表的总分和同化分维度上显著高于神经典型对照组。</p>
+
+        <h3>共病与误诊</h3>
+        <p>女性 ADHD 患者共病焦虑、抑郁、双相障碍、进食障碍和人格障碍的比例显著高于男性。挪威一项覆盖 4 万余名 ADHD 成人的全国注册研究显示，53.5% 的女性 ADHD 患者至少存在一种精神共病（无 ADHD 的女性中该比例为 13.7%）。这些共病常常掩盖 ADHD 的核心症状，导致先被误诊为情绪障碍。一项研究发现，14% 的 ADHD 女孩在确诊 ADHD 前曾被开具抗抑郁药，而男孩中仅为 5%。</p>
+
+        <h3>激素的影响</h3>
+        <p>女性的 ADHD 症状可能随生理周期波动。月经周期中雌激素水平下降（尤其是黄体期）会导致多巴胺水平随之降低，使 ADHD 症状加重——注意力更难集中、情绪更不稳定。这种周期性波动使得女性 ADHD 的表现更加复杂，也增加了诊断和药物调整的难度。</p>
+
+        <h3>"过度诊断"之争</h3>
+        <p>近年来社交媒体上女性 ADHD 诊断的急剧增加引发了"过度诊断"的担忧。一些批评者认为，网络上的症状列表过于宽泛，可能导致将正常的性格差异或压力反应误认为 ADHD。如何在"弥补长期漏诊"与"避免过度诊断"之间取得平衡，是当前临床实践中面临的现实挑战。此外，现有的诊断工具和标准大多基于男性样本开发，对女性 ADHD 的敏感性仍存在局限。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 7 条</summary>
+      <ol>
+        <li>Attoe, D.E. &amp; Climie, E.A. (2023). Miss. Diagnosis: A Systematic Review of ADHD in Adult Women. <em>Journal of Attention Disorders</em>, 27(7), 645–657. <a href="https://scholar.google.com/scholar?q=Attoe+Climie+Miss+Diagnosis+systematic+review+ADHD+adult+women" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>PAR (2025). Unmasking ADHD: How Symptoms Differ Between Genders. <a href="https://scholar.google.com/scholar?q=Unmasking+ADHD+how+symptoms+differ+between+genders" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Qbtech. Gender differences in ADHD: Why it's often missed in women and girls. <a href="https://scholar.google.com/scholar?q=Qbtech+gender+differences+ADHD+missed+women+girls" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Solberg, B.S., Halmøy, A., Engeland, A., et al. (2018). Gender differences in psychiatric comorbidity: A population-based study of 40 000 adults with ADHD. <em>Acta Psychiatrica Scandinavica</em>, 137(3), 176–186. <a href="https://scholar.google.com/scholar?q=Solberg+gender+differences+psychiatric+comorbidity+40000+adults+ADHD" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>ADDitude. ADHD Masking: Pretending to Be Neurotypical Is Unhealthy. <a href="https://scholar.google.com/scholar?q=ADDitude+ADHD+masking+pretending+neurotypical+unhealthy" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>新京报 (2026). ADHD女性，从得不到诊断到过度诊断. <a href="https://scholar.google.com/scholar?q=新京报+ADHD女性+从得不到诊断到过度诊断" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Hinshaw, S.P., Nguyen, P.T., O'Grady, S.M., &amp; Rosenthal, E.A. (2022). Annual Research Review: Attention-deficit/hyperactivity disorder in girls and women: underrepresentation, longitudinal processes, and key directions. <em>Journal of Child Psychology and Psychiatry</em>, 63(4), 484–496. <a href="https://scholar.google.com/scholar?q=Hinshaw+2022+ADHD+girls+women+underrepresentation+longitudinal" target="_blank" rel="noopener">Scholar ↗</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- ================= 2. 执行功能 ================= -->
+  <article class="entry" id="executive">
+    <h2>ADHD 与执行功能</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">执行功能由前额叶主导，含抑制控制、工作记忆、认知灵活性三大成分；Barkley 模型以行为抑制缺陷为 ADHD 的最根本认知缺损，脑成像显示前额叶皮层成熟延迟约 3-5 年。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>执行功能的定义</h3>
+        <p>执行功能（Executive Function, EF）是一组高阶认知过程的统称，由前额叶皮层主导，涉及背外侧前额叶、眶额叶、前扣带回、基底神经节等多个脑区协同工作。其核心功能包括三个基本成分：<strong>抑制控制</strong>（inhibitory control）、<strong>工作记忆</strong>（working memory）和<strong>认知灵活性</strong>（cognitive flexibility）。在此基础上衍生出更高阶的能力，如计划、组织、时间管理、情绪调节、任务启动和元认知等。</p>
+
+        <h3>Barkley 的执行功能模型</h3>
+        <p>Russell Barkley 于 1997 年提出的理论模型是 ADHD 与执行功能关系领域最具影响力的框架之一。该模型的核心主张是：<strong>行为抑制（behavioral inhibition）的缺陷是 ADHD 最根本的认知缺损</strong>，这一核心缺陷继而导致次级执行功能受损。</p>
+        <p>Barkley 将行为抑制分解为三个相互关联的过程：抑制对事件的初始优势反应（即阻止条件反射式的反应倾向）、终止正在进行的反应（以便留出时间做出延迟决策）、以及对干扰的主动控制（保护延迟反应不受竞争物的干扰）。</p>
+        <p>行为抑制缺陷导致以下四项执行功能受损：非语言工作记忆（视觉/空间信息的暂存与操作，表现为难以在脑中"保持"信息，容易忘记刚被交付的任务）、语言工作记忆（内部言语的自我引导，表现为自我对话和自我指导能力减弱）、情感-动机-唤醒的自我调节（难以调节情绪和动机状态）、以及行为的分析与重构（将行为分解为单元并重新组合以产生新行为模式的能力）。</p>
+
+        <h3>执行功能的具体表现</h3>
+        <p>在日常生活层面，执行功能缺陷表现为：</p>
+        <ul>
+          <li><strong>时间管理困难</strong>：难以估计任务所需时间，经常迟到或错过截止日期</li>
+          <li><strong>组织能力弱</strong>：物品摆放混乱，难以维持有序的工作或生活环境</li>
+          <li><strong>任务启动困难</strong>：知道该做什么但难以开始，拖延倾向显著</li>
+          <li><strong>计划与优先级排序困难</strong>：面对复杂任务时不知从何下手</li>
+          <li><strong>持续追踪任务困难</strong>：容易在任务中途分心或转向其他事情</li>
+          <li><strong>情绪调节困难</strong>：情绪反应强度大、持续时间短、回弹速度慢</li>
+          <li><strong>工作记忆限制</strong>：记不住多步骤指令，容易忘记刚才想说的话或正在做的事</li>
         </ul>
-    </div>
+        <p>Barkley 本人后来进一步将执行功能细化为七个维度：自我觉察、抑制、非语言工作记忆、语言工作记忆、情绪自我调节、自我激励、以及计划与问题解决。</p>
 
-    <div class="section-block" id="gender">
-        <h3>ADHD的性别差异</h3>
-        <div class="placeholder">诊断率的性别差距
-ADHD长期以来被视为"男孩的障碍"。儿童期数据显示，男孩被诊断为ADHD的比例约为女孩的2:1至9:1，但这一差距在成年期显著缩小至约1.5:1至1.6:1。这种缩小的趋势强烈提示女性在儿童期存在系统性诊断不足。
-女性从首次出现症状到获得诊断，平均比男性晚约4年。许多女性是在孩子被确诊ADHD后、或因焦虑/抑郁长期治疗效果不佳后才被识别。
+        <h3>神经基础</h3>
+        <p>ADHD 患者的执行功能缺陷有其神经生物学基础。脑成像研究表明，ADHD 患者的额叶-纹状体环路与其余人群存在差异，前额叶皮层成熟延迟约 3-5 年。前额叶皮层作为执行功能的神经核心区域，其发育迟缓和神经效率降低，同时损害了任务管理和情绪调节的能力。</p>
 
-症状表现的性别差异
-女性ADHD的核心特征是症状"内化"倾向更强。与男性更多表现为外显的多动和冲动行为不同，女性患者以注意力缺陷为主型（ADHD-I）更为常见。
-女性常见的表现包括：难以维持注意力、组织困难、健忘、回避需要持续脑力投入的任务、内部焦躁不安、情绪波动、完美主义倾向。而典型的多动行为（如坐立不安、无法静坐、打断对话）在女性中不那么突出，这使得她们在课堂和工作场所对他人造成的干扰较小，不易触发转诊和评估。
+        <h3>共识与争议</h3>
+        <p>执行功能缺陷是 ADHD 的核心特征已基本成为学界共识，但仍有几个争议点。其一，执行功能缺陷并非 ADHD 特有——它也见于自闭症、学习障碍、创伤性脑损伤等多种情况，因此不能作为 ADHD 的诊断标志物。其二，Barkley 模型中"行为抑制是核心缺陷"的主张受到了挑战——近年来的研究（如 Panah 等人的结构方程模型分析）发现工作记忆与抑制控制更可能是相对独立的缺陷而非线性层级关系。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 7 条</summary>
+      <ol>
+        <li>Barkley, R.A. (1997). Behavioral inhibition, sustained attention, and executive functions: constructing a unifying theory of ADHD. <em>Psychological Bulletin</em>, 121(1), 65–94. <a href="https://doi.org/10.1037/0033-2909.121.1.65" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Dwyer, P. (2022). The Neurodiversity Approach(es): What Are They and What Do They Mean for Researchers? <em>Human Development</em>, 66(2), 73–92. <a href="https://scholar.google.com/scholar?q=Dwyer+neurodiversity+approaches+what+are+they+mean+for+researchers" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>Henning, C.T., Summerfeldt, L.J., &amp; Parker, J.D.A. (2024). Longitudinal Associations Between Symptoms of ADHD and Life Success: From Emerging Adulthood to Early Middle Adulthood. <em>Journal of Attention Disorders</em>, 28(7), 1139–1151. <a href="https://scholar.google.com/scholar?q=Henning+Summerfeldt+Parker+longitudinal+ADHD+life+success" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>ADDitude. What Is Executive Function? 7 Deficits Tied to ADHD. <a href="https://scholar.google.com/scholar?q=ADDitude+what+is+executive+function+7+deficits+ADHD" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>香港教育局. ADHD 与执行功能. <a href="https://scholar.google.com/scholar?q=香港教育局+ADHD+执行功能" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>ADHD Evidence. ADHD and Emotional Dysregulation. <a href="https://scholar.google.com/scholar?q=ADHD+Evidence+emotional+dysregulation" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>王勇慧, 周晓林, 王玉凤, 杨炯炯. (2002). 执行功能与注意缺陷多动障碍. <em>中华精神科杂志</em>, 35(4). <a href="https://scholar.google.com/scholar?q=王勇慧+执行功能+注意缺陷多动障碍+中华精神科杂志" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-掩蔽与补偿策略
-女性ADHD患者比男性更倾向于发展补偿机制来掩盖症状。常见的策略包括：严格自我监控、制定详尽的待办清单防止遗漏、反复检查、情绪压抑、回避可能暴露困难的场合。这些策略在短期内有效，但消耗大量心理能量，长期导致倦怠、焦虑和抑郁。当生活压力超出自我调节能力的临界点（如升学、入职、为人父母等阶段），掩蔽策略往往崩溃，患者才会出现显著的功能障碍——这也是许多女性在成年后才被诊断的原因之一。
-研究还发现ADHD群体也存在与自闭症类似的掩蔽行为。一项研究显示，ADHD成人患者在CAT-Q掩蔽量表的总分和同化分维度上显著高于神经典型对照组。
+  <!-- ================= 3. 情绪失调 ================= -->
+  <article class="entry" id="emotion">
+    <h2>ADHD 的情绪失调</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">情绪失调是否属于 ADHD 的核心特征至今有争议：DSM-5 未纳入任何情绪条目，但 2024 年剑桥大学脑成像研究提示它可以独立于注意缺陷出现。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念界定</h3>
+        <p>情绪失调（Emotional Dysregulation, ED）或情绪自我调节缺陷（Deficient Emotional Self-Regulation, DESR），指个体难以有效管理和调节自身情绪反应的强度、持续时间和表达方式。在 ADHD 语境下，这表现为情绪反应过于剧烈、爆发迅速、回弹缓慢，以及对挫折的耐受度显著偏低。</p>
 
-共病与误诊
-女性ADHD患者共病焦虑、抑郁、双相障碍、进食障碍和人格障碍的比例显著高于男性。挪威一项覆盖4万余名ADHD成人的全国注册研究显示，53.5%的女性ADHD患者至少存在一种精神共病（无ADHD的女性中该比例为13.7%）这些共病常常掩盖ADHD的核心症状，导致先被误诊为情绪障碍。一项研究发现，14%的ADHD女孩在确诊ADHD前曾被开具抗抑郁药，而男孩中仅为5%。
+        <h3>在 ADHD 中的定位：核心还是伴随？</h3>
+        <p>情绪失调在 ADHD 中的地位长期以来存在争议。Russell Barkley 在其 2010 年的论文中明确主张，情绪自我调节缺陷应与行为自我调节和认知自我调节缺陷并列，被视为 ADHD 的核心组成部分。他将 ADHD 重新定义为一种<strong>自我调节障碍</strong>（disorder of self-regulation），而不仅是注意力和多动问题。</p>
+        <p>然而，DSM-5 的 ADHD 诊断标准至今未纳入任何情绪症状条目。这意味着，尽管大量的临床和实证证据表明情绪失调在 ADHD 患者中广泛存在，它仍不属于 ADHD 的正式诊断标准。这一缺口是临床诊断中一个持续存在的张力点。Graziano 与 Garcia（2016）的元分析证实，ADHD 儿童的情绪调节困难显著高于典型发育儿童，且与冲动、攻击性和社交功能受损高度相关。</p>
 
-激素的影响
-女性的ADHD症状可能随生理周期波动。月经周期中雌激素水平下降（尤其是黄体期）会导致多巴胺水平随之降低，使ADHD症状加重——注意力更难集中、情绪更不稳定。这种周期性波动使得女性ADHD的表现更加复杂，也增加了诊断和药物调整的难度。
+        <h3>2024 年剑桥大学研究的突破</h3>
+        <p>2024 年发表于《Nature Mental Health》的一项剑桥大学研究为情绪失调作为 ADHD 核心特征提供了新的神经生物学证据。该研究利用大规模脑成像数据发现，ADHD 中的情绪失调部分与<strong>右侧眶部（right pars orbitalis）的激活减弱</strong>有关——该脑区参与整合情绪和执行功能加工。重要的是，研究显示情绪失调可以独立于经典的注意力和多动冲动缺陷出现，提示情绪问题并非注意缺陷的副产品，而是 ADHD 的一个独立维度。</p>
 
-近年来社交媒体上女性ADHD诊断的急剧增加引发了"过度诊断"的担忧。一些批评者认为，网络上的症状列表过于宽泛，可能导致将正常的性格差异或压力反应误认为ADHD。如何在"弥补长期漏诊"与"避免过度诊断"之间取得平衡，是当前临床实践中面临的现实挑战。此外，现有的诊断工具和标准大多基于男性样本开发，对女性ADHD的敏感性仍存在局限。
-</div>
-        <div class="ref">参考文献：• Attoe, D.E. & Climie, E.A. (2023). Miss. Diagnosis: A Systematic Review of ADHD in Adult Women. Journal of Attention Disorders, 27(7), 645–657. 
-• PAR (2025). Unmasking ADHD: How Symptoms Differ Between Genders. 
-• Qbtech. Gender differences in ADHD: Why it's often missed in women and girls. 
-• Solberg, B.S., Halmøy, A., Engeland, A., Igland, J., Haavik, J., & Klungsøyr, K. (2018). Gender differences in psychiatric comorbidity: A population-based study of 40 000 adults with attention deficit hyperactivity disorder. Acta Psychiatrica Scandinavica, 137(3), 176–186.
-• ADDitude. ADHD Masking: Pretending to Be Neurotypical Is Unhealthy. 
-• 新京报 (2026). ADHD女性，从得不到诊断到过度诊断. </div>
-• Hinshaw, S.P., Nguyen, P.T., O'Grady, S.M., & Rosenthal, E.A. (2022). Annual Research Review: Attention-deficit/hyperactivity disorder in girls and women: underrepresentation, longitudinal processes, and key directions. Journal of Child Psychology and Psychiatry, 63(4), 484–496.
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="executive">
-        <h3>ADHD与执行功能</h3>
-        <div class="placeholder">执行功能的定义
-执行功能（Executive Function, EF）是一组高阶认知过程的统称，由前额叶皮层主导，涉及背外侧前额叶、眶额叶、前扣带回、基底神经节等多个脑区协同工作。其核心功能包括三个基本成分：抑制控制（inhibitory control）、工作记忆（working memory）和认知灵活性（cognitive flexibility）。在此基础上衍生出更高阶的能力，如计划、组织、时间管理、情绪调节、任务启动和元认知等。
+        <h3>临床表现</h3>
+        <ul>
+          <li><strong>情绪冲动性</strong>：情绪反应的阈值低、强度大、持续时间短。患者容易因轻微挫折而爆发强烈情绪（愤怒、沮丧、悲伤），但情绪也可能像来的时候一样快地消退。</li>
+          <li><strong>挫折耐受度低</strong>：面对需要等待、延迟满足或重复性任务时，情绪反应尤为强烈。小事——排队、找不到物品、计划突然变更——都可能触发剧烈的情绪反应。</li>
+          <li><strong>情绪回弹迟缓</strong>：一旦被激惹，ADHD 患者的自主神经系统恢复至基线水平所需时间比典型个体更长，这与执行功能层面的抑制控制减弱有关。</li>
+          <li><strong>情绪与行为抑制的交互恶化</strong>：研究发现，ADHD 儿童在生气情绪被激发后，停止信号任务中的反应时间延长、错误率和遗漏率上升，说明愤怒情绪直接削弱了行为抑制能力，形成恶性循环。</li>
+          <li><strong>时间盲与情绪放大效应</strong>：ADHD 患者普遍存在时间感知困难（time blindness），当处于负面情绪时，往往感觉"这种糟糕的感觉永远都不会结束"，进一步放大情绪反应。</li>
+        </ul>
 
-Barkley的执行功能模型
-Russell Barkley于1997年提出的理论模型是ADHD与执行功能关系领域最具影响力的框架之一。该模型的核心主张是：行为抑制（behavioral inhibition）的缺陷是ADHD最根本的认知缺损，这一核心缺陷继而导致次级执行功能受损。
-Barkley将行为抑制分解为三个相互关联的过程：抑制对事件的初始优势反应（即阻止条件反射式的反应倾向）、终止正在进行的反应（以便留出时间做出延迟决策）、以及对干扰的主动控制（保护延迟反应不受竞争物的干扰）。
-行为抑制缺陷导致以下四项执行功能受损：非语言工作记忆（视觉/空间信息的暂存与操作，表现为难以在脑中"保持"信息，容易忘记刚被交付的任务）、语言工作记忆（内部言语的自我引导，表现为自我对话和自我指导能力减弱）、情感-动机-唤醒的自我调节（难以调节情绪和动机状态）、以及行为的分析与重构（将行为分解为单元并重新组合以产生新行为模式的能力）。
+        <h3>共病中的角色</h3>
+        <p>情绪失调是 ADHD 与对立违抗障碍（ODD）、品行障碍、双相障碍、焦虑症、抑郁症等共病之间的重要桥梁。儿童期的情绪失调若未得到识别和干预，成年后共病其他精神障碍的风险显著增加，可能转归为反社会人格障碍等严重预后不良的情况。</p>
 
-执行功能的具体表现
-在日常生活层面，执行功能缺陷表现为：
-• 时间管理困难：难以估计任务所需时间，经常迟到或错过截止日期
-• 组织能力弱：物品摆放混乱，难以维持有序的工作或生活环境
-• 任务启动困难：知道该做什么但难以开始，拖延倾向显著
-• 计划与优先级排序困难：面对复杂任务时不知从何下手
-• 持续追踪任务困难：容易在任务中途分心或转向其他事情
-• 情绪调节困难：情绪反应强度大、持续时间短、回弹速度慢
-• 工作记忆限制：记不住多步骤指令，容易忘记刚才想说的话或正在做的事
-Barkley本人后来进一步将执行功能细化为七个维度：自我觉察、抑制、非语言工作记忆、语言工作记忆、情绪自我调节、自我激励、以及计划与问题解决。
+        <h3>未决问题</h3>
+        <p>情绪失调是否应纳入 ADHD 的正式诊断标准仍无定论。支持者认为，不纳入情绪症状会导致诊断工具对 ADHD 患者的真实损害程度估计不足，尤其是对成年女性等以情绪症状为主要诉求的群体。反对者则担心，情绪失调的特异性不足——它同样见于边缘性人格障碍、双相障碍、PTSD 等多种情况——将其纳入诊断标准可能降低 ADHD 的诊断准确性。此外，情绪失调与 ADHD 症状之间的因果关系仍未完全厘清：情绪问题是 ADHD 核心执行功能缺陷的直接结果，还是一个独立的共病维度？目前学界更倾向于后者。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 6 条</summary>
+      <ol>
+        <li>Barkley, R.A. (2010). Deficient Emotional Self-Regulation: A Core Component of ADHD. <em>Journal of ADHD and Related Disorders</em>, 1, 5–37. <a href="https://scholar.google.com/scholar?q=Barkley+deficient+emotional+self-regulation+core+component+ADHD" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>Graziano, P.A. &amp; Garcia, A. (2016). ADHD and children's emotion dysregulation: A meta-analysis. <em>Clinical Psychology Review</em>, 46, 106–123. <a href="https://scholar.google.com/scholar?q=Graziano+Garcia+ADHD+children+emotion+dysregulation+meta-analysis" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>Hou, W., Sahakian, B.J., Langley, C., et al. (2024). Emotion dysregulation and right pars orbitalis constitute a neuropsychological pathway to attention deficit hyperactivity disorder. <em>Nature Mental Health</em>, 2, 840–852. <a href="https://scholar.google.com/scholar?q=Hou+emotion+dysregulation+right+pars+orbitalis+neuropsychological+pathway+ADHD" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>Soler-Gutiérrez, A.-M., Pérez-González, J.-C., &amp; Mayas, J. (2023). Evidence of emotion dysregulation as a core symptom of adult ADHD: A systematic review. <em>PLoS ONE</em>, 18(1), e0280131. <a href="https://scholar.google.com/scholar?q=Soler-Gutierrez+emotion+dysregulation+core+symptom+adult+ADHD+systematic+review" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>ADDitude. DESR: Why Deficient Emotional Self-Regulation is Central to ADHD. <a href="https://scholar.google.com/scholar?q=ADDitude+DESR+deficient+emotional+self-regulation+central+ADHD" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>ADHD Evidence. ADHD and Emotional Dysregulation. <a href="https://scholar.google.com/scholar?q=ADHD+Evidence+emotional+dysregulation" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-神经基础
-ADHD患者的执行功能缺陷有其神经生物学基础。脑成像研究表明，ADHD患者的额叶-纹状体环路与正常人群存在差异，前额叶皮层成熟延迟约3-5年。前额叶皮层作为执行功能的神经核心区域，其发育迟缓和神经效率降低，同时损害了任务管理和情绪调节的能力。
+  <!-- ================= 4. RSD ================= -->
+  <article class="entry" id="rsd">
+    <h2>拒绝敏感烦躁症（RSD, Rejection Sensitive Dysphoria）</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">RSD 由 Dodson 于 2017 年前后提出，描述被拒绝触发的剧烈情绪痛苦，在社群中讨论热烈——但截至 2026 年仍无经过验证的测量工具，学术证据远未成熟。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念起源</h3>
+        <p>拒绝敏感烦躁症（Rejection Sensitive Dysphoria, RSD）一词由美国精神科医生 William Dodson 于 2017 年前后提出，用以描述 ADHD 群体中一类极端的、被感知到的拒绝所触发的情绪痛苦反应。"Dysphoria"源自希腊语，意为"难以承受的"——这个词本身即暗示了这种体验的剧烈程度。</p>
 
-执行功能缺陷是ADHD的核心特征已基本成为学界共识，但仍有几个争议点。其一，执行功能缺陷并非ADHD特有——它也见于自闭症、学习障碍、创伤性脑损伤等多种情况，因此不能作为ADHD的诊断标志物。其二，Barkley模型中"行为抑制是核心缺陷"的主张受到了挑战——近年来的研究（如Panah等人的结构方程模型分析）发现工作记忆与抑制控制更可能是相对独立的缺陷而非线性层级关系。</div>
-        <div class="ref">参考文献：• Barkley, R.A. (1997). Behavioral inhibition, sustained attention, and executive functions: constructing a unifying theory of ADHD. Psychological Bulletin, 121(1), 65–94.
-• Dwyer, P. (2022). The Neurodiversity Approach(es): What Are They and What Do They Mean for Researchers? Human Development, 66(2), 73–92.
-• Henning, C.T., Summerfeldt, L.J., & Parker, J.D.A. (2024). Longitudinal Associations Between Symptoms of ADHD and Life Success: From Emerging Adulthood to Early Middle Adulthood. Journal of Attention Disorders, 28(7), 1139–1151.
-• ADDitude. What Is Executive Function? 7 Deficits Tied to ADHD.
-• 香港教育局. ADHD与执行功能.
-• ADHD Evidence. ADHD and Emotional Dysregulation.
-• 北大心理系王勇慧, 周晓林, 王玉凤, 杨炯炯. (2002). 执行功能与注意缺陷多动障碍. 中华精神科杂志, 35(4).</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="emotion">
-        <h3>ADHD的情绪失调</h3>
-        <div class="placeholder">概念界定
-情绪失调（Emotional Dysregulation, ED）或情绪自我调节缺陷（Deficient Emotional Self-Regulation, DESR），指个体难以有效管理和调节自身情绪反应的强度、持续时间和表达方式。在ADHD语境下，这表现为情绪反应过于剧烈、爆发迅速、回弹缓慢，以及对挫折的耐受度显著偏低。
+        <h3>核心表现</h3>
+        <p>RSD 被描述为一种由真实或想象的拒绝、批评、戏弄或失败所触发的、压倒性的情绪和身体痛苦反应。Dodson 将其与一般性的"拒绝敏感性"区分开来——后者是一种焦虑地预期、轻易察觉和强烈回应拒绝的人格倾向，在学术文献中有更系统的研究基础，而 RSD 则特指 ADHD 背景下那种更为剧烈的、近似躯体疼痛的情绪爆发。</p>
+        <p>RSD 的典型表现包括：被批评或拒绝后立即出现极端的羞愧、愤怒、悲伤或焦虑；情绪反应程度远超出事件的客观严重性；可能伴随躯体感受（如胸口发紧、胃部翻搅）；部分患者表现为"情绪关闭"——突然的情感麻木和退缩。</p>
+        <p>Dodson 的临床报告指出，近 99% 的 ADHD 成人至少经历过一次 RSD 发作，约三分之一的人认为 RSD 对其生活质量的影响比注意力不集中和多动本身更严重。<strong>这些数据来自临床观察而非系统流行病学调查，需谨慎解读。</strong></p>
 
-在ADHD中的定位：核心还是伴随？
-情绪失调在ADHD中的地位长期以来存在争议。Russell Barkley在其2010年的论文中明确主张，情绪自我调节缺陷应与行为自我调节和认知自我调节缺陷并列，被视为ADHD的核心组成部分。他将ADHD重新定义为一种自我调节障碍（disorder of self-regulation），而不仅是注意力和多动问题。
-然而，DSM-5的ADHD诊断标准至今未纳入任何情绪症状条目。这意味着，尽管大量的临床和实证证据表明情绪失调在ADHD患者中广泛存在，它仍不属于ADHD的正式诊断标准。这一缺口是临床诊断中一个持续存在的张力点。Graziano与Garcia（2016）的元分析证实，ADHD儿童的情绪调节困难显著高于典型发育儿童，且与冲动、攻击性和社交功能受损高度相关。
+        <h3>与 ADHD 的关联</h3>
+        <p>RSD 被视作 ADHD 情绪失调谱系中最剧烈的一种表现形式。其神经生物学解释指向 ADHD 中皮层-纹状体-丘脑-皮层（CSTC）环路的功能异常，尤其是杏仁核和腹侧前额叶皮层在处理社会威胁信号时的过度激活。Dodson 认为 RSD 是 ADHD"与生俱来"的脑部症状，而非创伤或不良养育的结果——这一观点在社群中获得了广泛认同，但也同时引发了争议。</p>
 
-2024年剑桥大学研究的突破
-2024年发表于《Nature Mental Health》的一项剑桥大学研究为情绪失调作为ADHD核心特征提供了新的神经生物学证据。该研究利用大规模脑成像数据发现，ADHD中的情绪失调部分与右侧眶部（right pars orbitalis）的激活减弱有关——该脑区参与整合情绪和执行功能加工。重要的是，研究显示情绪失调可以独立于经典的注意力和多动冲动缺陷出现，提示情绪问题并非注意缺陷的副产品，而是ADHD的一个独立维度。
+        <h3>研究现状</h3>
+        <p>RSD 的学术研究仍处于非常早期的阶段。截至 2025-2026 年，主要的研究证据包括：</p>
+        <ul>
+          <li>Dodson 等人（2024）的病例系列报告（4 名 ADHD 成人），描述了"发作性的身体和情绪疼痛"以及被临床工作者误解和误诊的经历。</li>
+          <li>Sandland（2025）的定性研究（8 名神经多元成人，包括 ADHD、自闭症、运动障碍），发现参与者对 RSD 的定义缺乏一致性，提示这一构念本身仍不清晰。</li>
+          <li>Rowney-Smith 等人（2026）的定性研究（ADHD 本科生焦点小组），发现参与者报告了退缩、掩蔽、躯体感受和预期的回避行为，指出拒绝敏感性在 ADHD 中"相对未被探索"。</li>
+        </ul>
+        <p>截至目前，尚无经过验证的 RSD 专用测量工具，缺乏系统的流行病学数据（临床工作者引用的"70% 的 ADHD 成人有 RSD"等数据并非基于系统调查），且尚无随机对照试验检验任何 RSD 特定干预措施的有效性。</p>
 
-临床表现
-ADHD患者的情绪失调在临床上主要表现为：
-情绪冲动性：情绪反应的阈值低、强度大、持续时间短。患者容易因轻微挫折而爆发强烈情绪（愤怒、沮丧、悲伤），但情绪也可能像来的时候一样快地消退。
-挫折耐受度低：面对需要等待、延迟满足或重复性任务时，情绪反应尤为强烈。小事——排队、找不到物品、计划突然变更——都可能触发剧烈的情绪反应。
-情绪回弹迟缓：一旦被激惹，ADHD患者的自主神经系统恢复至基线水平所需时间比典型个体更长，这与执行功能层面的抑制控制减弱有关。
-情绪与行为抑制的交互恶化：研究发现，ADHD儿童在生气情绪被激发后，停止信号任务中的反应时间延长、错误率和遗漏率上升，说明愤怒情绪直接削弱了行为抑制能力，形成恶性循环。
-时间盲与情绪放大效应：ADHD患者普遍存在时间感知困难（time blindness），当处于负面情绪时，往往感觉"这种糟糕的感觉永远都不会结束"，进一步放大情绪反应。
+        <h3>争议焦点</h3>
+        <p>RSD 是 ADHD 社群中讨论最热烈但学术证据最薄弱的概念之一，争议集中在以下几个方面：</p>
+        <p><strong>其一，与既有学术构念的关系不明确。</strong>"拒绝敏感性"（rejection sensitivity）作为人格特质已在社会心理学和临床心理学中有数十年的研究积累，有成熟的测量工具和理论框架。RSD 在多大程度上区别于这一既有构念，尚无定论。</p>
+        <p><strong>其二，病因学路径存在分歧。</strong>Dodson 主张 RSD 是 ADHD 的先天神经特征，与创伤无关。但纵向研究证据表明，ADHD 儿童从小比同龄人更频繁地经历批评和拒绝，这种累积的负面社交经验可能通过致敏化（sensitization）机制放大情绪反应，即"后天创伤假说"。两种路径可能并存，但现有研究不足以区分。</p>
+        <p><strong>其三，缺乏分类学的稳定性</strong>——RSD 是否是 ADHD 情绪失调的一个极端亚型，还是一个独立的现象，或是更广泛人格特质的 ADHD 特异性表达，尚无共识。</p>
+        <p><strong>其四，在社交媒体上的传播速度远超学术证据积累。</strong>RSD 概念在 TikTok、Instagram 等平台广泛流行，对提高社群自我认知有积极意义，但也带来了概念泛化的风险——将日常的社交焦虑或正常的挫折反应都归类为病理化的 RSD。研究者呼吁需要更严谨的心理测量学工作、更大样本的对照研究以及神经生物学调查，才能确定 RSD 是否应被赋予独立的临床地位。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 6 条</summary>
+      <ol>
+        <li>Dodson, W.W. (2017/2023). Rejection Sensitive Dysphoria. <em>ADDitude Magazine</em>. <a href="https://scholar.google.com/scholar?q=Dodson+rejection+sensitive+dysphoria+ADDitude" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Dodson, W.W., Modestino, E.J., et al. (2024). Rejection sensitivity dysphoria in ADHD: A case series. <em>Acta Scientific Neurology</em>, 7(8), 23–30. <a href="https://scholar.google.com/scholar?q=Dodson+rejection+sensitivity+dysphoria+ADHD+case+series" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>Psychology Today (2026). Rejection Sensitivity Dysphoria: The Actual Research. <a href="https://scholar.google.com/scholar?q=rejection+sensitivity+dysphoria+actual+research" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Rowney-Smith, A., Sutton, B., Quadt, L., &amp; Eccles, J.A. (2026). The lived experience of rejection sensitivity in ADHD – A qualitative exploration. <em>PLoS ONE</em>, 21(1), e0314669. <a href="https://scholar.google.com/scholar?q=Rowney-Smith+lived+experience+rejection+sensitivity+ADHD+qualitative" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>ADDA. Rejection Sensitivity: Managing Feelings of Overwhelm. <a href="https://scholar.google.com/scholar?q=ADDA+rejection+sensitivity+managing+feelings+overwhelm" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>CHADD (2016). Over-reaction. <a href="https://scholar.google.com/scholar?q=CHADD+over-reaction+ADHD" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-共病中的角色
-情绪失调是ADHD与对立违抗障碍（ODD）、品行障碍、双相障碍、焦虑症、抑郁症等共病之间的重要桥梁。儿童期的情绪失调若未得到识别和干预，成年后共病其他精神障碍的风险显著增加，可能转归为反社会人格障碍等严重预后不良的情况。
+  <!-- ================= 5. 成人表现与生命周期 ================= -->
+  <article class="entry" id="adult">
+    <h2>ADHD 的成人表现与生命周期</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">纵向研究否定了"ADHD 长大就好"：约 60% 的儿童患者症状持续至成年早期，25 岁时仅约 9% 完全缓解；成人功能损害覆盖职业、人际、心理健康与驾驶安全。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>从童年到成年的持续性</h3>
+        <p>ADHD 曾长期被视为仅在儿童期存在的障碍，会随年龄增长而"自愈"。纵向追踪研究已明确否定了这一假设。Sibley 等人（2017）的研究发现，约 60% 的儿童 ADHD 患者在进入成年早期后仍符合诊断标准，而到 25 岁时仅约 9% 实现完全的、持续的症状缓解。</p>
+        <p>但各研究报告的持续率差异极大（从 4% 到 76% 不等），这一方面反映了诊断标准、样本来源和信息提供者等方法的差异，另一方面也说明 ADHD 在整个生命周期中并非一个固定的实体。</p>
 
-情绪失调是否应纳入ADHD的正式诊断标准仍无定论。支持者认为，不纳入情绪症状会导致诊断工具对ADHD患者的真实损害程度估计不足，尤其是对成年女性等以情绪症状为主要诉求的群体。反对者则担心，情绪失调的特异性不足——它同样见于边缘性人格障碍、双相障碍、PTSD等多种情况——将其纳入诊断标准可能降低ADHD的诊断准确性。此外，情绪失调与ADHD症状之间的因果关系仍未完全厘清：情绪问题是ADHD核心执行功能缺陷的直接结果，还是一个独立的共病维度？目前学界更倾向于后者。
-</div>
-        <div class="ref">参考文献：• Barkley, R.A. (2010). Deficient Emotional Self-Regulation: A Core Component of ADHD. Journal of ADHD and Related Disorders, 1, 5–37.
-• Graziano, P.A. & Garcia, A. (2016). ADHD and children's emotion dysregulation: A meta-analysis. Clinical Psychology Review, 46, 106–123.
-• Hou, W., Sahakian, B.J., Langley, C., Yang, Y., Bethlehem, R.A.I., & Luo, Q. (2024). Emotion dysregulation and right pars orbitalis constitute a neuropsychological pathway to attention deficit hyperactivity disorder. Nature Mental Health, 2, 840–852.
-• Soler-Gutiérrez, A.-M., Pérez-González, J.-C., & Mayas, J. (2023). Evidence of emotion dysregulation as a core symptom of adult ADHD: A systematic review. PLoS ONE, 18(1), e0280131.
-• ADDitude. DESR: Why Deficient Emotional Self-Regulation is Central to ADHD.
-• ADHD Evidence. ADHD and Emotional Dysregulation.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="rsd">
-        <h3>拒绝敏感烦躁症 (RSD，Rejection Sensitive Dysphoria)</h3>
-        <div class="placeholder">概念起源
-拒绝敏感烦躁症（Rejection Sensitive Dysphoria, RSD）一词由美国精神科医生William Dodson于2017年前后提出，用以描述ADHD群体中一类极端的、被感知到的拒绝所触发的情绪痛苦反应。"Dysphoria"源自希腊语，意为"难以承受的"——这个词本身即暗示了这种体验的剧烈程度。
+        <h3>症状随年龄的变化</h3>
+        <p>ADHD 在不同生命阶段的表现呈现显著变化。多动-冲动症状在青春期后期和成年早期通常趋于减弱——外显的坐立不安、跑动攀爬、打断他人等行为减少，但往往转化为内心的焦躁不安、不耐烦和主观的静不下来感。注意力缺陷的轨迹则更为复杂：纵向研究发现注意缺陷症状在成年期也会逐渐下降，但下降速度低于多动-冲动维度。男性多动-冲动的下降尤为明显，而女性变化幅度较小。</p>
+        <p>中国方面的 GBD 数据分析显示，5-9 岁 ADHD 发病率最高，10-14 岁患病率和 DALY 率最高，之后随年龄增加逐渐下降，但疾病负担持续存在。基于 GBD 2019 数据的分析表明，纳入成人并进行年龄标准化后，中国 ADHD 的 ASIR、ASPR 和 DALY 率较 1990 年均有上升，提示成人 ADHD 患者是一个不容忽视的群体。</p>
 
-核心表现
-RSD被描述为一种由真实或想象的拒绝、批评、戏弄或失败所触发的、压倒性的情绪和身体痛苦反应。Dodson将其与一般性的"拒绝敏感性"区分开来——后者是一种焦虑地预期、轻易察觉和强烈回应拒绝的人格倾向，在学术文献中有更系统的研究基础，而RSD则特指ADHD背景下那种更为剧烈的、近似躯体疼痛的情绪爆发。
-RSD的典型表现包括：被批评或拒绝后立即出现极端的羞愧、愤怒、悲伤或焦虑；情绪反应程度远超出事件的客观严重性；可能伴随躯体感受（如胸口发紧、胃部翻搅）；部分患者表现为"情绪关闭"——突然的情感麻木和退缩。
-Dodson的临床报告指出，近99%的ADHD成人至少经历过一次RSD发作，约三分之一的人认为RSD对其生活质量的影响比注意力不集中和多动本身更严重。这些数据来自临床观察而非系统流行病学调查，需谨慎解读。
+        <h3>成人 ADHD 的功能损害</h3>
+        <p>成人 ADHD 的功能损害范围比儿童期更广，涉及多个生活领域：</p>
+        <ul>
+          <li><strong>职业方面</strong>：时间管理困难、组织混乱、优先级判断困难、错过截止日期、工作效率低下、频繁换工作、职业晋升受限。一项研究显示，ADHD 成人平均收入较同龄人低约 17-33%。</li>
+          <li><strong>人际关系</strong>：冲动性言辞、情绪波动、倾听困难、健忘导致的承诺未兑现——这些因素导致婚姻冲突、离婚率升高、社交孤立。</li>
+          <li><strong>心理健康</strong>：成人 ADHD 的共病负担远高于儿童期。全球数据显示，约 70-80% 的 ADHD 成人至少有一种精神共病。常见共病包括：焦虑症（约 50%）、抑郁症（约 30-40%）、物质使用障碍（约 15-25%）、双相障碍、人格障碍等。共病增加了诊断难度，也加重了临床损害和治疗复杂性。</li>
+          <li><strong>驾驶安全</strong>：ADHD 成人的交通事故风险显著升高，超速驾驶、违规行为和事故率均高于一般人群。</li>
+        </ul>
 
-与ADHD的关联
-RSD被视作ADHD情绪失调谱系中最剧烈的一种表现形式。其神经生物学解释指向ADHD中皮层-纹状体-丘脑-皮层（CSTC）环路的功能异常，尤其是杏仁核和腹侧前额叶皮层在处理社会威胁信号时的过度激活。Dodson认为RSD是ADHD"与生俱来"的脑部症状，而非创伤或不良养育的结果——这一观点在社群中获得了广泛认同，但也同时引发了争议。
+        <h3>诊断标准的成人化调整</h3>
+        <p>DSM-5 对成人 ADHD 诊断标准做了三项关键调整：将起病年龄从 7 岁放宽至 12 岁；将成人（≥17 岁）所需症状数从 6 项降至 5 项；增加了成人 ADHD 的行为表现举例，使其更贴近成人的生活场景。中国成人 ADHD 诊断和治疗专家共识（2023 版）明确指出，ADHD 是一种"影响个体全生命周期的疾病"，建议关注成人 ADHD 的早诊断和早治疗。</p>
 
-研究现状
-RSD的学术研究仍处于非常早期的阶段。截至2025-2026年，主要的研究证据包括：
-Dodson等人（2024）的病例系列报告（4名ADHD成人），描述了"发作性的身体和情绪疼痛"以及被临床工作者误解和误诊的经历。
-Sandland（2025）的定性研究（8名神经多元成人，包括ADHD、自闭症、运动障碍），发现参与者对RSD的定义缺乏一致性，提示这一构念本身仍不清晰。
-Rowney-Smith等人（2026）的定性研究（ADHD本科生焦点小组），发现参与者报告了退缩、掩蔽、躯体感受和预期的回避行为，指出拒绝敏感性在ADHD中"相对未被探索"。
-截至目前，尚无经过验证的RSD专用测量工具，缺乏系统的流行病学数据（临床工作者引用的"70%的ADHD成人有RSD"等数据并非基于系统调查），且尚无随机对照试验检验任何RSD特定干预措施的有效性。
+        <h3>成人起病 ADHD 的争议</h3>
+        <p>近年来纵向研究陆续发现，存在一类在成年后才首次符合 ADHD 诊断标准的个体——他们在童年期并无显著的 ADHD 症状。这一发现挑战了 ADHD 必须是"儿童期起病的神经发育障碍"这一传统定义。支持者认为这些"迟发型"ADHD 与儿童起病型在神经认知功能、共病模式和功能损害上相似，应同等对待。反对者则怀疑这些病例可能是其他精神障碍（焦虑、抑郁、双相）的误诊，或反映了补偿策略在成年期崩溃后的"显现"而非真正的迟发。目前尚无足够证据对这一争议做出定论。</p>
+        <p>成人 ADHD 的诊断本身就是一个备受争议的领域。主要争议包括：成人回顾童年期症状的可靠性存疑（回忆偏差）；缺乏客观生物学标志物；诊断标准在不同文化中的适用性差异；以及近年来社交媒体推动下成人 ADHD 诊断的急剧增多引发的"过度诊断"担忧。在中国的临床实践中，成人 ADHD 的认知率仍然很低，《中国注意缺陷多动障碍防治指南》第一版使用的还是"儿童"二字，直至第二版才删去。这反映了成人 ADHD 在中国从认识到诊疗体系的建设仍有相当大的提升空间。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 7 条</summary>
+      <ol>
+        <li>Sibley, M.H., Swanson, J.M., Arnold, L.E., et al. (2017). Defining ADHD symptom persistence in adulthood: optimizing sensitivity and specificity. <em>Journal of Child Psychology and Psychiatry</em>, 58(6), 655–662. <a href="https://doi.org/10.1111/jcpp.12620" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Kofler, M.J., Groves, N.B., Chan, E.S.M., et al. (2024). Working memory and inhibitory control deficits in children with ADHD: an experimental evaluation of competing model predictions. <em>Frontiers in Psychiatry</em>, 15, 1277583. <a href="https://scholar.google.com/scholar?q=Kofler+working+memory+inhibitory+control+children+ADHD+competing+model+predictions" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>Caye, A., Swanson, J., Thapar, A., et al. (2016). Life span studies of ADHD—conceptual challenges and predictors of persistence and outcome. <em>Current Psychiatry Reports</em>, 18(12), 111. <a href="https://scholar.google.com/scholar?q=Caye+life+span+studies+ADHD+conceptual+challenges+predictors+persistence" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>PMC (2025). 基于 GBD 分析 1990 至 2019 年中国 ADHD 的疾病负担变化趋势. <a href="https://scholar.google.com/scholar?q=GBD+1990+2019+China+ADHD+disease+burden" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>好大夫在线 (2023). 中国成人 ADHD 诊断和治疗专家共识（2023 版）. <a href="https://scholar.google.com/scholar?q=中国成人ADHD诊断和治疗专家共识+2023" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>MDPI (2025). ADHD in Adulthood: Clinical Presentation, Comorbidities, and Treatment Perspectives. <a href="https://scholar.google.com/scholar?q=ADHD+adulthood+clinical+presentation+comorbidities+treatment+perspectives" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Mayo Clinic. 成人注意缺陷多动障碍（ADHD）- 症状与病因. <a href="https://scholar.google.com/scholar?q=Mayo+Clinic+adult+ADHD+symptoms+causes" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-RSD是ADHD社群中讨论最热烈但学术证据最薄弱的概念之一，争议集中在以下几个方面：
-其一，与既有学术构念的关系不明确。"拒绝敏感性"（rejection sensitivity）作为人格特质已在社会心理学和临床心理学中有数十年的研究积累，有成熟的测量工具和理论框架。RSD在多大程度上区别于这一既有构念，尚无定论。
-其二，病因学路径存在分歧。Dodson主张RSD是ADHD的先天神经特征，与创伤无关。但纵向研究证据表明，ADHD儿童从小比同龄人更频繁地经历批评和拒绝，这种累积的负面社交经验可能通过致敏化（sensitization）机制放大情绪反应，即"后天创伤假说"。两种路径可能并存，但现有研究不足以区分。
-其三，缺乏分类学的稳定性——RSD是否是ADHD情绪失调的一个极端亚型，还是一个独立的现象，或是更广泛人格特质的ADHD特异性表达，尚无共识。
-其四，在社交媒体上的传播速度远超学术证据积累。RSD概念在TikTok、Instagram等平台广泛流行，对提高社群自我认知有积极意义，但也带来了概念泛化的风险——将日常的社交焦虑或正常的挫折反应都归类为病理化的RSD。研究者呼吁需要更严谨的心理测量学工作、更大样本的对照研究以及神经生物学调查，才能确定RSD是否应被赋予独立的临床地位。</div>
-        <div class="ref">参考文献：• Dodson, W.W. (2017/2023). Rejection Sensitive Dysphoria. ADDitude Magazine.
-• Dodson, W.W., Modestino, E.J., et al. (2024). Rejection sensitivity dysphoria in ADHD: A case series. Acta Scientific Neurology, 7(8), 23–30.
-• Psychology Today (2026). Rejection Sensitivity Dysphoria: The Actual Research.
-• Rowney-Smith, A., Sutton, B., Quadt, L., & Eccles, J.A. (2026). The lived experience of rejection sensitivity in ADHD – A qualitative exploration. PLoS ONE, 21(1), e0314669.
-• ADDA. Rejection Sensitivity: Managing Feelings of Overwhelm.
-• CHADD (2016). Over-reaction.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="adult">
-        <h3>ADHD的成人表现与生命周期</h3>
-        <div class="placeholder">从童年到成年的持续性
-ADHD曾长期被视为仅在儿童期存在的障碍，会随年龄增长而"自愈"。纵向追踪研究已明确否定了这一假设。Sibley等人（2017）的研究发现，约60%的儿童ADHD患者在进入成年早期后仍符合诊断标准，而到25岁时仅约9%实现完全的、持续的症状缓解。
-但各研究报告的持续率差异极大（从4%到76%不等），这一方面反映了诊断标准、样本来源和信息提供者等方法的差异，另一方面也说明ADHD在整个生命周期中并非一个固定的实体。
+  <!-- ================= 6. 共病谱 ================= -->
+  <article class="entry" id="comorbidity">
+    <h2>ADHD 的共病谱</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">共病是 ADHD 的常态而非例外：约 60-80% 至少共病一种其他精神障碍。焦虑、抑郁、物质使用、睡眠问题与学习障碍最常见，且深刻影响诊断与用药决策。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>共病的普遍性</h3>
+        <p>共病是 ADHD 的常态而非例外。专家估计约 60-80% 的 ADHD 儿童、青少年和成人至少存在一种其他精神障碍，约 20% 存在两种或以上。在成人中，多达 80% 的 ADHD 个体报告至少有一种共病。这一比例远高于一般人群。</p>
 
-症状随年龄的变化
-ADHD在不同生命阶段的表现呈现显著变化。多动-冲动症状在青春期后期和成年早期通常趋于减弱——外显的坐立不安、跑动攀爬、打断他人等行为减少，但往往转化为内心的焦躁不安、不耐烦和主观的静不下来感。注意力缺陷的轨迹则更为复杂：纵向研究发现注意缺陷症状在成年期也会逐渐下降，但下降速度低于多动-冲动维度。男性多动-冲动的下降尤为明显，而女性变化幅度较小。
-中国方面的GBD数据分析显示，5-9岁ADHD发病率最高，10-14岁患病率和DALY率最高，之后随年龄增加逐渐下降，但疾病负担持续存在。基于GBD 2019数据的分析表明，纳入成人并进行年龄标准化后，中国ADHD的ASIR、ASPR和DALY率较1990年均有上升，提示成人ADHD患者是一个不容忽视的群体。
+        <h3>外化障碍</h3>
+        <ul>
+          <li><strong>对立违抗性障碍（ODD）</strong>是 ADHD 最常见的共病之一。约 30-50% 的 ADHD 儿童同时符合 ODD 诊断标准，研究报告中 ADHD 人群中 ODD 的患病率约 19-20%。</li>
+          <li><strong>品行障碍（CD）</strong>在 ADHD 儿童和青少年中也显著增加，其风险与 ADHD 共病 ODD 密切相关。外化行为问题（ODD/CD）被证实与 ADHD 症状的持续存在显著关联，拥有这些共病的儿童 ADHD 症状更可能延续至成年。</li>
+        </ul>
 
-成人ADHD的功能损害
-成人ADHD的功能损害范围比儿童期更广，涉及多个生活领域：
-职业方面：时间管理困难、组织混乱、优先级判断困难、错过截止日期、工作效率低下、频繁换工作、职业晋升受限。一项研究显示，ADHD成人平均收入较同龄人低约17-33%。
-人际关系：冲动性言辞、情绪波动、倾听困难、健忘导致的承诺未兑现——这些因素导致婚姻冲突、离婚率升高、社交孤立。
-心理健康：成人ADHD的共病负担远高于儿童期。全球数据显示，约70-80%的ADHD成人至少有一种精神共病。常见共病包括：焦虑症（约50%）、抑郁症（约30-40%）、物质使用障碍（约15-25%）、双相障碍、人格障碍等。共病增加了诊断难度，也加重了临床损害和治疗复杂性。
-驾驶安全：ADHD成人的交通事故风险显著升高，超速驾驶、违规行为和事故率均高于一般人群。
+        <h3>内化障碍</h3>
+        <ul>
+          <li><strong>焦虑障碍</strong>：在 ADHD 成人中患病率约 50%，在儿童中约 18-35%。常见的焦虑亚型包括广泛性焦虑障碍、分离焦虑障碍和社交恐惧症。ADHD 与焦虑共享部分神经生物学基础（如前额叶-杏仁核环路的异常），且在临床上症状重叠——注意缺陷可能由焦虑的过度警觉引起，使鉴别诊断复杂化。</li>
+          <li><strong>抑郁障碍</strong>：ADHD 儿童的抑郁共病率约 27%（中国研究数据），在 ADHD 成人中报告范围为 18.6% 至 53.3%。女性 ADHD 患者的抑郁风险显著高于男性。共病抑郁的 ADHD 患者社会功能损害更严重、病程更长、自杀风险升高。</li>
+        </ul>
+        <p>中国一项纳入 135 名 7-10 岁 ADHD 儿童的研究发现，27% 共病抑郁障碍、18% 共病焦虑障碍、15% 同时共病焦虑和抑郁。</p>
 
-诊断标准的成人化调整
-DSM-5对成人ADHD诊断标准做了三项关键调整：将起病年龄从7岁放宽至12岁；将成人（≥17岁）所需症状数从6项降至5项；增加了成人ADHD的行为表现举例，使其更贴近成人的生活场景。中国成人ADHD诊断和治疗专家共识（2023版）明确指出，ADHD是一种"影响个体全生命周期的疾病"，建议关注成人ADHD的早诊断和早治疗。
+        <h3>物质使用障碍（SUD）</h3>
+        <p>ADHD 与 SUD 之间存在紧密的双向关联。Meta 分析显示 ADHD 在 SUD 人群中的患病率约 23.1%，其中青少年约 25.3%、成人约 21.0%。反过来，约 15% 的 ADHD 青少年和年轻成人有共病 SUD。</p>
+        <p>ADHD 增加 SUD 风险的机制包括：冲动性导致的自我控制困难、执行功能缺陷影响决策能力、自我用药假说（用酒精或药物缓解 ADHD 相关的不适），以及与 ODD/CD 共病进一步放大的风险。约四分之一的 ADHD 患儿在成年期发生物质滥用，且滥用行为通常从青春期开始。</p>
 
-成人起病ADHD的争议
-近年来纵向研究陆续发现，存在一类在成年后才首次符合ADHD诊断标准的个体——他们在童年期并无显著的ADHD症状。这一发现挑战了ADHD必须是"儿童期起病的神经发育障碍"这一传统定义。支持者认为这些"迟发型"ADHD与儿童起病型在神经认知功能、共病模式和功能损害上相似，应同等对待。反对者则怀疑这些病例可能是其他精神障碍（焦虑、抑郁、双相）的误诊，或反映了补偿策略在成年期崩溃后的"显现"而非真正的迟发。目前尚无足够证据对这一争议做出定论。
+        <h3>其他共病</h3>
+        <ul>
+          <li><strong>睡眠障碍</strong>在 ADHD 群体中极为普遍，但常被忽视。包括入睡困难、睡眠维持障碍、昼夜节律紊乱等。睡眠问题与 ADHD 症状之间存在双向恶化效应。</li>
+          <li><strong>特定学习障碍</strong>与 ADHD 高度共现，尤其是阅读障碍（读写障碍）。ADHD 的工作记忆缺陷直接损害阅读理解能力，而学习障碍本身也导致注意力难以维持，两者形成恶性循环。</li>
+          <li><strong>抽动障碍/妥瑞症</strong>与 ADHD 共病率显著升高，临床评估中需要区分抽动动作与 ADHD 的多动表现。</li>
+          <li><strong>自闭症谱系障碍（ASD）</strong>：报告显示 ADHD 中 ASD 共病率约 20-50%，反之 ASD 中 ADHD 共病率约 30-80%。DSM-5 取消了两种诊断互斥的禁令，使双重诊断成为可能。</li>
+          <li><strong>人格障碍</strong>在 ADHD 成人中也较为常见，尤其是边缘性人格障碍和反社会人格障碍。女性 ADHD 患者更容易被误诊为边缘性人格障碍。共病人格障碍使 ADHD 的临床管理更加复杂。</li>
+        </ul>
 
-成人ADHD的诊断本身就是一个备受争议的领域。主要争议包括：成人回顾童年期症状的可靠性存疑（回忆偏差）；缺乏客观生物学标志物；诊断标准在不同文化中的适用性差异；以及近年来社交媒体推动下成人ADHD诊断的急剧增多引发的"过度诊断"担忧。在中国的临床实践中，成人ADHD的认知率仍然很低，《中国注意缺陷多动障碍防治指南》第一版使用的还是"儿童"二字，直至第二版才删去。这反映了成人ADHD在中国从认识到诊疗体系的建设仍有相当大的提升空间。</div>
-        <div class="ref">参考文献：• Sibley, M.H., Swanson, J.M., Arnold, L.E., Hechtman, L.T., Owens, E.B., Stehli, A., Abikoff, H., Hinshaw, S.P., Molina, B.S.G., Mitchell, J.T., Jensen, P.S., Howard, A.L., Lakes, K.D., & Pelham, W.E. (2017). Defining ADHD symptom persistence in adulthood: optimizing sensitivity and specificity. Journal of Child Psychology and Psychiatry, 58(6), 655–662.
-• Kofler, M.J., Groves, N.B., Chan, E.S.M., Marsh, C.L., Cole, A.M., Gaye, F., Cibrian, E., Tatsuki, M.O., & Singh, L.J. (2024). Working memory and inhibitory control deficits in children with ADHD: an experimental evaluation of competing model predictions. Frontiers in Psychiatry, 15, 1277583.
-• Caye, A., Swanson, J., Thapar, A., Sibley, M., Arseneault, L., Hechtman, L., Arnold, L.E., Niclasen, J., Moffitt, T., & Rohde, L.A. (2016). Life span studies of ADHD—conceptual challenges and predictors of persistence and outcome. Current Psychiatry Reports, 18(12), 111.
-• PMC (2025). 基于GBD分析1990至2019年中国ADHD的疾病负担变化趋势.
-• 好大夫在线 (2023). 中国成人ADHD诊断和治疗专家共识（2023版）.
-• MDPI (2025). ADHD in Adulthood: Clinical Presentation, Comorbidities, and Treatment Perspectives.
-• Mayo Clinic. 成人注意缺陷多动障碍（ADHD）- 症状与病因.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="comorbidity">
-        <h3>ADHD的共病谱</h3>
-        <div class="placeholder">共病的普遍性
-共病是ADHD的常态而非例外。专家估计约60-80%的ADHD儿童、青少年和成人至少存在一种其他精神障碍，约20%存在两种或以上。在成人中，多达80%的ADHD个体报告至少有一种共病。这一比例远高于一般人群。
+        <h3>对诊断与治疗的意义</h3>
+        <p>共病的存在对 ADHD 的诊断和治疗有重要影响：症状重叠增加了诊断难度——焦虑引起的注意力问题可能被误认为 ADHD，ADHD 引起的冲动行为可能被误判为双相障碍。共病通常加重功能损害，就业、人际关系、生活质量等多方面受损程度比单一障碍更严重。共病影响治疗优先级和药物选择——例如，ADHD 共病焦虑时，托莫西汀可能优于兴奋剂作为一线选择；ADHD 共病 SUD 时需谨慎管理兴奋剂类药物以防滥用风险。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 7 条</summary>
+      <ol>
+        <li>Choi, W.-S., Woo, Y.S., Wang, S.-M., et al. (2022). The prevalence of psychiatric comorbidities in adult ADHD compared with non-ADHD populations: A systematic literature review. <em>PLoS ONE</em>, 17(11), e0277175. <a href="https://scholar.google.com/scholar?q=Choi+prevalence+psychiatric+comorbidities+adult+ADHD+non-ADHD+systematic+review" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>PMC (2024). Assessing ADHD prevalence and comorbidities in the United States. <a href="https://scholar.google.com/scholar?q=assessing+ADHD+prevalence+comorbidities+United+States" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Frontiers in Psychiatry (2025). Adult ADHD and comorbid anxiety and depressive disorders. <a href="https://scholar.google.com/scholar?q=adult+ADHD+comorbid+anxiety+depressive+disorders+frontiers" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Rohner, H., Gaspar, N., Philipsen, A., &amp; Schulze, M. (2023). Prevalence of ADHD among Substance Use Disorder (SUD) Populations: Meta-Analysis. <em>Int. J. Environ. Res. Public Health</em>, 20(2), 1275. <a href="https://scholar.google.com/scholar?q=Rohner+prevalence+ADHD+substance+use+disorder+populations+meta-analysis" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>The BMJ (2019). Clinical review: 儿童注意缺陷多动障碍. <a href="https://scholar.google.com/scholar?q=BMJ+clinical+review+attention+deficit+hyperactivity+disorder+children" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>丁香园. ADHD 共病抑郁焦虑诊治新进展. <a href="https://scholar.google.com/scholar?q=ADHD+共病抑郁焦虑+诊治" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>中国网 (2026). 中国成人多动症患病率 3.4%. <a href="https://scholar.google.com/scholar?q=中国+成人多动症+患病率" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-外化障碍
-☆对立违抗性障碍（ODD）是ADHD最常见的共病之一。约30-50%的ADHD儿童同时符合ODD诊断标准，研究报告中ADHD人群中ODD的患病率约19-20%。
-☆品行障碍（CD）在ADHD儿童和青少年中也显著增加，其风险与ADHD共病ODD密切相关。外化行为问题（ODD/CD）被证实与ADHD症状的持续存在显著关联，拥有这些共病的儿童ADHD症状更可能延续至成年。
+  <!-- ================= 7. 神经多样性视角 ================= -->
+  <article class="entry" id="neurodiversity">
+    <h2>ADHD 的神经多样性视角</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">神经多样性范式把困难放在"人与环境的不匹配"中理解，但"超能力"叙事同样危险——更务实的是中间路线：承认真实损害，同时改造环境。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>从医学模型到神经多样性范式</h3>
+        <p>长期以来，ADHD 主要被医学模型所定义：一套以"障碍"命名的诊断标准，聚焦于注意缺陷、多动和冲动的临床症状，以症状减轻为治疗目标。这一范式推动了有效的药物治疗和认知行为干预的发展，但也存在显著局限——它将 ADHD 大脑的差异定位为个体缺陷，强化了"不正常"的标签，忽视了神经多样性作为一种自然人类变异的可能性。</p>
+        <p>神经多样性范式提供了另一种框架。它并非否认 ADHD 带来的真实困难，而是将这些困难置于<strong>人与环境的不匹配</strong>（person-environment mismatch）中理解——社会制度、教育体系、职场规范主要围绕神经典型的大脑设计，当这种设计与 ADHD 大脑的特质不匹配时，障碍便产生了。正如身心障碍的社会模式所指出的：障碍部分源于社会壁垒而非纯粹源于个体缺陷。</p>
 
-内化障碍
-☆焦虑障碍：在ADHD成人中患病率约50%，在儿童中约18-35%。常见的焦虑亚型包括广泛性焦虑障碍、分离焦虑障碍和社交恐惧症。ADHD与焦虑共享部分神经生物学基础（如前额叶-杏仁核环路的异常），且在临床上症状重叠——注意缺陷可能由焦虑的过度警觉引起，使鉴别诊断复杂化。
-☆抑郁障碍：ADHD儿童的抑郁共病率约27%（中国研究数据），在ADHD成人中报告范围为18.6%至53.3%。女性ADHD患者的抑郁风险显著高于男性。共病抑郁的ADHD患者社会功能损害更严重、病程更长、自杀风险升高。
-中国一项纳入135名7-10岁ADHD儿童的研究发现，27%共病抑郁障碍、18%共病焦虑障碍、15%同时共病焦虑和抑郁。
+        <h3>ADHD 的潜在优势</h3>
+        <p>在合适的条件和环境中，ADHD 的某些特征可以转化为优势：</p>
+        <ul>
+          <li><strong>超焦点（Hyperfocus）</strong>：与刻板印象中的"无法集中注意力"相反，ADHD 群体在从事高度感兴趣的任务时，可以进入一种极端的专注状态，长时间深度投入，忽略时间流逝和外界干扰。研究表明，ADHD 成人在报告超焦点体验的频率和强度上显著高于非 ADHD 群体。</li>
+          <li><strong>发散性思维与创造力</strong>：低抑制控制可能同时减弱了思维中的内隐约束，使 ADHD 个体更容易进行发散性思维——将看似无关的想法快速连接，产生新颖的解决方案。2026 年发表于《Personality and Individual Differences》的研究发现，ADHD 症状水平高的个体在复合远距联想测试中更倾向于使用顿悟式（Type 1 直觉加工）而非分析式（Type 2 逐步加工）来解决问题。该研究还发现症状极高和极低的两组在总正确率上均优于中间组（U 型曲线分布），但走的是不同的认知路径。</li>
+          <li><strong>创业精神与风险承受</strong>：多项研究指出，ADHD 成人在创业领域表现出超比例代表性。部分 ADHD 特质——快速决策、敢于冒险、精力充沛、在高压下保持灵活——在动态、非结构化的创业环境中可能成为优势。</li>
+        </ul>
 
-物质使用障碍（SUD）
-ADHD与SUD之间存在紧密的双向关联。Meta分析显示ADHD在SUD人群中的患病率约23.1%，其中青少年约25.3%、成人约21.0%。反过来，约15%的ADHD青少年和年轻成人有共病SUD。
-ADHD增加SUD风险的机制包括：冲动性导致的自我控制困难、执行功能缺陷影响决策能力、自我用药假说（用酒精或药物缓解ADHD相关的不适），以及与ODD/CD共病进一步放大的风险。约四分之一的ADHD患儿在成年期发生物质滥用，且滥用行为通常从青春期开始。
+        <h3>"神经多样性 Lite"与批评</h3>
+        <p>神经多样性进入主流话语后催生了"神经多样性 Lite"（Neurodiversity Lite）的概念——强调 ADHD 的正面特质（"超能力"），但剥离了原框架对健全主义的结构性批判。批评者指出这种被削弱版本的问题：过度强调特殊能力，淡化了需要高度支持者所面临的真实困境；在企业和媒体话语中，神经多元常被描绘与生产力和创新挂钩，这实际上将人的价值与产出能力绑定；对"超能力"的过度渲染可能让那些主要以痛苦和功能障碍为体验的个体感到被忽视或被否认。</p>
 
-其他共病
-☆睡眠障碍在ADHD群体中极为普遍，但常被忽视。包括入睡困难、睡眠维持障碍、昼夜节律紊乱等。睡眠问题与ADHD症状之间存在双向恶化效应。
-☆特定学习障碍与ADHD高度共现，尤其是阅读障碍（读写障碍）。ADHD的工作记忆缺陷直接损害阅读理解能力，而学习障碍本身也导致注意力难以维持，两者形成恶性循环。
-☆抽动障碍/妥瑞症与ADHD共病率显著升高，临床评估中需要区分抽动动作与ADHD的多动表现。
-☆自闭症谱系障碍（ASD）：报告显示ADHD中ASD共病率约20-50%，反之ASD中ADHD共病率约30-80%。DSM-5取消了两种诊断互斥的禁令，使双重诊断成为可能。
-☆人格障碍在ADHD成人中也较为常见，尤其是边缘性人格障碍和反社会人格障碍。女性ADHD患者更容易被误诊为边缘性人格障碍。共病人格障碍使ADHD的临床管理更加复杂。
+        <h3>中间路线</h3>
+        <p>一个更务实的立场是介于医学模型的纯粹缺陷叙事和神经多样性范式的纯粹社会建构叙事之间。ADHD 确实带来真实的功能损害——药物治疗和技能训练仍然是必要的干预手段。但同时，社会环境的结构性改造——灵活的工作时间、安静的工作空间、书面指令代替口头传达、允许"身体陪伴"（body doubling）等策略——可以显著减轻 ADHD 带来的障碍，使个体在适合的环境中发挥其独特的认知优势。许多研究者认为，神经多样性范式与医学范式并非完全对立，而可以互补共存。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 6 条</summary>
+      <ol>
+        <li>Wikipedia：神经多样性. <a href="https://zh.wikipedia.org/wiki/%E7%A5%9E%E7%BB%8F%E5%A4%9A%E6%A0%B7%E6%80%A7" target="_blank" rel="noopener">维基百科 ↗</a></li>
+        <li>Frontiers for Young Minds. 超级专注力——ADHD 的专属超能力. <a href="https://scholar.google.com/scholar?q=hyperfocus+ADHD+frontiers+young+minds" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>麻省理工科技评论. ADHD 患者或有隐藏优势？注意力越涣散，灵感越丰富. <a href="https://scholar.google.com/scholar?q=MIT+Technology+Review+ADHD+creativity+divergent+thinking" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Choi, W.-S., et al. (2022). The prevalence of psychiatric comorbidities in adult ADHD. <em>PLoS ONE</em>, 17(11), e0277175. <a href="https://scholar.google.com/scholar?q=Choi+prevalence+psychiatric+comorbidities+adult+ADHD" target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li>Psychology Today (2023). A Strengths-Based Approach to Neurodiversity. <a href="https://scholar.google.com/scholar?q=strengths+based+approach+neurodiversity" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>ADHD Flow State. 10 Facts About ADHD, Neurodiversity And Entrepreneurship. <a href="https://scholar.google.com/scholar?q=ADHD+neurodiversity+entrepreneurship" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-共病的存在对ADHD的诊断和治疗有重要影响：症状重叠增加了诊断难度——焦虑引起的注意力问题可能被误认为ADHD，ADHD引起的冲动行为可能被误判为双相障碍。共病通常加重功能损害，就业、人际关系、生活质量等多方面受损程度比单一障碍更严重。共病影响治疗优先级和药物选择——例如，ADHD共病焦虑时，托莫西汀可能优于兴奋剂作为一线选择；ADHD共病SUD时需谨慎管理兴奋剂类药物以防滥用风险。
-</div>
-        <div class="ref">参考文献：• PMC (2022). The prevalence of psychiatric comorbidities in adult ADHD compared with non-ADHD populations.
-• PMC (2024). Assessing ADHD prevalence and comorbidities in the United States.
-• Frontiers in Psychiatry (2025). Adult ADHD and comorbid anxiety and depressive disorders.
-• Rohner, H., Gaspar, N., Philipsen, A., & Schulze, M. (2023). Prevalence of Attention Deficit Hyperactivity Disorder (ADHD) among Substance Use Disorder (SUD) Populations: Meta-Analysis. International Journal of Environmental Research and Public Health, 20(2), 1275.
-• The BMJ (2019). Clinical review: 儿童注意缺陷多动障碍.
-• 丁香园. ADHD共病抑郁焦虑诊治新进展.
-• 中国网 (2026). 中国成人多动症患病率3.4%.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="neurodiversity">
-        <h3>ADHD的神经多样性视角</h3>
-        <div class="placeholder">从医学模型到神经多样性范式
-长期以来，ADHD主要被医学模型所定义：一套以"障碍"命名的诊断标准，聚焦于注意缺陷、多动和冲动的临床症状，以症状减轻为治疗目标。这一范式推动了有效的药物治疗和认知行为干预的发展，但也存在显著局限——它将ADHD大脑的差异定位为个体缺陷，强化了"不正常"的标签，忽视了神经多样性作为一种自然人类变异的可能性。
-神经多样性范式提供了另一种框架。它并非否认ADHD带来的真实困难，而是将这些困难置于人与环境的不匹配（person-environment mismatch）中理解——社会制度、教育体系、职场规范主要围绕神经典型的大脑设计，当这种设计与ADHD大脑的特质不匹配时，障碍便产生了。正如身心障碍的社会模式所指出的：障碍部分源于社会壁垒而非纯粹源于个体缺陷。
-
-ADHD的潜在优势
-在合适的条件和环境中，ADHD的某些特征可以转化为优势：
-☆超焦点（Hyperfocus）：与刻板印象中的"无法集中注意力"相反，ADHD群体在从事高度感兴趣的任务时，可以进入一种极端的专注状态，长时间深度投入，忽略时间流逝和外界干扰。研究表明，ADHD成人在报告超焦点体验的频率和强度上显著高于非ADHD群体。
-☆发散性思维与创造力：低抑制控制可能同时减弱了思维中的内隐约束，使ADHD个体更容易进行发散性思维——将看似无关的想法快速连接，产生新颖的解决方案。2026年发表于《Personality and Individual Differences》的研究发现，ADHD症状水平高的个体在复合远距联想测试中更倾向于使用顿悟式（Type 1直觉加工）而非分析式（Type 2逐步加工）来解决问题。该研究还发现症状极高和极低的两组在总正确率上均优于中间组（U型曲线分布），但走的是不同的认知路径。
-☆创业精神与风险承受：多项研究指出，ADHD成人在创业领域表现出超比例代表性。部分ADHD特质——快速决策、敢于冒险、精力充沛、在高压下保持灵活——在动态、非结构化的创业环境中可能成为优势。
-
-"神经多样性Lite"与批评
-神经多样性进入主流话语后催生了"神经多样性Lite"（Neurodiversity Lite）的概念——强调ADHD的正面特质（"超能力"），但剥离了原框架对健全主义的结构性批判。批评者指出这种被削弱版本的问题：过度强调特殊能力，淡化了需要高度支持者所面临的真实困境；在企业和媒体话语中，神经多元常被描绘与生产力和创新挂钩，这实际上将人的价值与产出能力绑定；对"超能力"的过度渲染可能让那些主要以痛苦和功能障碍为体验的个体感到被忽视或被否认。
-
-中间路线
-一个更务实的立场是介于医学模型的纯粹缺陷叙事和神经多样性范式的纯粹社会建构叙事之间。ADHD确实带来真实的功能损害——药物治疗和技能训练仍然是必要的干预手段。但同时，社会环境的结构性改造——灵活的工作时间、安静的工作空间、书面指令代替口头传达、允许"身体陪伴"（body doubling）等策略——可以显著减轻ADHD带来的障碍，使个体在适合的环境中发挥其独特的认知优势。许多研究者认为，神经多样性范式与医学范式并非完全对立，而可以互补共存。
-</div>
-        <div class="ref">参考文献：• Wikipedia - 神经多样性.
-• Frontiers for Young Minds - 超级专注力——ADHD的专属超能力.
-• 麻省理工科技评论 - ADHD患者或有隐藏优势？注意力越涣散，灵感越丰富.
-• Choi, W.-S., Woo, Y.S., Wang, S.-M., Lim, H.K., & Bahk, W.-M. (2022). The prevalence of psychiatric comorbidities in adult ADHD compared with non-ADHD populations: A systematic literature review. PLoS ONE, 17(11), e0277175.
-• Psychology Today (2023). A Strengths-Based Approach to Neurodiversity.
-• ADHD Flow State. 10 Facts About ADHD, Neurodiversity And Entrepreneurship.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
+  <p class="disclaim">本页基于 DSM-5-TR / ICD-11 及同行评审论文整理，内容更新于 2026 年 8 月。仅供科普参考，不构成诊断或治疗建议；如需评估请前往精神科或临床心理科就诊。</p>
 </main>
-<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+
+<footer class="site-footer">
+  <div>神经多样性科普站 · <em>医学是以人为本</em></div>
+</footer>
 </body>
 </html>
