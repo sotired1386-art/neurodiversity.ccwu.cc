@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>暂且没有</title>
+    <title>术语解析 · 神经多样性科普站</title>
     <style>
         /* 极简全局重置，保证干净显示 */
         * {
@@ -51,9 +51,25 @@
             box-shadow: 0 12px 28px rgba(0,0,0,0.04);
             background: rgba(255,255,255,0.7);
         }
+
+        /* 返回主页的顶栏（新增部分） */
+        .top-bar {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: 52px;
+            display: flex; align-items: center;
+            padding: 0 20px;
+        }
+        .top-bar a {
+            color: #2E6E5E;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+        .top-bar a:hover { text-decoration: underline; text-underline-offset: 3px; }
     </style>
 </head>
 <body>
+    <div class="top-bar"><a href="index.html">← 返回主页</a></div>
     <div class="message">暂且没有</div>
 </body>
 </html>
