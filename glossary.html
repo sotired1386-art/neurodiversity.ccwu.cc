@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暂且没有</title>
+    <style>
+        /* 极简全局重置，保证干净显示 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fafafa; /* 柔和底色，可自定义 */
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        .message {
+            font-size: 3.5rem;      /* 醒目但克制 */
+            font-weight: 300;       /* 细一点更干净 */
+            letter-spacing: 4px;
+            color: #2c3e50;         /* 深灰蓝，不刺眼 */
+            text-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            padding: 1.5rem 3rem;
+            border-radius: 2rem;
+            background: rgba(255,255,255,0.5); /* 半透明磨砂感，若有若无 */
+            backdrop-filter: blur(2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+            user-select: none;       /* 防止选中，更整洁 */
+        }
+
+        /* 可选小屏适配，保持舒适 */
+        @media (max-width: 480px) {
+            .message {
+                font-size: 2.8rem;
+                padding: 1rem 2rem;
+                letter-spacing: 2px;
+            }
+        }
+
+        /* 增加一点极简的细节：悬停时轻微上浮（纯属趣味，不影响功能） */
+        .message:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+            background: rgba(255,255,255,0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="message">暂且没有</div>
+</body>
+</html>
