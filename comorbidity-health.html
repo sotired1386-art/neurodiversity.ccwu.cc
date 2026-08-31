@@ -1,187 +1,399 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>共病与健康 · 神经多样性科普站</title>
-    <style>
-        :root {
-            --bg: #FFF9F3; --card-bg: #FFFEFB; --card-border: #E8D5C4;
-            --primary: #C67A4B; --primary-dark: #A85D32; --primary-light: #F5E6D8;
-            --accent: #C0392B; --accent-light: #FDF0ED;
-            --text: #3D3D3D; --text-medium: #5C5C5C; --text-light: #7A7A7A; --text-lighter: #9A9A9A;
-            --nav-bg: #FDF5ED; --nav-hover: #F5E6D8;
-            --shadow-sm: 0 1px 6px rgba(160,120,90,0.08); --shadow-md: 0 3px 16px rgba(160,120,90,0.11);
-            --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
-            --max-width: 960px;
-            --font-serif: 'Noto Serif SC', 'STSong', serif;
-            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:var(--font-sans); background:var(--bg); color:var(--text); line-height:1.8; display:flex; flex-direction:column; min-height:100vh; font-size:1rem; }
-        .site-header { background:var(--card-bg); border-bottom:1px solid var(--card-border); position:sticky; top:0; z-index:100; box-shadow:var(--shadow-sm); }
-        .header-inner { max-width:var(--max-width); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-        .site-title { font-family:var(--font-serif); font-size:1.6rem; font-weight:700; color:var(--primary-dark); text-decoration:none; }
-        .site-title span { color:var(--accent); }
-        .main-nav { display:flex; gap:6px; flex-wrap:wrap; }
-        .nav-link { padding:8px 14px; border-radius:22px; text-decoration:none; color:var(--text-medium); font-size:0.9rem; font-weight:500; transition:0.2s; border:1.5px solid transparent; }
-        .nav-link:hover { background:var(--nav-hover); color:var(--primary-dark); border-color:var(--card-border); }
-        .nav-link.active { background:var(--primary-light); color:var(--primary-dark); font-weight:600; border-color:var(--primary); }
-        .nav-link.accent { color:var(--accent); font-weight:600; }
-        .nav-toggle { display:none; background:none; border:1.5px solid var(--card-border); border-radius:var(--radius-sm); padding:8px 14px; cursor:pointer; font-size:1.2rem; color:var(--text-medium); }
-        @media(max-width:768px){ .nav-toggle{display:block;} .main-nav{display:none;flex-direction:column;width:100%;gap:4px;padding-top:8px;} .main-nav.open{display:flex;} .nav-link{width:100%;text-align:center;border-radius:var(--radius-sm);padding:10px 16px;} }
-        .page-content { max-width:var(--max-width); margin:0 auto; padding:28px 20px 52px; width:100%; }
-        .module-title { font-size:2rem; font-weight:700; color:var(--primary-dark); margin-bottom:12px; border-left:6px solid var(--accent); padding-left:18px; }
-        .toc-box { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius-lg); padding:20px 24px; margin:24px 0 32px; }
-        .toc-box h2 { font-size:1.1rem; color:var(--accent); margin-bottom:12px; }
-        .toc-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
-        .toc-list li a { text-decoration:none; color:var(--primary-dark); font-weight:500; font-size:1rem; border-bottom:1.5px dashed transparent; transition:0.2s; }
-        .toc-list li a:hover { border-bottom-color:var(--accent); color:var(--accent); }
-        .section-block { background:var(--card-bg); border:1.5px solid var(--card-border); border-radius:var(--radius); padding:20px 24px; margin-bottom:24px; }
-        .section-block h3 { font-size:1.3rem; color:var(--primary-dark); margin-bottom:14px; }
-        .section-block .placeholder {
-            color:var(--text); margin:0 0 1.2em; background: none; padding: 0;
-            line-height:2.1; white-space: pre-line;
-        }
-        .ref { font-size:0.9rem; color:var(--text-medium); margin-top:16px; border-top:1px dashed var(--card-border); padding-top:14px; line-height:1.7; white-space: pre-line; }
-        .back-to-toc { display:inline-block; margin-top:12px; font-size:0.9rem; color:var(--accent); text-decoration:none; font-weight:500; }
-        .back-to-toc:hover { text-decoration:underline; }
-        .site-footer { text-align:center; padding:16px 24px 28px; font-size:0.9rem; color:var(--text-light); margin-top:auto; }
-        .site-footer em { color:var(--accent); font-style:normal; font-weight:500; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>共病与健康 · 神经多样性科普站</title>
+<meta name="description" content="感觉处理鉴别、焦虑与抑郁、躯体共病、睡眠问题：ASD 与 ADHD 共病状况的系统整理。">
+<meta property="og:title" content="共病与健康 · 神经多样性科普站">
+<meta property="og:description" content="感觉处理鉴别、焦虑与抑郁、躯体共病、睡眠问题。">
+<style>
+/* ============ 设计变量（与全站一致） ============ */
+:root {
+  --bg: #FBFBF9;
+  --text: #262626;
+  --text-2: #6B6B6B;
+  --text-3: #9A9A96;
+  --border: #E7E5DE;
+  --border-dashed: #DDDACF;
+  --accent: #2E6E5E;
+  --accent-weak: #E9F1ED;
+  --font-serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --max-w: 720px;
+  --header-h: 60px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181A; --text: #D8D6D0; --text-2: #9C9B95; --text-3: #6E6D68;
+    --border: #2B2D30; --border-dashed: #35383B;
+    --accent: #6FBFA8; --accent-weak: #1E2B27;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans); background: var(--bg); color: var(--text);
+  font-size: 16.5px; line-height: 1.95; -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-weak); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  background: var(--accent); z-index: 200;
+  transform-origin: 0 50%; transform: scaleX(0);
+}
+@supports (animation-timeline: scroll()) {
+  #progress { animation: pagegrow linear; animation-timeline: scroll(root block); }
+  @keyframes pagegrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: 960px; margin: 0 auto; padding: 0 20px;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand {
+  font-family: var(--font-serif); font-weight: 700; font-size: 1.08rem;
+  color: var(--text); letter-spacing: .02em; white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.brand .dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); margin-left: 7px; vertical-align: 2px;
+}
+.nav-details { position: relative; }
+.nav-details summary {
+  list-style: none; cursor: pointer; user-select: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 5px 12px; font-size: 1.05rem; color: var(--text-2);
+  transition: background .15s;
+}
+.nav-details summary::-webkit-details-marker { display: none; }
+.nav-details[open] summary { background: var(--accent-weak); color: var(--accent); border-color: var(--accent); }
+.site-nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--text-2); font-size: .88rem; padding: 4px 0;
+  border-bottom: 1.5px solid transparent; transition: color .15s, border-color .15s;
+}
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+.site-nav a.active { color: var(--accent); font-weight: 600; border-bottom-color: var(--accent); }
+@media (max-width: 820px) {
+  .nav-details .site-nav {
+    display: none; position: absolute; top: calc(100% + 10px); right: 0;
+    flex-direction: column; gap: 0; min-width: 42vw;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 6px 18px; box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  }
+  .nav-details[open] .site-nav { display: flex; }
+  .site-nav a { padding: 11px 0; font-size: .95rem; border-bottom: 1px solid var(--border); }
+  .site-nav a:last-child { border-bottom: none; }
+}
+@media (min-width: 821px) {
+  .nav-details summary { display: none; }
+}
+
+.page { padding-top: 56px; padding-bottom: 72px; }
+.page-head { margin-bottom: 20px; }
+.page-head h1 {
+  font-family: var(--font-serif); font-size: 2.1rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 10px;
+}
+.page-head .sub { color: var(--text-3); font-size: .92rem; letter-spacing: .04em; }
+.page-toc {
+  margin-top: 26px; padding: 14px 0 18px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px;
+}
+.page-toc a { color: var(--text-2); font-size: .88rem; }
+.page-toc a:hover { color: var(--accent); text-decoration: none; }
+
+.entry { padding-top: 46px; margin-top: 46px; border-top: 1px solid var(--border); scroll-margin-top: calc(var(--header-h) + 20px); }
+.entry:first-of-type { border-top: none; margin-top: 0; padding-top: 34px; }
+.entry > h2 {
+  font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700;
+  line-height: 1.4; margin-bottom: 4px;
+}
+details.body summary {
+  display: block; cursor: pointer; list-style: none;
+  margin: 10px -14px 0; padding: 12px 14px; border-radius: 8px;
+  transition: background .15s;
+}
+details.body summary::-webkit-details-marker { display: none; }
+details.body summary:hover { background: var(--accent-weak); }
+.digest { display: block; color: var(--text-2); font-size: .95rem; line-height: 1.8; }
+.hint { display: block; margin-top: 6px; color: var(--accent); font-size: .84rem; letter-spacing: .03em; }
+.hint .less { display: none; }
+details[open] > summary .more { display: none; }
+details[open] > summary .less { display: inline; }
+details[open] > summary { margin-bottom: 6px; border-bottom: 1px dashed var(--border-dashed); border-radius: 8px 8px 0 0; }
+details[open] > summary:hover { border-bottom-color: var(--accent); }
+.entry:target details.body:not([open]) .prose { display: block; animation: reveal .28s ease; }
+.entry:target details.body:not([open]) summary .more { display: none; }
+.entry:target details.body:not([open]) summary .less { display: inline; }
+
+.prose { animation: reveal .28s ease; padding-top: 6px; }
+@keyframes reveal { from { opacity: 0; transform: translateY(-5px); } }
+.prose h3 {
+  font-size: 1.02rem; font-weight: 600; margin: 1.9em 0 .5em;
+  display: flex; align-items: center; gap: 9px; line-height: 1.6;
+}
+.prose h3::before {
+  content: ""; width: 14px; height: 3px; border-radius: 2px;
+  background: var(--accent); flex: none;
+}
+.prose p { margin: 0 0 1.1em; }
+.prose ul { margin: 0 0 1.1em; padding-left: 1.3em; }
+.prose li { margin-bottom: .45em; }
+.prose li::marker { color: var(--accent); }
+.prose strong { font-weight: 600; }
+
+details.refs { margin-top: 20px; border-top: 1px dashed var(--border-dashed); }
+details.refs summary {
+  cursor: pointer; list-style: none; padding: 12px 0;
+  color: var(--text-3); font-size: .85rem; letter-spacing: .04em;
+  transition: color .15s;
+}
+details.refs summary::-webkit-details-marker { display: none; }
+details.refs summary:hover { color: var(--accent); }
+details.refs summary .chev { display: inline-block; margin-right: 6px; transition: transform .2s; font-size: .75em; }
+details[open].refs summary .chev { transform: rotate(90deg); }
+details.refs ol { padding: 2px 0 8px 1.25em; }
+details.refs li { font-size: .84rem; color: var(--text-2); line-height: 1.75; margin-bottom: .5em; }
+details.refs li::marker { color: var(--text-3); font-size: .8em; }
+details.refs a { font-size: .8rem; white-space: nowrap; }
+
+.disclaim {
+  margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--border);
+  color: var(--text-3); font-size: .82rem; line-height: 1.8;
+}
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 26px 0 34px; text-align: center;
+  color: var(--text-3); font-size: .85rem;
+}
+.site-footer em { font-style: normal; color: var(--accent); }
+
+@media (max-width: 820px) {
+  .page-head h1 { font-size: 1.7rem; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
+
 <header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="site-title">神经多样性<span>科普站</span></a>
-        <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-        <nav class="main-nav">
-            <a href="basic-concepts.html" class="nav-link">基础概念</a>
-            <a href="phenomena-mechanisms.html" class="nav-link">现象与机制</a>
-            <a href="asd-special.html" class="nav-link">ASD专题</a>
-            <a href="adhd-special.html" class="nav-link">ADHD专题</a>
-            <a href="comorbidity-health.html" class="nav-link active">共病与健康</a>
-            <a href="coping-resources.html" class="nav-link">应对与资源</a>
-            <a href="myths-clarification.html" class="nav-link accent">迷思澄清</a>
-        </nav>
-    </div>
+  <div class="header-inner">
+    <a class="brand" href="index.html">神经多样性科普站<span class="dot" aria-hidden="true"></span></a>
+    <details class="nav-details">
+      <summary aria-label="站内导航菜单">☰</summary>
+      <nav class="site-nav" aria-label="站内导航">
+        <a href="basic-concepts.html">基础概念</a>
+        <a href="phenomena-mechanisms.html">现象与机制</a>
+        <a href="asd-special.html">ASD专题</a>
+        <a href="adhd-special.html">ADHD专题</a>
+        <a href="comorbidity-health.html" class="active" aria-current="page">共病与健康</a>
+        <a href="coping-resources.html">应对与资源</a>
+        <a href="myths-clarification.html">迷思澄清</a>
+      </nav>
+    </details>
+  </div>
 </header>
-<main class="page-content">
-    <h1 class="module-title">共病与健康</h1>
-    <div class="toc-box" id="toc">
-        <h2>📑 目录</h2>
-        <ul class="toc-list">
-            <li><a href="#sensory">感觉处理鉴别</a></li>
-            <li><a href="#anxiety-depression">焦虑与抑郁</a></li>
-            <li><a href="#physical">躯体共病</a></li>
-            <li><a href="#sleep">睡眠问题</a></li>
+
+<main class="wrap page">
+  <header class="page-head">
+    <h1>共病与健康</h1>
+    <p class="sub">感觉处理鉴别 · 焦虑与抑郁 · 躯体共病 · 睡眠问题</p>
+    <nav class="page-toc" aria-label="本页目录">
+      <a href="#sensory">感觉处理鉴别</a>
+      <a href="#anxiety-depression">焦虑与抑郁</a>
+      <a href="#physical">躯体共病</a>
+      <a href="#sleep">睡眠问题</a>
+    </nav>
+  </header>
+
+  <!-- ================= 1. 感觉处理鉴别 ================= -->
+  <article class="entry" id="sensory">
+    <h2>感觉处理鉴别</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">约 90-95% 的 ASD 儿童存在有临床意义的感觉处理困难，ADHD 约 50-64%。感觉症状本身不能用于鉴别诊断，核心鉴别点在社交沟通、刻板行为与注意控制；SPD 作为独立诊断类别的地位仍有争议。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概念界定</h3>
+        <p>感觉处理差异指大脑接收、调节、整合和回应感官刺激的方式偏离典型模式。表现为感觉过度敏感（hypersensitivity，对刺激反应过度）、感觉迟钝（hyposensitivity，对刺激反应不足）和感觉寻求（sensory seeking，主动追求高强度感官输入）。常见受影响的感官通道包括听觉、视觉、触觉、嗅觉、味觉、前庭觉、本体感觉和内感受。</p>
+        <p>感觉处理障碍（Sensory Processing Disorder, SPD）在临床中被广泛认可和治疗（尤其是在作业治疗领域），但未被纳入 DSM-5-TR 作为独立诊断类别。DSM-5 将感觉反应异常作为 ASD 的诊断标准之一（维度 B 下的感官超敏或低敏），也承认 ADHD 中感觉处理的共病表现，但两者对感觉问题的定位不同。</p>
+
+        <h3>在不同诊断中的表现模式</h3>
+        <p><strong>ASD 中的感觉处理差异</strong>：感觉过度敏感是多通道的，在听觉通道最为突出（对特定声音产生强烈的痛苦反应），且通常伴随强烈的情绪不安和回避行为。感觉迟钝也常见，包括对疼痛、温度不敏感，或对刺激反应延迟。感觉寻求表现为对特定感官输入的强烈渴望（如注视旋转物体、触摸特定材质）。研究发现 ASD 组相较于 ADHD 组表现出更多的味觉/嗅觉敏感性和感官低反应性，而感官寻求行为较少。</p>
+        <p>感觉处理差异与社交沟通困难相互强化——感觉过载可能导致社交回避，而社交回避又减少了感官习惯化的机会。</p>
+        <p><strong>ADHD 中的感觉处理差异</strong>：ADHD 的感觉问题更多与注意力调节困难相关。典型表现包括容易被背景噪音分散注意力（听觉干扰）、对衣物材质或标签的不耐受、对强烈感官输入的寻求以帮助维持觉醒和调节状态。ADHD 的感觉寻求行为显著多于 ASD——这与 ADHD 整体寻求刺激的行为特征一致。ADHD 的感官迟钝相对少见。ADHD 中的感觉问题常被归因于注意力不集中或冲动控制不足，而非原发的感觉处理异常。</p>
+        <p>值得注意的是，感觉寻求行为（例如旋转、跳跃、撞东西）在 ADHD 中可能被误判为多动冲动，但其驱动机制不同——多动冲动源于执行功能层面的抑制控制缺陷，而感觉寻求源于神经系统对本体感觉输入的内在需求。</p>
+        <p><strong>感觉调节障碍（SMD，作为独立状况）</strong>：当感觉处理的失调是主要的临床表现，且个体不满足 ASD 或 ADHD 的核心诊断标准时，可考虑 SMD。SMD 患者主要表现为对感官刺激的过度回避或过度寻求，但无 ASD 特有的社交沟通缺陷和重复刻板行为，也无 ADHD 特有的注意力不集中/多动冲动症状模式。生理学研究显示 SMD 儿童与 ASD 儿童的交感神经系统活动模式存在差异，支持两者的独立性。</p>
+
+        <h3>流行率与重叠</h3>
+        <p>约 90-95% 的 ASD 儿童同时存在有临床意义的感觉处理困难。约 50-64% 的 ADHD 儿童报告有意义的感觉处理差异。一般儿童群体中约 5-16% 符合 SPD 筛查标准。三种状况的感觉处理特征高度重叠，但感觉差异本身不能单独用于鉴别诊断——核心鉴别点在于社交沟通、限制性重复行为和注意力/冲动控制的表现。</p>
+
+        <h3>争议</h3>
+        <p>感觉处理障碍作为独立诊断类别的地位仍存在争议。支持者认为 SPD 有独特的神经生物学基础（白质异常模式区别于 ASD），在作业治疗中有成熟的评估和干预体系。反对者则认为感觉问题在 ASD 和 ADHD 中已充分覆盖，将其单列为诊断类别可能导致过度诊断和医疗化。此外，感觉处理的评估工具主要依赖行为观察和照顾者报告，缺乏客观生物标志物。在中国，感觉统合训练在干预中广泛应用，但其理论基础和疗效证据仍有争议——部分训练方案缺乏严格随机对照试验支持。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 6 条</summary>
+      <ol>
+        <li>PMC (2023). Sensory Processing Differences in Individuals With Autism Spectrum Disorder: A Narrative Review. <a href="https://scholar.google.com/scholar?q=sensory+processing+differences+autism+spectrum+disorder+narrative+review" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>PMC (2009). Physiological and Behavioral Differences in Sensory Processing: A Comparison of Children with ASD and SMD. <a href="https://scholar.google.com/scholar?q=physiological+behavioral+differences+sensory+processing+children+ASD+SMD" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Medical News Today. SPD vs. autism: Differences explained. <a href="https://scholar.google.com/scholar?q=SPD+vs+autism+differences+explained" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>PMC (2011). Sensory Processing Problems in Children with ADHD, a Systematic Review. <a href="https://scholar.google.com/scholar?q=sensory+processing+problems+children+ADHD+systematic+review" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Emotiv. 自闭症与多动症的重叠. <a href="https://scholar.google.com/scholar?q=自闭症+多动症+重叠+感觉" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>彩虹中心. 自闭症和感觉超负荷.</li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- ================= 2. 焦虑与抑郁 ================= -->
+  <article class="entry" id="anxiety-depression">
+    <h2>焦虑与抑郁</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">焦虑和抑郁是最常见的内化共病：ASD 成人当前焦虑约 27%、抑郁约 23%；ADHD 成人焦虑共病约 50%。ASD 的焦虑抑郁常以不典型形式呈现（躯体化、易怒、能力倒退），ADHD 的抑郁多为继发于长期失败的习得性无助。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>流行率</h3>
+        <p>焦虑和抑郁是 ADHD 和 ASD 群体中最常见的内化共病，发生率显著高于一般人群。</p>
+        <p><strong>ASD 中</strong>：Meta 分析显示 ASD 成人当前焦虑障碍的合并患病率约 27%，终生患病率约 42%；当前抑郁约 23%，终生约 37%。</p>
+        <p><strong>ADHD 中</strong>：ADHD 成人抑郁共病率在 19-53% 之间，焦虑共病率约 50%。ADHD 儿童的焦虑共病率在 5.6-37.9% 之间。</p>
+        <p><strong>中国数据（2021 年）</strong>：儿童青少年精神障碍年龄标准化患病率 8.9%，其中焦虑症 2.6%，抑郁障碍 0.4%，ADHD 3.6%，ASD 0.7%。</p>
+
+        <h3>ASD 中焦虑与抑郁的表现特点</h3>
+        <p>ASD 群体的焦虑和抑郁与典型群体的表现存在显著差异，主要源于其独特的认知方式和感觉处理特征。</p>
+        <p><strong>焦虑方面</strong>：ASD 中的焦虑常以不典型的形式呈现。典型的口头担忧和反刍可能不明显，而是表现为：对常规改变或过渡的极端痛苦（可能被误判为行为问题而非焦虑）；对新奇情境的回避或僵化拒绝；特定恐惧或固着性担忧（围绕特殊兴趣）；感觉过载引发类惊恐反应；增加自我刺激行为、刻板动作或退缩。躯体症状可能更突出——头痛、胃痛、睡眠问题。社交焦虑在 ASD 中常见但驱动因素不同：源自对社交规则不理解后产生的预期焦虑和过往反复社交失败的经历，而非典型社交焦虑中的对负面评价的恐惧。</p>
+        <p><strong>抑郁方面</strong>：ASD 中的抑郁可能表现为：原有核心症状的加重（社交退缩增加、刻板行为增加）；易怒和攻击行为的增加（可能替代典型低落的情绪表达）；能力倒退（已习得的技能下降）；<a href="asd-special.html#alexithymia">述情障碍</a>使患者难以用语言表达低落情绪，更多地以躯体不适、睡眠问题、食欲变化和行为问题呈现；黑白分明的思维方式（all-or-nothing thinking）在 ASD 中普遍，可能加剧自我否定和绝望感。ASD 中自杀意念的风险显著升高，尤其在高功能 ASD 群体中需高度关注。</p>
+
+        <h3>ADHD 中焦虑与抑郁的表现特点</h3>
+        <p>ADHD 中的焦虑和抑郁与执行功能缺陷和情绪失调密切相关。</p>
+        <p><strong>焦虑方面</strong>：ADHD 个体常因长期的学业/职业失败、人际冲突积累产生焦虑。典型的焦虑表现为对"遗忘"或"搞砸"的预期焦虑（anticipatory anxiety）——"我一定又漏掉了什么"、"这次肯定又做不完"；因时间盲导致的截止日期恐惧；因内在不安感与焦虑的叠加使焦虑水平持续升高。焦虑与 ADHD 共病时，两种症状相互加重：焦虑引起注意力分散，可能被误诊为 ADHD 恶化；ADHD 的冲动和失败可能反过来加重焦虑。药理上需注意刺激剂类 ADHD 药物可能短期加重焦虑症状，而共病焦虑时托莫西汀（atomoxetine）可能优于哌甲酯作为一线选择。</p>
+        <p><strong>抑郁方面</strong>：ADHD 中的抑郁常被描述为"继发于长期失败"的模式——反复的学业/职业挫折、人际困难导致的习得性无助感。ADHD 相关的情绪失调（DESR）与抑郁的区分是关键难点：ADHD 情绪失调的特点是反应快速、强度大、持续时间短，且与特定触发事件高度相关；而抑郁的心境低落更持久、弥散，与具体事件的关联性弱。ADHD 中的"拖延→未完成→自我批评→低自尊→退缩"链条，既是执行功能缺陷的后果，也可能逐渐演变为真正的抑郁发作。女性 ADHD 患者的抑郁风险显著高于男性。</p>
+
+        <h3>鉴别诊断的难点</h3>
+        <p>焦虑/抑郁与原发神经发育障碍之间的症状重叠是鉴别诊断的最大挑战。关键交叉点包括：</p>
+        <ul>
+          <li><strong>注意力缺陷</strong>：可来自 ADHD（执行功能缺陷）、抑郁（认知减慢/思维反刍）、焦虑（过度警觉）。鉴别线索：ADHD 的注意力问题是终生持续性的、跨情境一致的；而焦虑/抑郁相关的注意力困难是发作性的、与情绪状态波动一致的。</li>
+          <li><strong>社交退缩</strong>：可来自 ASD（社交动机差异）、抑郁（快感缺失/兴趣减退）、社交焦虑（恐惧负面评价）。鉴别线索：ASD 的社交模式自儿童期就存在；而抑郁/焦虑相关的退缩是在某一时期新出现或显著恶化的。</li>
+          <li><strong>睡眠问题</strong>：可出现在所有四种情况中，需要结合病史时间线分析。</li>
+          <li><strong>易怒/激越</strong>：在 ADHD（冲动控制不良）、抑郁（激越性抑郁）、焦虑（高唤醒状态）中均常见，需要结合伴随症状（快感缺失、睡眠、食欲等核心抑郁症状的存在与否）判断。</li>
         </ul>
-    </div>
-    <div class="section-block" id="sensory">
-        <h3>感觉处理鉴别</h3>
-        <div class="placeholder">概念界定
-感觉处理差异指大脑接收、调节、整合和回应感官刺激的方式偏离典型模式。表现为感觉过度敏感（hypersensitivity，对刺激反应过度）、感觉迟钝（hyposensitivity，对刺激反应不足）和感觉寻求（sensory seeking，主动追求高强度感官输入）。常见受影响的感官通道包括听觉、视觉、触觉、嗅觉、味觉、前庭觉、本体感觉和内感受
 
-感觉处理障碍（Sensory Processing Disorder, SPD）在临床中被广泛认可和治疗（尤其是在作业治疗领域），但未被纳入DSM-5-TR作为独立诊断类别。DSM-5将感觉反应异常作为ASD的诊断标准之一（维度B下的感官超敏或低敏），也承认ADHD中感觉处理的共病表现，但两者对感觉问题的定位不同。
+        <h3>临床意义</h3>
+        <p>共病焦虑或抑郁的神经多元个体功能损害更严重、生活质量更低、自杀风险更高、治疗反应可能更差。治疗建议遵循"先治疗最严重或最核心的疾病"原则——如果 ADHD 或 ASD 的核心症状显著且未经治疗，通常优先处理；如果焦虑/抑郁达到中重度且影响安全（尤其是自杀风险），则应优先干预焦虑/抑郁。心理治疗（尤其 CBT）需针对神经多元群体进行适应调整：增加结构化、使用视觉支持、减少对隐喻的依赖、纳入特殊兴趣。药物选择需考虑共病间的交互作用。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 7 条</summary>
+      <ol>
+        <li>Hollocks, M.J., Lerh, J.W., Magiati, I., Meiser-Stedman, R., &amp; Brugha, T.S. (2019). Anxiety and depression in adults with autism spectrum disorder: a systematic review and meta-analysis. <em>Psychological Medicine</em>, 49(4), 559–572. <a href="https://doi.org/10.1017/s0033291718002283" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Frontiers in Psychiatry (2025). Adult ADHD and comorbid anxiety and depressive disorders. <a href="https://scholar.google.com/scholar?q=adult+ADHD+comorbid+anxiety+depressive+disorders+frontiers+psychiatry" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>MedSci (2025). 柳叶刀最新发表：1990-2021年中国青少年精神障碍的流行病学分析. <a href="https://scholar.google.com/scholar?q=柳叶刀+1990-2021+中国青少年精神障碍+流行病学" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Matson, J.L., &amp; Williams, L.W. (2013). Differential diagnosis and comorbidity: distinguishing autism from other mental health issues. <em>Neuropsychiatry</em>, 3(2), 233–243. <a href="https://doi.org/10.2217/npy.13.1" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>CADDRA. Canadian ADHD Practice Guidelines, 4.1 Edition. [指南]</li>
+        <li>ADxS.org. Somatic comorbidities in ADHD. [网络资源]</li>
+        <li>《中国当代儿科杂志》22(7): 768–773.</li>
+      </ol>
+    </details>
+  </article>
 
-在不同诊断中的表现模式
-ASD中的感觉处理差异：感觉过度敏感是多通道的，在听觉通道最为突出（对特定声音产生强烈的痛苦反应），且通常伴随强烈的情绪不安和回避行为。感觉迟钝也常见，包括对疼痛、温度不敏感，或对刺激反应延迟。感觉寻求表现为对特定感官输入的强烈渴望（如注视旋转物体、触摸特定材质）。研究发现ASD组相较于ADHD组表现出更多的味觉/嗅觉敏感性和感官低反应性，而感官寻求行为较少。
-感觉处理差异与社交沟通困难相互强化——感觉过载可能导致社交回避，而社交回避又减少了感官习惯化的机会。
+  <!-- ================= 3. 躯体共病 ================= -->
+  <article class="entry" id="physical">
+    <h2>躯体共病</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">ASD 与 ADHD 伴随广泛的躯体共病：ASD 中胃肠问题最常见（70-90%），癫痫 20-30%；ADHD 中哮喘、肥胖、睡眠障碍风险显著升高。躯体共病与核心症状共享神经生物学通路，多学科协作管理至关重要。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <h3>概述</h3>
+        <p>ASD 和 ADHD 不仅是神经发育障碍，还伴随广泛的躯体共病，涉及消化、神经、免疫、内分泌和代谢等多个系统。这些共病并非偶然并存，而是与核心症状共享部分神经生物学通路，相互影响和加重。</p>
 
-ADHD中的感觉处理差异：ADHD的感觉问题更多与注意力调节困难相关。典型表现包括容易被背景噪音分散注意力（听觉干扰）、对衣物材质或标签的不耐受、对强烈感官输入的寻求以帮助维持觉醒和调节状态。ADHD的感觉寻求行为显著多于ASD——这与ADHD整体寻求刺激的行为特征一致。ADHD的感官迟钝相对少见。ADHD中的感觉问题常被归因于注意力不集中或冲动控制不足，而非原发的感觉处理异常。
-值得注意的是，感觉寻求行为（例如旋转、跳跃、撞东西）在ADHD中可能被误判为多动冲动，但其驱动机制不同——多动冲动源于执行功能层面的抑制控制缺陷，而感觉寻求源于神经系统对本体感觉输入的内在需求。
-感觉调节障碍（SMD，作为独立状况）：当感觉处理的失调是主要的临床表现，且个体不满足ASD或ADHD的核心诊断标准时，可考虑SMD。SMD患者主要表现为对感官刺激的过度回避或过度寻求，但无ASD特有的社交沟通缺陷和重复刻板行为，也无ADHD特有的注意力不集中/多动冲动症状模式。生理学研究显示SMD儿童与ASD儿童的交感神经系统活动模式存在差异，支持两者的独立性。
+        <h3>ASD 的躯体共病</h3>
+        <p><strong>胃肠道问题</strong>：ASD 中最常见且研究最充分的躯体共病。约 70-90% 的 ASD 儿童报告有至少一种胃肠道症状（相比典型发育儿童约 30%），包括便秘、腹泻、腹胀、腹痛、胃食管反流和排便异常。排便异常模式在 ASD 中尤为突出（18% vs 4%），食物选择性也显著更高（60% vs 22%）。</p>
+        <p>中国研究同样发现消化道问题是 ASD 共患率最高的躯体状况。北京协和医院尤欣教授团队提出自闭症"免疫-肠道菌群"假说，认为肠道菌群失衡导致肠脑轴紊乱，影响神经发育和核心行为症状。饮食干预（如无麸质无酪蛋白饮食）、益生菌补充和粪菌移植在中国的临床实践中显示了改善胃肠症状和核心行为的潜力，但大规模随机对照试验仍有限。</p>
+        <p><strong>癫痫</strong>：ASD 中癫痫的共病率约 20-30%，在伴有智力障碍的 ASD 群体中可达 40% 以上。癫痫在 ASD 中的发生呈现双峰年龄分布——儿童早期和青春期是两个高峰期。异常脑电放电在无临床发作的 ASD 儿童中也不少见，对认知和行为可能有潜在影响。</p>
+        <p><strong>睡眠障碍</strong>：ASD 中睡眠障碍的发生率约 13-86%（取决于报告者和定义），包括入睡困难、频繁夜醒、睡眠呼吸障碍和不宁腿综合征。睡眠问题与 ASD 核心症状（尤其重复刻板行为和易怒）之间存在双向恶化关系。</p>
+        <p><strong>免疫与过敏</strong>：ASD 群体中特应性疾病（哮喘、过敏性鼻炎、特应性皮炎）、自身免疫性疾病（如自身免疫性甲状腺疾病、炎症性肠病）的发生率显著升高。免疫失调被认为是 ASD 潜在的病理生理机制之一，包括细胞因子失衡、母体免疫激活以及针对脑组织的自身抗体。</p>
+        <p><strong>代谢与营养</strong>：ASD 儿童在早期常表现为体重偏低或生长迟缓（与食物选择性和喂养困难相关），但进入青春期和成年后肥胖风险显著升高。多种维生素和矿物质（叶酸、B 族维生素、维生素 D、铁、锌）缺乏在 ASD 中常见。</p>
 
-流行率与重叠
-约90-95%的ASD儿童同时存在有临床意义的感觉处理困难。约50-64%的ADHD儿童报告有意义的感觉处理差异。一般儿童群体中约5-16%符合SPD筛查标准。三种状况的感觉处理特征高度重叠，但感觉差异本身不能单独用于鉴别诊断——核心鉴别点在于社交沟通、限制性重复行为和注意力/冲动控制的表现。
+        <h3>ADHD 的躯体共病</h3>
+        <p><strong>睡眠障碍</strong>：ADHD 中的睡眠问题极为普遍。研究显示 ADHD 共病 ASD 的儿童中睡眠障碍可高达 86%。日间嗜睡（38% vs 11-18%）、睡眠呼吸障碍（8% vs 4-4.5%）和不宁腿综合征（12% vs 2.7-7.2%）的患病率均显著高于一般人群。ADHD 本身的情绪失调和执行功能缺陷与睡眠问题存在复杂的双向关系。</p>
+        <p><strong>哮喘与过敏</strong>：Meta 分析显示 ADHD 中哮喘的患病率为 16.9%（对照组 11.5%）。双向队列研究发现哮喘使 ADHD 风险增加 17%，ADHD 也使哮喘风险增加 10%。ADHD 与特应性皮炎、过敏性鼻炎的关联也有充分证据。台湾全境人口队列研究显示 ADHD 患者患自身免疫性甲状腺疾病和炎症性肠病的风险是对照组的两倍以上。</p>
+        <p><strong>肥胖与代谢</strong>：ADHD 群体中超重和肥胖的风险显著升高。一项 Meta 分析显示 ADHD 与肥胖之间存在稳定的正相关。中国一项涉及 23,791 名学龄儿童的研究发现，ADHD 儿童中超重/肥胖比例为 32.6%（对照组 29.6%）。肥胖与 ADHD 的关系可能是双向的——ADHD 的冲动性和执行功能缺陷导致不良饮食和运动习惯，而肥胖相关的炎症也可能影响多巴胺通路，加重 ADHD 症状。</p>
+        <p><strong>癫痫</strong>：ADHD 中癫痫的发生率也高于一般人群，但关联强度低于 ASD 与癫痫之间的关联。</p>
 
-感觉处理障碍作为独立诊断类别的地位仍存在争议。支持者认为SPD有独特的神经生物学基础（白质异常模式区别于ASD），在作业治疗中有成熟的评估和干预体系。反对者则认为感觉问题在ASD和ADHD中已充分覆盖，将其单列为诊断类别可能导致过度诊断和医疗化。此外，感觉处理的评估工具主要依赖行为观察和照顾者报告，缺乏客观生物标志物。在中国，感觉统合训练在干预中广泛应用，但其理论基础和疗效证据仍有争议——部分训练方案缺乏严格随机对照试验支持。</div>
-        <div class="ref">参考文献：• PMC (2023). Sensory Processing Differences in Individuals With Autism Spectrum Disorder: A Narrative Review. 
-• PMC (2009). Physiological and Behavioral Differences in Sensory Processing: A Comparison of Children with ASD and SMD. 
-• Medical News Today. SPD vs. autism: Differences explained. 
-• PMC (2011). Sensory Processing Problems in Children with ADHD, a Systematic Review. 
-• Emotiv. 自闭症与多动症的重叠. 
-• 彩虹中心. 自闭症和感觉超负荷. </div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="anxiety-depression">
-        <h3>焦虑与抑郁</h3>
-        <div class="placeholder">流行率
-焦虑和抑郁是ADHD和ASD群体中最常见的内化共病，发生率显著高于一般人群。
-ASD中：Meta分析显示ASD成人当前焦虑障碍的合并患病率约27%，终生患病率约42%；当前抑郁约23%，终生约37%。
-ADHD中：ADHD成人抑郁共病率在19-53%之间，焦虑共病率约50%。ADHD儿童的焦虑共病率在5.6-37.9%之间。
-中国数据（2021年）：儿童青少年精神障碍年龄标准化患病率8.9%，其中焦虑症2.6%，抑郁障碍0.4%，ADHD 3.6%，ASD 0.7%。
+        <h3>临床意义</h3>
+        <p>躯体共病对神经发育障碍的诊断和治疗有重要影响：部分躯体症状（如睡眠问题导致的注意力困难、癫痫发作后的意识改变）可能被误认为 ADHD 或 ASD 核心症状，需要仔细鉴别；躯体共病显著增加了疾病负担和功能损害，加剧了认知、行为和情绪问题；多学科协作管理至关重要——儿科、精神科、消化科、神经科、营养科等的联合评估；干预策略需要综合考量共病因素，以提高整体生活质量和改善预后。尤其值得注意的是，ASD 和 ADHD 群体存在显著的健康不平等——他们的躯体疾病更容易被忽视或归因于行为问题，需要提高临床工作者的警惕性。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 8 条</summary>
+      <ol>
+        <li>Muskens, J.B., Velders, F.P., &amp; Staal, W.G. (2017). Medical comorbidities in children and adolescents with autism spectrum disorders and attention deficit hyperactivity disorders: a systematic review. <em>European Child &amp; Adolescent Psychiatry</em>, 26(9), 1093–1103. <a href="https://doi.org/10.1007/s00787-017-1020-0" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Rydzewska, E., Dunn, K., &amp; Cooper, S.-A. (2021). Umbrella systematic review of systematic reviews and meta-analyses on comorbid physical conditions in people with autism spectrum disorder. <em>The British Journal of Psychiatry</em>, 218(1), 10–19. <a href="https://doi.org/10.1192/bjp.2020.167" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>Tye, C., Runicles, A.K., Whitehouse, A.J.O., &amp; Alvares, G.A. (2019). Characterizing the Interplay Between Autism Spectrum Disorder and Comorbid Medical Conditions: An Integrative Review. <em>Frontiers in Psychiatry</em>, 9, 751. <a href="https://doi.org/10.3389/fpsyt.2018.00751" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>北京协和医院. 自闭症发病或与免疫、肠道菌群相关，系统治疗全身症状可改善预后. [官网文章] <a href="https://scholar.google.com/scholar?q=北京协和医院+自闭症+免疫+肠道菌群+尤欣" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Psych Scene Hub. ADHD and Autism Comorbidity: Clinical Insights &amp; Review. <a href="https://scholar.google.com/scholar?q=ADHD+autism+comorbidity+clinical+insights+review" target="_blank" rel="noopener">检索 ↗</a></li>
+        <li>Faraone, S.V., Banaschewski, T., Coghill, D., et al. (2021). The World Federation of ADHD International Consensus Statement: 208 Evidence-based conclusions about the disorder. <em>Neuroscience &amp; Biobehavioral Reviews</em>, 128, 789–818. <a href="https://doi.org/10.1016/j.neubiorev.2021.01.022" target="_blank" rel="noopener">DOI ↗</a></li>
+        <li>ADxS.org. Somatic comorbidities in ADHD. [网络资源]</li>
+        <li>热心肠研究院. 关于孤独症（自闭症）的 10 大必读知识. <a href="https://scholar.google.com/scholar?q=孤独症+自闭症+10大必读知识+肠道" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-ASD中焦虑与抑郁的表现特点
-ASD群体的焦虑和抑郁与典型群体的表现存在显著差异，主要源于其独特的认知方式和感觉处理特征。
-焦虑方面：ASD中的焦虑常以不典型的形式呈现。典型的口头担忧和反刍可能不明显，而是表现为：对常规改变或过渡的极端痛苦（可能被误判为行为问题而非焦虑）；对新奇情境的回避或僵化拒绝；特定恐惧或固着性担忧（围绕特殊兴趣）；感觉过载引发类惊恐反应；增加自我刺激行为、刻板动作或退缩。躯体症状可能更突出——头痛、胃痛、睡眠问题。社交焦虑在ASD中常见但驱动因素不同：源自对社交规则不理解后产生的预期焦虑和过往反复社交失败的经历，而非典型社交焦虑中的对负面评价的恐惧。
-抑郁方面：ASD中的抑郁可能表现为：原有核心症状的加重（社交退缩增加、刻板行为增加）；易怒和攻击行为的增加（可能替代典型低落的情绪表达）；能力倒退（已习得的技能下降）；述情障碍使患者难以用语言表达低落情绪，更多地以躯体不适、睡眠问题、食欲变化和行为问题呈现；黑白分明的思维方式（all-or-nothing thinking）在ASD中普遍，可能加剧自我否定和绝望感。ASD中自杀意念的风险显著升高，尤其在高功能ASD群体中需高度关注。
+  <!-- ================= 4. 睡眠问题 ================= -->
+  <article class="entry" id="sleep">
+    <h2>睡眠问题</h2>
+    <details class="body">
+      <summary>
+        <span class="digest">ASD 中 44-83% 存在睡眠质量下降，ADHD 中日间嗜睡 38%、不宁腿综合征 12%。常见机制涉及褪黑素分泌异常与感觉处理差异；行为干预为一线方案，褪黑素补充有 Meta 分析支持。</span>
+        <span class="hint"><span class="more">展开全文 ↓</span><span class="less">收起 ↑</span></span>
+      </summary>
+      <div class="prose">
+        <p>睡眠障碍是 ASD 和 ADHD 群体中最常见且影响最深远的躯体共病之一。</p>
+        <p><strong>ASD 中</strong>：约 44-83% 的 ASD 个体经历睡眠质量下降，包括入睡困难、频繁夜醒、睡眠潜伏期延长和睡眠效率降低。睡眠问题与 ASD 核心症状（重复刻板行为、易怒、注意困难）之间存在双向恶化关系。</p>
+        <p><strong>ADHD 中</strong>：睡眠障碍同样高发。数据显示 ADHD 群体中日间嗜睡 38%（对照组 11-18%）、睡眠呼吸障碍 8%（对照组 4-4.5%）、不宁腿综合征 12%（对照组 2.7-7.2%）。ADHD 共病 ASD 的儿童睡眠障碍可达 86%。ADHD 本身的情绪失调和执行功能缺陷与睡眠问题相互加重。</p>
+        <p>常见机制涉及褪黑素分泌异常、感觉处理差异、焦虑共病以及药物（尤其是兴奋剂）对睡眠的干扰。</p>
+        <p><strong>临床建议</strong>：常规评估睡眠状况（PSQI 等工具）；行为干预（规律作息、睡眠卫生）作为一线方案；必要时考虑褪黑素补充，需注意剂量和使用时机；区分原发睡眠障碍与 ADHD/ASD 共病导致的睡眠问题。</p>
+      </div>
+    </details>
+    <details class="refs">
+      <summary><span class="chev">▶</span>参考文献 · 1 条</summary>
+      <ol>
+        <li>Psych Scene Hub. ADHD and Autism Comorbidity. <a href="https://scholar.google.com/scholar?q=ADHD+autism+comorbidity+sleep" target="_blank" rel="noopener">检索 ↗</a></li>
+      </ol>
+    </details>
+  </article>
 
-ADHD中焦虑与抑郁的表现特点
-ADHD中的焦虑和抑郁与执行功能缺陷和情绪失调密切相关。
-焦虑方面：ADHD个体常因长期的学业/职业失败、人际冲突积累产生焦虑。典型的焦虑表现为对"遗忘"或"搞砸"的预期焦虑（anticipatory anxiety）——"我一定又漏掉了什么"、"这次肯定又做不完"；因时间盲导致的截止日期恐惧；因内在不安感与焦虑的叠加使焦虑水平持续升高。焦虑与ADHD共病时，两种症状相互加重：焦虑引起注意力分散，可能被误诊为ADHD恶化；ADHD的冲动和失败可能反过来加重焦虑。药理上需注意刺激剂类ADHD药物可能短期加重焦虑症状，而共病焦虑时托莫西汀（atomoxetine）可能优于哌甲酯作为一线选择。
-抑郁方面：ADHD中的抑郁常被描述为"继发于长期失败"的模式——反复的学业/职业挫折、人际困难导致的习得性无助感。ADHD相关的情绪失调（DESR）与抑郁的区分是关键难点：ADHD情绪失调的特点是反应快速、强度大、持续时间短，且与特定触发事件高度相关；而抑郁的心境低落更持久、弥散，与具体事件的关联性弱。ADHD中的"拖延→未完成→自我批评→低自尊→退缩"链条，既是执行功能缺陷的后果，也可能逐渐演变为真正的抑郁发作。女性ADHD患者的抑郁风险显著高于男性。
-
-鉴别诊断的难点
-焦虑/抑郁与原发神经发育障碍之间的症状重叠是鉴别诊断的最大挑战。关键交叉点包括：
-注意力缺陷：可来自ADHD（执行功能缺陷）、抑郁（认知减慢/思维反刍）、焦虑（过度警觉）。鉴别线索：ADHD的注意力问题是终生持续性的、跨情境一致的；而焦虑/抑郁相关的注意力困难是发作性的、与情绪状态波动一致的。
-社交退缩：可来自ASD（社交动机差异）、抑郁（快感缺失/兴趣减退）、社交焦虑（恐惧负面评价）。鉴别线索：ASD的社交模式自儿童期就存在；而抑郁/焦虑相关的退缩是在某一时期新出现或显著恶化的。
-睡眠问题：可出现在所有四种情况中，需要结合病史时间线分析。
-易怒/激越：在ADHD（冲动控制不良）、抑郁（激越性抑郁）、焦虑（高唤醒状态）中均常见，需要结合伴随症状（快感缺失、睡眠、食欲等核心抑郁症状的存在与否）判断。
-
-临床意义
-共病焦虑或抑郁的神经多元个体功能损害更严重、生活质量更低、自杀风险更高、治疗反应可能更差。治疗建议遵循"先治疗最严重或最核心的疾病"原则——如果ADHD或ASD的核心症状显著且未经治疗，通常优先处理；如果焦虑/抑郁达到中重度且影响安全（尤其是自杀风险），则应优先干预焦虑/抑郁。心理治疗（尤其CBT）需针对神经多元群体进行适应调整：增加结构化、使用视觉支持、减少对隐喻的依赖、纳入特殊兴趣。药物选择需考虑共病间的交互作用。</div>
-        <div class="ref">参考文献：• Hollocks, M.J., Lerh, J.W., Magiati, I., Meiser-Stedman, R., & Brugha, T.S. (2019). Anxiety and depression in adults with autism spectrum disorder: a systematic review and meta-analysis. Psychological Medicine, 49(4), 559–572.
-• Frontiers in Psychiatry (2025). Adult ADHD and comorbid anxiety and depressive disorders. 
-• MedSci (2025). 柳叶刀最新发表: 1990-2021年中国青少年精神障碍的流行病学分析. 
-• Matson, J.L., & Williams, L.W. (2013). Differential diagnosis and comorbidity: distinguishing autism from other mental health issues. Neuropsychiatry, 3(2), 233–243.
-• CADDRA. Canadian ADHD Practice Guidelines, 4.1 Edition. [指南]
-• ADxS.org. Somatic comorbidities in ADHD. [网络资源]
-• 《中国当代儿科杂志》22(7): 768-773 </div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="physical">
-        <h3>躯体共病</h3>
-        <div class="placeholder">概述
-ASD和ADHD不仅是神经发育障碍，还伴随广泛的躯体共病，涉及消化、神经、免疫、内分泌和代谢等多个系统。这些共病并非偶然并存，而是与核心症状共享部分神经生物学通路，相互影响和加重。
-
-ASD的躯体共病
-胃肠道问题：ASD中最常见且研究最充分的躯体共病。约70-90%的ASD儿童报告有至少一种胃肠道症状（相比典型发育儿童约30%），包括便秘、腹泻、腹胀、腹痛、胃食管反流和排便异常。排便异常模式在ASD中尤为突出（18% vs 4%），食物选择性也显著更高（60% vs 22%）。
-中国研究同样发现消化道问题是ASD共患率最高的躯体状况。北京协和医院尤欣教授团队提出自闭症"免疫-肠道菌群"假说，认为肠道菌群失衡导致肠脑轴紊乱，影响神经发育和核心行为症状。饮食干预（如无麸质无酪蛋白饮食）、益生菌补充和粪菌移植在中国的临床实践中显示了改善胃肠症状和核心行为的潜力，但大规模随机对照试验仍有限。
-癫痫：ASD中癫痫的共病率约20-30%，在伴有智力障碍的ASD群体中可达40%以上。癫痫在ASD中的发生呈现双峰年龄分布——儿童早期和青春期是两个高峰期。异常脑电放电在无临床发作的ASD儿童中也不少见，对认知和行为可能有潜在影响。
-睡眠障碍：ASD中睡眠障碍的发生率约13-86%（取决于报告者和定义），包括入睡困难、频繁夜醒、睡眠呼吸障碍和不宁腿综合征。睡眠问题与ASD核心症状（尤其重复刻板行为和易怒）之间存在双向恶化关系。
-免疫与过敏：ASD群体中特应性疾病（哮喘、过敏性鼻炎、特应性皮炎）、自身免疫性疾病（如自身免疫性甲状腺疾病、炎症性肠病）的发生率显著升高。免疫失调被认为是ASD潜在的病理生理机制之一，包括细胞因子失衡、母体免疫激活以及针对脑组织的自身抗体。
-代谢与营养：ASD儿童在早期常表现为体重偏低或生长迟缓（与食物选择性和喂养困难相关），但进入青春期和成年后肥胖风险显著升高。多种维生素和矿物质（叶酸、B族维生素、维生素D、铁、锌）缺乏在ASD中常见。
-
-ADHD的躯体共病
-睡眠障碍：ADHD中的睡眠问题极为普遍。研究显示ADHD共病ASD的儿童中睡眠障碍可高达86%。日间嗜睡（38% vs 11-18%）、睡眠呼吸障碍（8% vs 4-4.5%）和不宁腿综合征（12% vs 2.7-7.2%）的患病率均显著高于一般人群。ADHD本身的情绪失调和执行功能缺陷与睡眠问题存在复杂的双向关系。
-哮喘与过敏：Meta分析显示ADHD中哮喘的患病率为16.9% (对照组11.5%)。双向队列研究发现哮喘使ADHD风险增加17%，ADHD也使哮喘风险增加10%。ADHD与特应性皮炎、过敏性鼻炎的关联也有充分证据。台湾全境人口队列研究显示ADHD患者患自身免疫性甲状腺疾病和炎症性肠病的风险是对照组的两倍以上。
-肥胖与代谢：ADHD群体中超重和肥胖的风险显著升高。一项Meta分析显示ADHD与肥胖之间存在稳定的正相关。中国一项涉及23,791名学龄儿童的研究发现，ADHD儿童中超重/肥胖比例为32.6%（对照组29.6%）。肥胖与ADHD的关系可能是双向的——ADHD的冲动性和执行功能缺陷导致不良饮食和运动习惯，而肥胖相关的炎症也可能影响多巴胺通路，加重ADHD症状。
-癫痫：ADHD中癫痫的发生率也高于一般人群，但关联强度低于ASD与癫痫之间的关联。
-
-临床意义
-躯体共病对神经发育障碍的诊断和治疗有重要影响：部分躯体症状（如睡眠问题导致的注意力困难、癫痫发作后的意识改变）可能被误认为ADHD或ASD核心症状，需要仔细鉴别；躯体共病显著增加了疾病负担和功能损害，加剧了认知、行为和情绪问题；多学科协作管理至关重要——儿科、精神科、消化科、神经科、营养科等的联合评估；干预策略需要综合考量共病因素，以提高整体生活质量和改善预后。尤其值得注意的是，ASD和ADHD群体存在显著的健康不平等——他们的躯体疾病更容易被忽视或归因于行为问题，需要提高临床工作者的警惕性。</div>
-        <div class="ref">参考文献：• Muskens, J.B., Velders, F.P., & Staal, W.G. (2017). Medical comorbidities in children and adolescents with autism spectrum disorders and attention deficit hyperactivity disorders: a systematic review. European Child & Adolescent Psychiatry, 26(9), 1093–1103.
-• Rydzewska, E., Dunn, K., & Cooper, S.-A. (2021). Umbrella systematic review of systematic reviews and meta-analyses on comorbid physical conditions in people with autism spectrum disorder. The British Journal of Psychiatry, 218(1), 10–19.
-•  Tye, C., Runicles, A.K., Whitehouse, A.J.O., & Alvares, G.A. (2019). Characterizing the Interplay Between Autism Spectrum Disorder and Comorbid Medical Conditions: An Integrative Review. Frontiers in Psychiatry, 9, 751.
-• 北京协和医院. 自闭症发病或与免疫、肠道菌群相关，系统治疗全身症状可改善预后. [官网文章]
-• Psych Scene Hub. ADHD and Autism Comorbidity: Clinical Insights & Review. 
-• 世界ADHD联盟国际共识声明：208条循证结论. 
-• ADxS.org. Somatic comorbidities in ADHD. 
-• 热心肠研究院. 关于孤独症（自闭症）的10大必读知识.</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
-    <div class="section-block" id="sleep">
-        <h3>睡眠问题</h3>
-        <div class="placeholder">（由于前面提到了，做简单描述）睡眠障碍是ASD和ADHD群体中最常见且影响最深远的躯体共病之一。
-ASD中：约44-83%的ASD个体经历睡眠质量下降，包括入睡困难、频繁夜醒、睡眠潜伏期延长和睡眠效率降低。睡眠问题与ASD核心症状（重复刻板行为、易怒、注意困难）之间存在双向恶化关系。
-ADHD中：睡眠障碍同样高发。数据显示ADHD群体中日间嗜睡38%（对照组11-18%）、睡眠呼吸障碍8%（对照组4-4.5%）、不宁腿综合征12%（对照组2.7-7.2%）。ADHD共病ASD的儿童睡眠障碍可达86%。ADHD本身的情绪失调和执行功能缺陷与睡眠问题相互加重。
-常见机制涉及褪黑素分泌异常、感觉处理差异、焦虑共病以及药物（尤其是兴奋剂）对睡眠的干扰。
-临床建议：常规评估睡眠状况（PSQI等工具）；行为干预（规律作息、睡眠卫生）作为一线方案；必要时考虑褪黑素补充，需注意剂量和使用时机；区分原发睡眠障碍与ADHD/ASD共病导致的睡眠问题。</div>
-        <div class="ref">参考文献：Psych Scene Hub - ADHD and Autism Comorbidity</div>
-        <a href="#toc" class="back-to-toc">↑ 回到目录</a>
-    </div>
+  <p class="disclaim">本页基于 DSM-5-TR / ICD-11 及同行评审论文整理，内容更新于 2026 年 8 月。仅供科普参考，不构成诊断或治疗建议；如需评估请前往精神科、发育行为儿科或临床心理科就诊。</p>
 </main>
-<footer class="site-footer"><span>神经多样性科普站</span> · <em>医学是以人为本</em></footer>
+
+<footer class="site-footer">
+  <div>神经多样性科普站 · <em>医学是以人为本</em></div>
+</footer>
+
 </body>
 </html>
